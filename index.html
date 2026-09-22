@@ -58,7 +58,7 @@
             </form>
         </section>
 
-        <!-- Baris Bawah: Hasil Laporan Jurnal Keuangan -->
+        <!-- Baris Bawah: Hasil Laporan Jurnal Keuangan & Grafik -->
         <section class="card-genz full-width" id="tabel-data">
             <h2>Ikhtisar Finansial</h2>
             
@@ -66,6 +66,21 @@
                 <div class="stat-box stat-masuk">Total Masuk <span>Rp <span id="totalMasuk">0</span></span></div>
                 <div class="stat-box stat-keluar">Total Keluar <span>Rp <span id="totalKeluar">0</span></span></div>
                 <div class="stat-box stat-saldo">Saldo Akhir <span>Rp <span id="saldoAkhir">0</span></span></div>
+            </div>
+
+            <!-- Dashboard Grafik Analisis Visual Baru -->
+            <div class="chart-container">
+                <div class="chart-title">📊 Analisis Visual Perputaran Dana</div>
+                
+                <div class="chart-bar-wrapper">
+                    <div class="chart-label"><span style="color:#86efac;">Pemasukan (Revenue)</span><span id="labelPersenMasuk">0%</span></div>
+                    <div class="chart-track"><div class="chart-fill fill-masuk" id="barMasuk"></div></div>
+                </div>
+
+                <div class="chart-bar-wrapper">
+                    <div class="chart-label"><span style="color:#fca5a5;">Pengeluaran (Expenses)</span><span id="labelPersenKeluar">0%</span></div>
+                    <div class="chart-track"><div class="chart-fill fill-keluar" id="barKeluar"></div></div>
+                </div>
             </div>
 
             <div class="table-wrapper">
@@ -150,9 +165,21 @@
             });
 
             const saldoAkhir = totalPemasukan - totalPengeluaran;
+            const totalOmset = totalPemasukan + totalPengeluaran;
+
+            // Hitung persentase dinamis untuk grafik analisis visual
+            let persenMasuk = totalOmset > 0 ? ((totalPemasukan / totalOmset) * 100).toFixed(0) : 0;
+            let persenKeluar = totalOmset > 0 ? ((totalPengeluaran / totalOmset) * 100).toFixed(0) : 0;
+
             document.getElementById('totalMasuk').innerText = totalPemasukan.toLocaleString('id-ID');
             document.getElementById('totalKeluar').innerText = totalPengeluaran.toLocaleString('id-ID');
             document.getElementById('saldoAkhir').innerText = saldoAkhir.toLocaleString('id-ID');
+
+            // Jalankan animasi grafik batang secara real-time
+            document.getElementById('barMasuk').style.width = persenMasuk + "%";
+            document.getElementById('barKeluar').style.width = persenKeluar + "%";
+            document.getElementById('labelPersenMasuk').innerText = persenMasuk + "%";
+            document.getElementById('labelPersenKeluar').innerText = persenKeluar + "%";
         }
 
         function hapusMemori() {
