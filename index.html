@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wahidun Project - Kas Kelas Console</title>
+    <title>Wahidun Project - Kas Kelas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,18 +13,18 @@
         <div class="navbar-brand">Wahidun Project</div>
         <div class="navbar-menu">
             <a href="#form-input">Input Kas</a>
-            <a href="#rekap-anggota">Tabungan Anggota</a>
-            <a href="#tabel-data">Jurnal Kas</a>
+            <a href="#tabungan-siswa">Tabungan Siswa</a>
+            <a href="#tabel-data">Tabel Kas</a>
         </div>
     </nav>
 
     <header>
         <h1>Kas Kelas Dashboard</h1>
-        <p>Sistem Pencatatan Arus Kas Transparan & Akuntabel</p>
+        <p>Sistem Pencatatan Arus Kas Transparan & Otomatis</p>
     </header>
 
     <div class="container">
-        <!-- Formulir Input Arus Kas Kelas -->
+        <!-- Formulir Input Kas Kelas -->
         <section class="card-genz" id="form-input">
             <h2>Pencatatan Kas Kelas</h2>
             <form id="cashflowForm">
@@ -33,25 +33,23 @@
                     <input type="date" id="tanggal" required>
                 </div>
                 
-                <!-- FITUR BARU: PILIHAN NAMA ANGGOTA KELAS -->
                 <div class="form-group">
-                    <label>Nama Anggota / Keterangan</label>
+                    <label>Nama Anggota Kelas</label>
                     <select id="keterangan">
-                        <!-- Silakan ganti atau tambah nama-nama anggota kelas Anda di bawah ini -->
                         <option value="Ahmad Dhani">Ahmad Dhani</option>
                         <option value="Budi Sudarsono">Budi Sudarsono</option>
                         <option value="Citra Lestari">Citra Lestari</option>
                         <option value="Dedi Corbuzier">Dedi Corbuzier</option>
                         <option value="Eka Rahmawati">Eka Rahmawati</option>
-                        <option value="Kas Kelas (Keperluan Umum)">Keperluan Umum Kelas (Bukan Siswa)</option>
+                        <option value="Keperluan Umum Kelas">Keperluan Umum Kelas (Beli Spidol, dll)</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
                     <label>Jenis Transaksi</label>
                     <select id="jenis">
-                        <option value="masuk">Uang Masuk (Bayar Kas / Pemasukan)</option>
-                        <option value="keluar">Uang Keluar (Beli Spidol / Pengeluaran)</option>
+                        <option value="masuk">Uang Masuk (Bayar Kas)</option>
+                        <option value="keluar">Uang Keluar (Pengeluaran)</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -62,12 +60,12 @@
             </form>
         </section>
 
-        <!-- FITUR BARU: REKAP SALDO INDIVIDU ANGGOTA KELAS -->
-        <section class="card-genz" id="rekap-anggota">
+        <!-- KOTAK REKAP TOTAL UANG PER SISWA -->
+        <section class="card-genz" id="tabungan-siswa">
             <h2>Tabungan Anggota Kelas</h2>
-            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 15px;">Total akumulasi uang kas yang sudah dibayarkan oleh masing-masing siswa:</p>
+            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 15px;">Total uang kas yang sudah dibayarkan oleh masing-masing siswa:</p>
             <div id="boxRekapSiswa" style="display: flex; flex-direction: column; gap: 10px;">
-                <!-- Ringkasan per siswa otomatis muncul di sini lewat JavaScript -->
+                <!-- Nama dan total uang siswa otomatis muncul di sini -->
             </div>
         </section>
 
@@ -96,13 +94,12 @@
                 </div>
             </div>
 
-            <!-- Tabel Jurnal Utama -->
             <div class="table-wrapper">
                 <table id="tabelTransaksi">
                     <thead>
                         <tr>
                             <th>Tanggal</th>
-                            <th>Nama Anggota / Keterangan</th>
+                            <th>Nama / Keterangan</th>
                             <th>Kas Masuk</th>
                             <th>Kas Keluar</th>
                         </tr>
@@ -121,12 +118,11 @@
         <p>&copy; 2026 Wahidun Project. All Rights Reserved.</p>
     </footer>
 
-    <!-- Logika Otomatisasi Kas Kelas + Memori Aman Browser -->
     <script>
-        // Menggunakan nama kunci database khusus kas kelas baru
-        let databaseKey = 'wahidun_kas_kelas_db_v1';
+        let databaseKey = 'wahidun_kas_kelas_final_db';
         let transaksiList = JSON.parse(localStorage.getItem(databaseKey)) || [];
         
+        // Langsung jalankan fungsi render saat pertama kali web dibuka
         updateTampilanSistem();
 
         function tambahTransaksi() {
@@ -145,61 +141,62 @@
             localStorage.setItem(databaseKey, JSON.stringify(transaksiList));
 
             updateTampilanSistem();
+            
+            // Mengosongkan form input setelah simpan berhasil
             document.getElementById('cashflowForm').reset();
         }
 
         function updateTampilanSistem() {
             let totalPemasukan = 0;
             let totalPengeluaran = 0;
-            
-            // Siapkan wadah memori hitung untuk masing-masing siswa secara dinamis
             let akumulasiSiswa = {};
             
-            // Ambil daftar nama siswa dari dropdown secara otomatis
+            // Ambil daftar nama siswa secara aman langsung dari elemen select
             const selectKeterangan = document.getElementById('keterangan');
-            for (let i = 0; i < selectKeterangan.options.length; i++) {
-                const nama = selectKeterangan.options[i].value;
-                // Jangan masukkan kategori Keperluan Umum ke dalam rekap iuran siswa
-                if (nama !== "Kas Kelas (Keperluan Umum)") {
-                    akumulasiSiswa[nama] = 0;
+            if (selectKeterangan) {
+                for (let i = 0; i < selectKeterangan.options.length; i++) {
+                    const nama = selectKeterangan.options[i].value;
+                    if (nama !== "Keperluan Umum Kelas") {
+                        akumulasiSiswa[nama] = 0;
+                    }
                 }
             }
 
             const tbody = document.getElementById('tabelBody');
-            tbody.innerHTML = "";
+            if (tbody) {
+                tbody.innerHTML = "";
 
-            transaksiList.forEach(item => {
-                const row = tbody.insertRow();
-                const cell1 = row.insertCell(0);
-                const cell2 = row.insertCell(1);
-                const cell3 = row.insertCell(2);
-                const cell4 = row.insertCell(3);
+                transaksiList.forEach(item => {
+                    const row = tbody.insertRow();
+                    const cell1 = row.insertCell(0);
+                    const cell2 = row.insertCell(1);
+                    const cell3 = row.insertCell(2);
+                    const cell4 = row.insertCell(3);
 
-                cell1.innerHTML = item.tanggal;
-                cell2.innerHTML = item.keterangan;
+                    cell1.innerHTML = item.tanggal;
+                    cell2.innerHTML = item.keterangan;
 
-                if (item.jenis === 'masuk') {
-                    cell3.innerHTML = item.nominal.toLocaleString('id-ID');
-                    cell4.innerHTML = "-";
-                    cell3.style.color = "#86efac";
-                    totalPemasukan += item.nominal;
-                    
-                    // Jika yang membayar adalah siswa yang terdaftar, tambahkan ke rekap iurannya
-                    if (akumulasiSiswa[item.keterangan] !== undefined) {
-                        akumulasiSiswa[item.keterangan] += item.nominal;
+                    if (item.jenis === 'masuk') {
+                        cell3.innerHTML = item.nominal.toLocaleString('id-ID');
+                        cell4.innerHTML = "-";
+                        cell3.style.color = "#86efac";
+                        totalPemasukan += item.nominal;
+                        if (akumulasiSiswa[item.keterangan] !== undefined) {
+                            akumulasiSiswa[item.keterangan] += item.nominal;
+                        }
+                    } else {
+                        cell3.innerHTML = "-";
+                        cell4.innerHTML = item.nominal.toLocaleString('id-ID');
+                        cell4.style.color = "#fca5a5";
+                        totalPengeluaran += item.nominal;
                     }
-                } else {
-                    cell3.innerHTML = "-";
-                    cell4.innerHTML = item.nominal.toLocaleString('id-ID');
-                    cell4.style.color = "#fca5a5";
-                    totalPengeluaran += item.nominal;
-                }
 
-                cell1.style.padding = "10px"; cell1.style.border = "1px solid #1f2937";
-                cell2.style.padding = "10px"; cell2.style.border = "1px solid #1f2937";
-                cell3.style.padding = "10px"; cell3.style.border = "1px solid #1f2937";
-                cell4.style.padding = "10px"; cell4.style.border = "1px solid #1f2937";
-            });
+                    cell1.style.padding = "10px"; cell1.style.border = "1px solid #1f2937";
+                    cell2.style.padding = "10px"; cell2.style.border = "1px solid #1f2937";
+                    cell3.style.padding = "10px"; cell3.style.border = "1px solid #1f2937";
+                    cell4.style.padding = "10px"; cell4.style.border = "1px solid #1f2937";
+                });
+            }
 
             const saldoAkhir = totalPemasukan - totalPengeluaran;
             const totalOmset = totalPemasukan + totalPengeluaran;
@@ -211,3 +208,8 @@
             document.getElementById('totalKeluar').innerText = totalPengeluaran.toLocaleString('id-ID');
             document.getElementById('saldoAkhir').innerText = saldoAkhir.toLocaleString('id-ID');
 
+            document.getElementById('barMasuk').style.width = persenMasuk + "%";
+            document.getElementById('barKeluar').style.width = persenKeluar + "%";
+            document.getElementById('labelPersenMasuk').innerText = persenMasuk + "%";
+            document.getElementById('labelPersenKeluar').innerText = persenKeluar + "%";
+            
