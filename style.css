@@ -16,22 +16,22 @@ body {
     padding-bottom: 60px;
 }
 
-/* --- FLOATING GLASSMORPHIC NAVBAR (MENU MELAYANG GEN Z) --- */
+/* --- FLOATING GLASSMORPHIC NAVBAR --- */
 .navbar {
-    background: rgba(17, 24, 39, 0.7); /* Transparan transdisi */
-    backdrop-filter: blur(12px); /* Efek blur kaca premium */
+    background: rgba(17, 24, 39, 0.7);
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 12px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
-    top: 15px; /* Memberikan jarak melayang dari atas */
+    top: 15px;
     margin: 0 auto;
     width: 92%;
     max-width: 1100px;
-    border-radius: 16px; /* Kapsul melengkung rapi */
-    border: 1px solid rgba(255, 255, 255, 0.08); /* Garis batas tipis mewah */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     z-index: 1000;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -39,8 +39,7 @@ body {
 .navbar-brand {
     color: #ffffff;
     font-size: 20px;
-    font-weight: 900;
-    letter-spacing: -0.5px;
+    font-weight: 800;
     background: linear-gradient(45deg, #3b82f6, #10b981);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -48,7 +47,6 @@ body {
     align-items: center;
 }
 
-/* Trik logo petir menyala */
 .navbar-brand::before {
     content: "⚡";
     -webkit-text-fill-color: initial;
@@ -68,19 +66,16 @@ body {
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     border-radius: 10px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
 }
 
-/* Efek tombol menu menyala saat disentuh */
 .navbar-menu a:hover {
     color: #ffffff;
     background-color: rgba(59, 130, 246, 0.15);
     box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
 }
 
-/* --- AREA HEADER CONTENT --- */
 header {
     background-color: transparent;
     color: #ffffff;
@@ -100,7 +95,6 @@ header p {
     margin-top: 5px;
 }
 
-/* --- CONTENT STRUCTURE --- */
 .container {
     max-width: 1100px;
     margin: 20px auto;
@@ -121,11 +115,6 @@ header p {
     border: 1px solid #1f2937;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    transition: all 0.3s ease;
-}
-
-.card-genz:hover {
-    border-color: #3b82f6;
 }
 
 .card-genz h2 {
@@ -133,7 +122,6 @@ header p {
     font-weight: 800;
     margin-bottom: 20px;
     color: #ffffff;
-    letter-spacing: -0.5px;
 }
 
 .card-genz p {
@@ -153,7 +141,6 @@ header p {
     font-weight: 700;
     text-transform: uppercase;
     color: #94a3b8;
-    letter-spacing: 0.5px;
 }
 
 .form-group input, .form-group select {
@@ -167,19 +154,13 @@ header p {
     outline: none;
 }
 
-.form-group input:focus, .form-group select:focus {
-    border-color: #3b82f6;
-}
-
 .btn-genz {
     display: block;
     width: 100%;
     padding: 15px;
     font-size: 14px;
     font-weight: 800;
-    text-align: center;
     text-transform: uppercase;
-    text-decoration: none;
     border: none;
     border-radius: 12px;
     cursor: pointer;
@@ -188,7 +169,6 @@ header p {
 
 .btn-primary { background-color: #3b82f6; color: white; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3); }
 .btn-primary:hover { background-color: #2563eb; transform: translateY(-1px); }
-
 .btn-success { background-color: #10b981; color: white; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3); }
 .btn-success:hover { background-color: #059669; transform: translateY(-1px); }
 
@@ -223,9 +203,58 @@ header p {
     margin-top: 6px;
 }
 
+/* --- FITUR BARU: VISUAL ANALYTICS CHART CHART (GEN Z LOOK) --- */
+.chart-container {
+    margin-top: 30px;
+    background: #0b0f19;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #1f2937;
+}
+
+.chart-title {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.chart-bar-wrapper {
+    margin-bottom: 15px;
+}
+
+.chart-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.chart-track {
+    width: 100%;
+    background-color: #1f2937;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.chart-fill {
+    height: 100%;
+    width: 0%; /* Diatur dinamis oleh JavaScript */
+    border-radius: 6px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fill-masuk { background: linear-gradient(90deg, #10b981, #34d399); box-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
+.fill-keluar { background: linear-gradient(90deg, #ef4444, #f87171); box-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
+
+/* --- TABLES --- */
 .table-wrapper {
     overflow-x: auto;
-    margin-top: 25px;
+    margin-top: 35px;
     border: 1px solid #1f2937;
     border-radius: 12px;
 }
@@ -244,7 +273,6 @@ th {
     padding: 14px 18px;
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 td {
@@ -254,9 +282,7 @@ td {
     background: #111827;
 }
 
-tr:hover td {
-    background-color: #1f2937;
-}
+tr:hover td { background-color: #1f2937; }
 
 footer {
     text-align: center;
