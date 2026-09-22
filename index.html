@@ -75,6 +75,9 @@
                     </tbody>
                 </table>
             </div>
+            
+            <!-- Tombol Tambahan untuk Reset jika dibutuhkan -->
+            <button type="button" class="btn-genz" style="background-color: #e5e7eb; color: #111; margin-top: 20px; font-size: 12px; padding: 8px;" onclick="hapusMemori()">Format / Reset Semua Data</button>
         </section>
     </div>
 
@@ -82,10 +85,13 @@
         <p>&copy; 2026 Wahidun Project. All Rights Reserved.</p>
     </footer>
 
-    <!-- Logika Hitung Sederhana Tanpa Ribet -->
+    <!-- Logika Hitung Otomatis + Memori Permanen Browser -->
     <script>
-        let totalPemasukan = 0;
-        let totalPengeluaran = 0;
+        // Mengambil data lama yang tersimpan di browser, jika tidak ada, mulai dari kosong []
+        let transaksiList = JSON.parse(localStorage.getItem('wahidun_project_db')) || [];
+
+        // Otomatis jalankan fungsi render data saat website pertama kali dibuka
+        updateTampilanSistem();
 
         function tambahTransaksi() {
             const tanggal = document.getElementById('tanggal').value;
@@ -98,36 +104,74 @@
                 return;
             }
 
+            // Menyusun cetakan data baru
+            const dataBaru = { tanggal, keterangan, jenis, nominal };
+            
+            // Memasukkan data baru ke baris paling atas array
+            transaksiList.unshift(dataBaru);
+
+            // SIMPAN PERMANEN ke dalam memori browser lokal
+            localStorage.setItem('wahidun_project_db', JSON.stringify(transaksiList));
+
+            // Perbarui data yang tampil di layar
+            updateTampilanSistem();
+
+            // Reset isi form inputan
+            document.getElementById('cashflowForm').reset();
+        }
+
+        function updateTampilanSistem() {
+            let totalPemasukan = 0;
+            let totalPengeluaran = 0;
             const tbody = document.getElementById('tabelBody');
-            const row = tbody.insertRow();
+            
+            // Kosongkan isi tabel lama sebelum memuat ulang
+            tbody.innerHTML = "";
 
-            const cell1 = row.insertCell(0);
-            const cell2 = row.insertCell(1);
-            const cell3 = row.insertCell(2);
-            const cell4 = row.insertCell(3);
+            // Menulis ulang isi tabel dari memori tersimpan
+            transaksiList.forEach(item => {
+                const row = tbody.insertRow();
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);
+                const cell4 = row.insertCell(3);
 
-            cell1.innerHTML = tanggal;
-            cell2.innerHTML = keterangan;
+                cell1.innerHTML = item.tanggal;
+                cell2.innerHTML = item.keterangan;
 
-            if (jenis === 'masuk') {
-                cell3.innerHTML = nominal.toLocaleString('id-ID');
-                cell4.innerHTML = "-";
-                cell3.style.color = "#059669";
-                totalPemasukan += nominal;
-            } else {
-                cell3.innerHTML = "-";
-                cell4.innerHTML = nominal.toLocaleString('id-ID');
-                cell4.style.color = "#dc2626";
-                totalPengeluaran += nominal;
-            }
+                if (item.jenis === 'masuk') {
+                    cell3.innerHTML = item.nominal.toLocaleString('id-ID');
+                    cell4.innerHTML = "-";
+                    cell3.style.color = "#059669";
+                    totalPemasukan += item.nominal;
+                } else {
+                    cell3.innerHTML = "-";
+                    cell4.innerHTML = item.nominal.toLocaleString('id-ID');
+                    cell4.style.color = "#dc2626";
+                    totalPengeluaran += item.nominal;
+                }
+
+                cell1.style.padding = "10px"; cell1.style.border = "1px solid #111111";
+                cell2.style.padding = "10px"; cell2.style.border = "1px solid #111111";
+                cell3.style.padding = "10px"; cell3.style.border = "1px solid #111111";
+                cell4.style.padding = "10px"; cell4.style.border = "1px solid #111111";
+            });
 
             const saldoAkhir = totalPemasukan - totalPengeluaran;
 
+            // Update angka total di box dashboard atas secara otomatis
             document.getElementById('totalMasuk').innerText = totalPemasukan.toLocaleString('id-ID');
             document.getElementById('totalKeluar').innerText = totalPengeluaran.toLocaleString('id-ID');
             document.getElementById('saldoAkhir').innerText = saldoAkhir.toLocaleString('id-ID');
+        }
 
-            document.getElementById('cashflowForm').reset();
+        // Fungsi opsional jika suatu saat Anda ingin mengosongkan tabel kembali ke nol
+        function hapusMemori() {
+            if (confirm("Apakah Anda yakin ingin menghapus seluruh catatan keuangan?")) {
+                localStorage.removeItem('wahidun_project_db');
+                transaksiList = [];
+                updateTampilanSistem();
+            }
         }
     </script>
 </body>
