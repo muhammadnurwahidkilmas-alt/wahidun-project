@@ -65,7 +65,7 @@
             <h2>Tabungan Anggota Kelas</h2>
             <p style="font-size: 13px; color: #94a3b8; margin-bottom: 15px;">Total uang kas yang sudah dibayarkan oleh masing-masing siswa:</p>
             <div id="boxRekapSiswa" style="display: flex; flex-direction: column; gap: 10px;">
-                <!-- Nama dan total uang siswa otomatis muncul di sini -->
+                <!-- Data siswa otomatis muncul di sini -->
             </div>
         </section>
 
@@ -119,10 +119,9 @@
     </footer>
 
     <script>
-        let databaseKey = 'wahidun_kas_kelas_final_db';
+        let databaseKey = 'wahidun_kas_kelas_fixed_v2';
         let transaksiList = JSON.parse(localStorage.getItem(databaseKey)) || [];
         
-        // Langsung jalankan fungsi render saat pertama kali web dibuka
         updateTampilanSistem();
 
         function tambahTransaksi() {
@@ -141,62 +140,54 @@
             localStorage.setItem(databaseKey, JSON.stringify(transaksiList));
 
             updateTampilanSistem();
-            
-            // Mengosongkan form input setelah simpan berhasil
             document.getElementById('cashflowForm').reset();
         }
 
         function updateTampilanSistem() {
             let totalPemasukan = 0;
             let totalPengeluaran = 0;
+            
+            let daftarSiswa = ["Ahmad Dhani", "Budi Sudarsono", "Citra Lestari", "Dedi Corbuzier", "Eka Rahmawati"];
             let akumulasiSiswa = {};
             
-            // Ambil daftar nama siswa secara aman langsung dari elemen select
-            const selectKeterangan = document.getElementById('keterangan');
-            if (selectKeterangan) {
-                for (let i = 0; i < selectKeterangan.options.length; i++) {
-                    const nama = selectKeterangan.options[i].value;
-                    if (nama !== "Keperluan Umum Kelas") {
-                        akumulasiSiswa[nama] = 0;
-                    }
-                }
-            }
+            daftarSiswa.forEach(nama => {
+                akumulasiSiswa[nama] = 0;
+            });
 
             const tbody = document.getElementById('tabelBody');
-            if (tbody) {
-                tbody.innerHTML = "";
+            tbody.innerHTML = "";
 
-                transaksiList.forEach(item => {
-                    const row = tbody.insertRow();
-                    const cell1 = row.insertCell(0);
-                    const cell2 = row.insertCell(1);
-                    const cell3 = row.insertCell(2);
-                    const cell4 = row.insertCell(3);
+            transaksiList.forEach(item => {
+                const row = tbody.insertRow();
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);
+                const cell4 = row.insertCell(3);
 
-                    cell1.innerHTML = item.tanggal;
-                    cell2.innerHTML = item.keterangan;
+                cell1.innerHTML = item.tanggal;
+                cell2.innerHTML = item.keterangan;
 
-                    if (item.jenis === 'masuk') {
-                        cell3.innerHTML = item.nominal.toLocaleString('id-ID');
-                        cell4.innerHTML = "-";
-                        cell3.style.color = "#86efac";
-                        totalPemasukan += item.nominal;
-                        if (akumulasiSiswa[item.keterangan] !== undefined) {
-                            akumulasiSiswa[item.keterangan] += item.nominal;
-                        }
-                    } else {
-                        cell3.innerHTML = "-";
-                        cell4.innerHTML = item.nominal.toLocaleString('id-ID');
-                        cell4.style.color = "#fca5a5";
-                        totalPengeluaran += item.nominal;
+                if (item.jenis === 'masuk') {
+                    cell3.innerHTML = item.nominal.toLocaleString('id-ID');
+                    cell4.innerHTML = "-";
+                    cell3.style.color = "#86efac";
+                    totalPemasukan += item.nominal;
+                    
+                    if (akumulasiSiswa[item.keterangan] !== undefined) {
+                        akumulasiSiswa[item.keterangan] += item.nominal;
                     }
+                } else {
+                    cell3.innerHTML = "-";
+                    cell4.innerHTML = item.nominal.toLocaleString('id-ID');
+                    cell4.style.color = "#fca5a5";
+                    totalPengeluaran += item.nominal;
+                }
 
-                    cell1.style.padding = "10px"; cell1.style.border = "1px solid #1f2937";
-                    cell2.style.padding = "10px"; cell2.style.border = "1px solid #1f2937";
-                    cell3.style.padding = "10px"; cell3.style.border = "1px solid #1f2937";
-                    cell4.style.padding = "10px"; cell4.style.border = "1px solid #1f2937";
-                });
-            }
+                cell1.style.padding = "10px"; cell1.style.border = "1px solid #1f2937";
+                cell2.style.padding = "10px"; cell2.style.border = "1px solid #1f2937";
+                cell3.style.padding = "10px"; cell3.style.border = "1px solid #1f2937";
+                cell4.style.padding = "10px"; cell4.style.border = "1px solid #1f2937";
+            });
 
             const saldoAkhir = totalPemasukan - totalPengeluaran;
             const totalOmset = totalPemasukan + totalPengeluaran;
@@ -213,3 +204,15 @@
             document.getElementById('labelPersenMasuk').innerText = persenMasuk + "%";
             document.getElementById('labelPersenKeluar').innerText = persenKeluar + "%";
             
+            const boxRekap = document.getElementById('boxRekapSiswa');
+            boxRekap.innerHTML = "";
+            
+            daftarSiswa.forEach(namaSiswa => {
+                const divSiswa = document.createElement('div');
+                divSiswa.style.display = "flex";
+                divSiswa.style.justifyContent = "space-between";
+                divSiswa.style.padding = "8px 12px";
+                divSiswa.style.background = "#0b0f19";
+                divSiswa.style.border = "1px solid #1f2937";
+                divSiswa.style.borderRadius = "8px";
+                divSiswa.style.fontSize = "14px";
