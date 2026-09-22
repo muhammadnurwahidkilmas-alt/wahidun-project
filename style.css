@@ -16,7 +16,6 @@ body {
     padding-bottom: 60px;
 }
 
-/* --- FLOATING GLASSMORPHIC NAVBAR --- */
 .navbar {
     background: rgba(17, 24, 39, 0.7);
     backdrop-filter: blur(12px);
@@ -105,7 +104,7 @@ header p {
 }
 
 @media (min-width: 768px) {
-    .container { grid-template-columns: 1fr 1.3fr; }
+    .container { grid-template-columns: 1fr 1fr; }
     .full-width { grid-column: span 2; }
 }
 
@@ -164,13 +163,10 @@ header p {
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    transition: all 0.2s ease;
 }
 
 .btn-primary { background-color: #3b82f6; color: white; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3); }
-.btn-primary:hover { background-color: #2563eb; transform: translateY(-1px); }
-.btn-success { background-color: #10b981; color: white; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3); }
-.btn-success:hover { background-color: #059669; transform: translateY(-1px); }
+.btn-primary:hover { background-color: #2563eb; }
 
 .summary-container {
     display: grid;
@@ -203,7 +199,6 @@ header p {
     margin-top: 6px;
 }
 
-/* --- FITUR BARU: VISUAL ANALYTICS CHART CHART (GEN Z LOOK) --- */
 .chart-container {
     margin-top: 30px;
     background: #0b0f19;
@@ -218,75 +213,18 @@ header p {
     text-transform: uppercase;
     color: #94a3b8;
     margin-bottom: 15px;
-    letter-spacing: 0.5px;
 }
 
-.chart-bar-wrapper {
-    margin-bottom: 15px;
-}
+.chart-bar-wrapper { margin-bottom: 15px; }
+.chart-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.chart-track { width: 100%; background-color: #1f2937; height: 12px; border-radius: 6px; overflow: hidden; }
+.chart-fill { height: 100%; width: 0%; border-radius: 6px; transition: width 0.5s ease; }
+.fill-masuk { background: linear-gradient(90deg, #10b981, #34d399); }
+.fill-keluar { background: linear-gradient(90deg, #ef4444, #f87171); }
 
-.chart-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 6px;
-}
-
-.chart-track {
-    width: 100%;
-    background-color: #1f2937;
-    height: 12px;
-    border-radius: 6px;
-    overflow: hidden;
-}
-
-.chart-fill {
-    height: 100%;
-    width: 0%; /* Diatur dinamis oleh JavaScript */
-    border-radius: 6px;
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.fill-masuk { background: linear-gradient(90deg, #10b981, #34d399); box-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
-.fill-keluar { background: linear-gradient(90deg, #ef4444, #f87171); box-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
-
-/* --- TABLES --- */
-.table-wrapper {
-    overflow-x: auto;
-    margin-top: 35px;
-    border: 1px solid #1f2937;
-    border-radius: 12px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    text-align: left;
-}
-
-th {
-    background-color: #1f2937;
-    color: #94a3b8;
-    font-weight: 700;
-    padding: 14px 18px;
-    font-size: 11px;
-    text-transform: uppercase;
-}
-
-td {
-    padding: 14px 18px;
-    border-bottom: 1px solid #1f2937;
-    color: #e2e8f0;
-    background: #111827;
-}
-
+.table-wrapper { overflow-x: auto; margin-top: 35px; border: 1px solid #1f2937; border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; }
+th { background-color: #1f2937; color: #94a3b8; padding: 14px 18px; }
+td { padding: 14px 18px; border-bottom: 1px solid #1f2937; color: #e2e8f0; background: #111827; }
 tr:hover td { background-color: #1f2937; }
-
-footer {
-    text-align: center;
-    padding: 40px;
-    color: #4b5563;
-    font-size: 13px;
-}
+footer { text-align: center; padding: 40px; color: #4b5563; font-size: 13px; }
