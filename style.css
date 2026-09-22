@@ -16,76 +16,116 @@ body {
     padding-bottom: 60px;
 }
 
-/* --- MENU ATAS --- */
+/* --- FLOATING GLASSMORPHIC NAVBAR (MENU MELAYANG GEN Z) --- */
 .navbar {
-    background-color: #111827;
-    padding: 15px 30px;
+    background: rgba(17, 24, 39, 0.7); /* Transparan transdisi */
+    backdrop-filter: blur(12px); /* Efek blur kaca premium */
+    -webkit-backdrop-filter: blur(12px);
+    padding: 12px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
-    top: 0;
+    top: 15px; /* Memberikan jarak melayang dari atas */
+    margin: 0 auto;
+    width: 92%;
+    max-width: 1100px;
+    border-radius: 16px; /* Kapsul melengkung rapi */
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Garis batas tipis mewah */
     z-index: 1000;
-    border-bottom: 1px solid #1f2937;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .navbar-brand {
     color: #ffffff;
     font-size: 20px;
-    font-weight: 800;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    background: linear-gradient(45deg, #3b82f6, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+/* Trik logo petir menyala */
+.navbar-brand::before {
+    content: "⚡";
+    -webkit-text-fill-color: initial;
+    margin-right: 6px;
+    text-shadow: 0 0 12px #fbbf24;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 8px;
 }
 
 .navbar-menu a {
     color: #94a3b8;
     text-decoration: none;
-    margin-left: 20px;
-    font-size: 14px;
-    font-weight: 600;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Efek tombol menu menyala saat disentuh */
 .navbar-menu a:hover {
-    color: #3b82f6;
+    color: #ffffff;
+    background-color: rgba(59, 130, 246, 0.15);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
 }
 
+/* --- AREA HEADER CONTENT --- */
 header {
-    background-color: #111827;
+    background-color: transparent;
     color: #ffffff;
-    padding: 40px 20px;
+    padding: 80px 20px 40px 20px;
     text-align: center;
-    border-bottom: 2px solid #1f2937;
 }
 
 header h1 {
-    font-size: 36px;
+    font-size: 38px;
     font-weight: 900;
+    letter-spacing: -1px;
 }
 
 header p {
-    color: #a3a3a3;
+    color: #94a3b8;
     font-size: 15px;
     margin-top: 5px;
 }
 
+/* --- CONTENT STRUCTURE --- */
 .container {
     max-width: 1100px;
-    margin: 40px auto;
+    margin: 20px auto;
     padding: 0 20px;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 35px;
 }
 
 @media (min-width: 768px) {
-    .container { grid-template-columns: 1fr 1.3 fr; }
+    .container { grid-template-columns: 1fr 1.3fr; }
     .full-width { grid-column: span 2; }
 }
 
 .card-genz {
     background: #111827;
-    padding: 30px;
-    border: 2px solid #1f2937;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    padding: 35px;
+    border: 1px solid #1f2937;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+.card-genz:hover {
+    border-color: #3b82f6;
 }
 
 .card-genz h2 {
@@ -93,6 +133,7 @@ header p {
     font-weight: 800;
     margin-bottom: 20px;
     color: #ffffff;
+    letter-spacing: -0.5px;
 }
 
 .card-genz p {
@@ -107,40 +148,49 @@ header p {
 
 .form-group label {
     display: block;
-    margin-bottom: 6px;
-    font-size: 12px;
+    margin-bottom: 8px;
+    font-size: 11px;
     font-weight: 700;
+    text-transform: uppercase;
     color: #94a3b8;
+    letter-spacing: 0.5px;
 }
 
 .form-group input, .form-group select {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     border: 2px solid #1f2937;
-    border-radius: 8px;
+    border-radius: 12px;
     font-size: 15px;
     background-color: #0b0f19;
     color: #ffffff;
     outline: none;
 }
 
+.form-group input:focus, .form-group select:focus {
+    border-color: #3b82f6;
+}
+
 .btn-genz {
     display: block;
     width: 100%;
-    padding: 14px;
-    font-size: 15px;
+    padding: 15px;
+    font-size: 14px;
     font-weight: 800;
     text-align: center;
+    text-transform: uppercase;
     text-decoration: none;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.btn-primary { background-color: #3b82f6; color: white; }
-.btn-primary:hover { background-color: #2563eb; }
-.btn-success { background-color: #10b981; color: white; }
-.btn-success:hover { background-color: #059669; }
+.btn-primary { background-color: #3b82f6; color: white; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3); }
+.btn-primary:hover { background-color: #2563eb; transform: translateY(-1px); }
+
+.btn-success { background-color: #10b981; color: white; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3); }
+.btn-success:hover { background-color: #059669; transform: translateY(-1px); }
 
 .summary-container {
     display: grid;
@@ -154,30 +204,30 @@ header p {
 }
 
 .stat-box {
-    padding: 15px;
+    padding: 20px;
     border: 1px solid #1f2937;
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: 700;
     font-size: 12px;
     background-color: #0b0f19;
 }
 
-.stat-masuk { color: #86efac; }
-.stat-keluar { color: #fca5a5; }
-.stat-saldo { color: #93c5fd; }
+.stat-masuk { color: #86efac; border-top: 3px solid #10b981; }
+.stat-keluar { color: #fca5a5; border-top: 3px solid #ef4444; }
+.stat-saldo { color: #93c5fd; border-top: 3px solid #3b82f6; }
 
 .stat-box span {
     display: block;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 800;
-    margin-top: 4px;
+    margin-top: 6px;
 }
 
 .table-wrapper {
     overflow-x: auto;
     margin-top: 25px;
     border: 1px solid #1f2937;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 table {
@@ -189,21 +239,28 @@ table {
 
 th {
     background-color: #1f2937;
-    color: #ffffff;
+    color: #94a3b8;
     font-weight: 700;
-    padding: 12px 15px;
+    padding: 14px 18px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 td {
-    padding: 12px 15px;
+    padding: 14px 18px;
     border-bottom: 1px solid #1f2937;
     color: #e2e8f0;
     background: #111827;
 }
 
+tr:hover td {
+    background-color: #1f2937;
+}
+
 footer {
     text-align: center;
-    padding: 30px;
+    padding: 40px;
     color: #4b5563;
     font-size: 13px;
 }
