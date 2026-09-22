@@ -3,116 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wahidun Project - Creative Console</title>
+    <title>Wahidun Project</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Menu Atas -->
+    <nav class="navbar">
+        <div class="navbar-brand">⚡ Wahidun Project</div>
+        <div class="navbar-menu">
+            <a href="#form-input">Isi Data</a>
+            <a href="#tabel-data">Lihat Tabel</a>
+            <a href="#kontak-wa">WhatsApp</a>
+        </div>
+    </nav>
+
     <header>
         <h1>Wahidun Project</h1>
-        <p>Next-Gen Financial Console & Smart Invoice Engine</p>
+        <p>Sistem Pencatatan Arus Kas Sederhana</p>
     </header>
 
     <div class="container">
-        <!-- Kartu Integrasi WhatsApp -->
-        <section class="card-cyber">
-            <h2>Client Network</h2>
-            <p>Terhubung instan dengan jaringan pengembang pusat atau saluran bantuan komersial Wahidun Project melalui WhatsApp terenkripsi.</p>
-            <a href="https://wa.me" class="btn-cyber btn-success" target="_blank">Connect via WhatsApp</a>
+        <!-- Bagian Tombol WhatsApp -->
+        <section class="card-genz" id="kontak-wa">
+            <h2>Hubungi Kami</h2>
+            <p>Terhubung langsung dengan tim internal kami melalui saluran WhatsApp resmi.</p>
+            <a href="https://wa.me" class="btn-genz btn-success" target="_blank">Hubungi via WhatsApp</a>
         </section>
 
         <!-- Formulir Input Arus Kas -->
-        <section class="card-cyber">
-            <h2>Data Entry Kas</h2>
+        <section class="card-genz" id="form-input">
+            <h2>Pencatatan Arus Kas</h2>
             <form id="cashflowForm">
                 <div class="form-group">
-                    <label>Tanggal Valid</label>
+                    <label>Tanggal Transaksi</label>
                     <input type="date" id="tanggal" required>
                 </div>
                 <div class="form-group">
-                    <label>Deskripsi Transaksi / Alokasi</label>
-                    <input type="text" id="keterangan" placeholder="Contoh: Pembayaran Desain / Project A" required>
+                    <label>Keterangan / Deskripsi</label>
+                    <input type="text" id="keterangan" placeholder="Contoh: Pembayaran Server / Projek A" required>
                 </div>
                 <div class="form-group">
-                    <label>Jenis Aliran Kas</label>
+                    <label>Jenis Transaksi</label>
                     <select id="jenis">
-                        <option value="masuk">Uang Masuk (Revenue)</option>
-                        <option value="keluar">Uang Keluar (Expenses)</option>
+                        <option value="masuk">Uang Masuk (Pemasukan)</option>
+                        <option value="keluar">Uang Keluar (Pengeluaran)</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Nominal Finansial (Rp)</label>
-                    <input type="number" id="nominal" placeholder="Masukkan total nominal uang" required>
+                    <label>Nominal (Rp)</label>
+                    <input type="number" id="nominal" placeholder="Masukkan jumlah uang" required>
                 </div>
-                <button type="button" class="btn-cyber btn-blue" onclick="tambahTransaksi()">Execute Transaction</button>
+                <button type="button" class="btn-genz btn-primary" onclick="tambahTransaksi()">Simpan Catatan</button>
             </form>
         </section>
 
-        <!-- Jurnal Finansial & Dashboard Utama -->
-        <section class="card-cyber full-width">
-            <h3>
-                <span>Buku Besar Finansial</span>
-                <button type="button" style="background:#271c1c; color:#ef4444; border:1px solid #991b1b; padding:6px 12px; border-radius:8px; font-size:11px; font-weight:800; cursor:pointer;" onclick="hapusMemori()">Clear Database</button>
-            </h3>
-            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 20px;">⚡ <i>Pro-Tip: Klik pada baris tabel di bawah untuk membuat dan mencetak invoice/nota otomatis.</i></p>
+        <!-- Baris Bawah: Hasil Laporan Jurnal Keuangan -->
+        <section class="card-genz full-width" id="tabel-data">
+            <h2>Ikhtisar Finansial</h2>
             
-            <!-- Dasbor Angka Menyala -->
-            <div class="stats-grid">
-                <div class="stat-card glow-masuk"><p>Total Revenue</p><span class="text-masuk">Rp <span id="totalMasuk">0</span></span></div>
-                <div class="stat-card glow-keluar"><p>Total Expenses</p><span class="text-keluar">Rp <span id="totalKeluar">0</span></span></div>
-                <div class="stat-card glow-saldo"><p>Net Cashflow</p><span class="text-saldo">Rp <span id="saldoAkhir">0</span></span></div>
+            <div class="summary-container">
+                <div class="stat-box stat-masuk">Total Masuk <span>Rp <span id="totalMasuk">0</span></span></div>
+                <div class="stat-box stat-keluar">Total Keluar <span>Rp <span id="totalKeluar">0</span></span></div>
+                <div class="stat-box stat-saldo">Saldo Akhir <span>Rp <span id="saldoAkhir">0</span></span></div>
             </div>
 
-            <!-- Tabel Jurnal Riwayat -->
-            <div class="table-responsive">
+            <div class="table-wrapper">
                 <table id="tabelTransaksi">
                     <thead>
                         <tr>
-                            <th>Tanggal Data</th>
-                            <th>Deskripsi Alokasi</th>
-                            <th>Masuk (+ Rp)</th>
-                            <th>Keluar (- Rp)</th>
+                            <th>Tanggal</th>
+                            <th>Keterangan</th>
+                            <th>Masuk</th>
+                            <th>Keluar</th>
                         </tr>
                     </thead>
                     <tbody id="tabelBody">
-                        <!-- Data otomatis masuk lewat JavaScript -->
+                        <!-- Data otomatis masuk di sini -->
                     </tbody>
                 </table>
             </div>
+            
+            <button type="button" class="btn-genz" style="background-color: #262626; color: #fff; margin-top: 20px; font-size: 12px; padding: 8px;" onclick="hapusMemori()">Hapus Semua Data Tabel</button>
         </section>
     </div>
 
-    <!-- Jendela Modal Nota/Invoice Cerdas -->
-    <div class="modal-overlay" id="modalOverlay" onclick="tutupInvoice()"></div>
-    <div id="invoiceModal">
-        <div style="text-align: center; border-bottom: 2px dashed #1f2937; padding-bottom: 18px; margin-bottom: 20px;">
-            <h2 style="font-size: 24px; font-weight: 900; letter-spacing: -0.5px; color:#ffffff;">WAHIDUN PROJECT</h2>
-            <p style="font-size: 11px; color:#94a3b8; text-transform: uppercase; font-weight: 700; margin-top: 2px;">Official Transaction Receipt</p>
-        </div>
-        <div style="font-size: 14px; margin-bottom: 30px; color: #e2e8f0;">
-            <p style="margin-bottom: 10px;"><b>Tanggal:</b> <span id="invTanggal" style="float: right; color:#94a3b8;">-</span></p>
-            <p style="margin-bottom: 10px;"><b>Keterangan:</b> <span id="invKeterangan" style="float: right; color:#94a3b8;">-</span></p>
-            <p style="margin-bottom: 10px;"><b>Klasifikasi:</b> <span id="invJenis" style="float: right; color:#94a3b8;">-</span></p>
-            <div style="font-size: 18px; margin-top: 20px; border-top: 1px solid #1f2937; padding-top: 15px; display: flex; justify-content: space-between;">
-                <b>Valuasi Akhir:</b> <span id="invNominal" style="font-weight: 900; color:#3b82f6;">Rp 0</span>
-            </div>
-        </div>
-        <div style="display: flex; gap: 12px;">
-            <button class="btn-cyber btn-blue" onclick="window.print()">🖨️ Print / Save PDF</button>
-            <button class="btn-cyber" style="background:#1f2937; color:#94a3b8;" onclick="tutupInvoice()">Close</button>
-        </div>
-    </div>
-
     <footer>
-        <p>&copy; 2026 Wahidun Project. Cyber Suite Engine. All Rights Reserved.</p>
+        <p>&copy; 2026 Wahidun Project. All Rights Reserved.</p>
     </footer>
 
-    <!-- Logika Mesin Cerdas & Sistem Keamanan Memori -->
     <script>
-        let databaseKey = 'wahidun_cyber_db_v6';
-        let transaksiList = JSON.parse(localStorage.getItem(databaseKey)) || [];
-
-        // Langsung tampilkan database lama jika tersimpan di memori browser
+        let transaksiList = JSON.parse(localStorage.getItem('wahidun_project_db')) || [];
         updateTampilanSistem();
 
         function tambahTransaksi() {
@@ -122,13 +103,13 @@
             const nominal = parseFloat(document.getElementById('nominal').value);
 
             if (!tanggal || !keterangan || isNaN(nominal)) {
-                alert("Sistem Error: Harap isi semua parameter data transaksi!");
+                alert("Mohon isi semua data terlebih dahulu!");
                 return;
             }
 
             const dataBaru = { tanggal, keterangan, jenis, nominal };
             transaksiList.unshift(dataBaru);
-            localStorage.setItem(databaseKey, JSON.stringify(transaksiList));
+            localStorage.setItem('wahidun_project_db', JSON.stringify(transaksiList));
 
             updateTampilanSistem();
             document.getElementById('cashflowForm').reset();
@@ -140,12 +121,8 @@
             const tbody = document.getElementById('tabelBody');
             tbody.innerHTML = "";
 
-            transaksiList.forEach((item, index) => {
+            transaksiList.forEach(item => {
                 const row = tbody.insertRow();
-                
-                // Menghubungkan fungsi klik pada baris tabel untuk cetak invoice
-                row.setAttribute("onclick", `bukaInvoice(${index})`);
-
                 const cell1 = row.insertCell(0);
                 const cell2 = row.insertCell(1);
                 const cell3 = row.insertCell(2);
@@ -155,45 +132,32 @@
                 cell2.innerHTML = item.keterangan;
 
                 if (item.jenis === 'masuk') {
-                    cell3.innerHTML = "<b>" + item.nominal.toLocaleString('id-ID') + "</b>";
-                    cell3.style.color = "#10b981";
+                    cell3.innerHTML = item.nominal.toLocaleString('id-ID');
                     cell4.innerHTML = "-";
+                    cell3.style.color = "#86efac";
                     totalPemasukan += item.nominal;
                 } else {
                     cell3.innerHTML = "-";
-                    cell4.innerHTML = "<b>" + item.nominal.toLocaleString('id-ID') + "</b>";
-                    cell4.style.color = "#ef4444";
+                    cell4.innerHTML = item.nominal.toLocaleString('id-ID');
+                    cell4.style.color = "#fca5a5";
                     totalPengeluaran += item.nominal;
                 }
+
+                cell1.style.padding = "10px"; cell1.style.border = "1px solid #1f2937";
+                cell2.style.padding = "10px"; cell2.style.border = "1px solid #1f2937";
+                cell3.style.padding = "10px"; cell3.style.border = "1px solid #1f2937";
+                cell4.style.padding = "10px"; cell4.style.border = "1px solid #1f2937";
             });
 
             const saldoAkhir = totalPemasukan - totalPengeluaran;
-
             document.getElementById('totalMasuk').innerText = totalPemasukan.toLocaleString('id-ID');
             document.getElementById('totalKeluar').innerText = totalPengeluaran.toLocaleString('id-ID');
             document.getElementById('saldoAkhir').innerText = saldoAkhir.toLocaleString('id-ID');
         }
 
-        // Jalur Logika Pembuka Invoice Otomatis
-        function bukaInvoice(index) {
-            const data = transaksiList[index];
-            document.getElementById('invTanggal').innerText = data.tanggal;
-            document.getElementById('invKeterangan').innerText = data.keterangan;
-            document.getElementById('invJenis').innerText = data.jenis === 'masuk' ? 'Revenue (Masuk)' : 'Expenses (Keluar)';
-            document.getElementById('invNominal').innerText = "Rp " + data.nominal.toLocaleString('id-ID');
-            
-            document.getElementById('modalOverlay').style.display = 'block';
-            document.getElementById('invoiceModal').style.display = 'block';
-        }
-
-        function tutupInvoice() {
-            document.getElementById('modalOverlay').style.display = 'none';
-            document.getElementById('invoiceModal').style.display = 'none';
-        }
-
         function hapusMemori() {
-            if (confirm("Apakah Anda yakin ingin MENGHAPUS TOTAL seluruh data finansial Wahidun Project?")) {
-                localStorage.removeItem(databaseKey);
+            if (confirm("Apakah Anda yakin ingin menghapus seluruh catatan keuangan?")) {
+                localStorage.removeItem('wahidun_project_db');
                 transaksiList = [];
                 updateTampilanSistem();
             }
