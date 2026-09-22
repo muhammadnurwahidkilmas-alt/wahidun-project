@@ -1,183 +1,143 @@
-/* --- WAHIDUN PROJECT: NE-BRUTALISM GEN Z THEME --- */
+/* --- WAHIDUN PROJECT: ULTRA PREMIUM MINIMALIST THEME --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
-    background-color: #fafafa;
-    color: #1a1a1a;
-    line-height: 1.5;
-    padding-bottom: 60px;
+    background-color: #f8fafc;
+    color: #0f172a;
+    line-height: 1.6;
+    padding-bottom: 80px;
 }
 
 header {
-    background-color: #111111;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     color: #ffffff;
-    padding: 40px 20px;
+    padding: 50px 20px;
     text-align: center;
-    border-bottom: 5px solid #1a1a1a;
+    border-bottom: 4px solid #3b82f6;
 }
 
 header h1 {
-    font-size: 38px;
-    font-weight: 900;
-    text-transform: uppercase;
+    font-size: 36px;
+    font-weight: 800;
     letter-spacing: -1px;
 }
 
 header p {
-    color: #a3a3a3;
-    font-size: 15px;
-    margin-top: 5px;
-    font-weight: 500;
+    color: #94a3b8;
+    font-size: 16px;
+    margin-top: 6px;
 }
 
-/* --- STRUCTURE --- */
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 35px;
 }
 
 @media (min-width: 768px) {
-    .container {
-        grid-template-columns: 1fr 1.3fr;
-    }
-    .full-width {
-        grid-column: span 2;
-    }
+    .container { grid-template-columns: 1fr 1.4fr; }
+    .full-width { grid-column: span 2; }
 }
 
-/* --- GEN Z SOLID CARDS --- */
-.card-genz {
+/* --- ENTERPRISE CARDS --- */
+.card-premium {
     background: #ffffff;
-    padding: 30px;
-    border: 4px solid #111111;
-    border-radius: 0px; /* Ciri khas brutalism: kotak tegas dengan lengkungan */
-    box-shadow: 8px 8px 0px #111111; /* Bayangan tebal solid */
-    transition: all 0.2s ease;
+    padding: 35px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.02);
 }
 
-.card-genz:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 10px 10px 0px #111111;
-}
-
-.card-genz h2, .card-genz h3 {
-    font-size: 22px;
-    font-weight: 800;
-    text-transform: uppercase;
+.card-premium h2, .card-premium h3 {
+    font-size: 20px;
+    font-weight: 700;
     margin-bottom: 20px;
-    border-bottom: 3px solid #111111;
-    padding-bottom: 8px;
+    color: #0f172a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.card-genz p {
-    color: #4b5563;
-    font-size: 15px;
-    margin-bottom: 25px;
-    font-weight: 500;
-}
-
-/* --- BRUTALIST FORMS --- */
-.form-group {
-    margin-bottom: 20px;
-}
-
+/* --- FORMS --- */
+.form-group { margin-bottom: 20px; }
 .form-group label {
     display: block;
-    margin-bottom: 6px;
-    font-size: 12px;
-    font-weight: 800;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: #475569;
 }
 
 .form-group input, .form-group select {
     width: 100%;
-    padding: 12px;
-    border: 3px solid #111111;
-    border-radius: 0px;
+    padding: 12px 14px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
     font-size: 15px;
-    font-weight: 600;
-    background-color: #ffffff;
     outline: none;
+    transition: all 0.2s ease;
 }
 
 .form-group input:focus, .form-group select:focus {
-    background-color: #f3f4f6;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.08);
 }
 
-/* --- HIGH-CONTRAST BUTTONS --- */
-.btn-genz {
+/* --- PREMIUM BUTTONS --- */
+.btn-premium {
     display: block;
     width: 100%;
     padding: 14px;
     font-size: 15px;
-    font-weight: 800;
+    font-weight: 700;
     text-align: center;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 3px solid #111111;
-    border-radius: 0px;
+    border-radius: 10px;
+    border: none;
     cursor: pointer;
-    box-shadow: 4px 4px 0px #111111;
-    transition: all 0.1s ease;
+    transition: all 0.2s ease;
 }
 
-.btn-genz:active {
-    transform: translate(4px, 4px);
-    box-shadow: 0px 0px 0px #111111;
-}
-
-.btn-primary { background-color: #3b82f6; color: white; } /* Biru Elektrik */
-.btn-primary:hover { background-color: #2563eb; }
-
-.btn-success { background-color: #10b981; color: white; } /* Hijau Stabilo */
+.btn-blue { background-color: #3b82f6; color: white; }
+.btn-blue:hover { background-color: #2563eb; }
+.btn-success { background-color: #10b981; color: white; }
 .btn-success:hover { background-color: #059669; }
+.btn-danger { background-color: #ef4444; color: white; }
 
-/* --- LIVE STATS BAR --- */
-.summary-container {
+/* --- FINANCIAL BOXES --- */
+.stats-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-    margin-top: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
-@media (min-width: 480px) {
-    .summary-container { grid-template-columns: repeat(3, 1fr); }
+.stat-card {
+    padding: 20px;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
 }
 
-.stat-box {
-    padding: 15px;
-    border: 3px solid #111111;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 12px;
-}
+.stat-card p { font-size: 13px; font-weight: 600; color: #64748b; text-transform: uppercase; }
+.stat-card span { display: block; font-size: 24px; font-weight: 800; margin-top: 4px; }
+.text-masuk { color: #10b981; }
+.text-keluar { color: #ef4444; }
+.text-saldo { color: #3b82f6; }
 
-.stat-masuk { background-color: #86efac; color: #111111; } /* Neon Green */
-.stat-keluar { background-color: #fca5a5; color: #111111; } /* Neon Pink/Red */
-.stat-saldo { background-color: #93c5fd; color: #111111; } /* Neon Blue */
-
-.stat-box span {
-    display: block;
-    font-size: 20px;
-    font-weight: 900;
-    margin-top: 4px;
-}
-
-/* --- STYLISH TABLES --- */
-.table-wrapper {
+/* --- PROFESSIONAL TABLES --- */
+.table-responsive {
     overflow-x: auto;
-    margin-top: 25px;
-    border: 3px solid #111111;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
 }
 
 table {
@@ -188,28 +148,43 @@ table {
 }
 
 th {
-    background-color: #111111;
-    color: #ffffff;
-    font-weight: 800;
-    text-transform: uppercase;
-    padding: 12px 15px;
+    background-color: #f8fafc;
+    color: #64748b;
+    font-weight: 600;
+    padding: 14px 20px;
+    border-bottom: 2px solid #e2e8f0;
 }
 
 td {
-    padding: 12px 15px;
-    border-bottom: 2px solid #111111;
-    color: #111111;
-    font-weight: 600;
+    padding: 14px 20px;
+    border-bottom: 1px solid #e2e8f0;
     background: #ffffff;
+    cursor: pointer;
 }
 
-tr:last-child td { border-bottom: none; }
+tr:hover td { background-color: #f8fafc; }
 
-/* --- FOOTER --- */
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #737373;
-    font-size: 13px;
-    font-weight: 600;
+/* --- INVOICE PRINT AREA --- */
+#invoiceModal {
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    z-index: 2000;
+    width: 90%; max-width: 500px;
 }
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1999;
+}
+
+footer { text-align: center; padding: 40px; color: #64748b; font-size: 13px; }
