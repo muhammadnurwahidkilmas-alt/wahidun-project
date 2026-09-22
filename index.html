@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Dashboard pencatatan kas kelas Wahidun Project">
+
     <title>Wahidun Project - Kas Kelas</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- Menu Atas Melayang Modern -->
+    <!-- ================= NAVBAR ================= -->
     <nav class="navbar">
-        <div class="navbar-brand">Wahidun Project</div>
+        <div class="navbar-brand">
+            Wahidun Project
+        </div>
+
         <div class="navbar-menu">
             <a href="#form-input">Input Kas</a>
             <a href="#tabungan-siswa">Tabungan Siswa</a>
@@ -18,201 +26,1143 @@
         </div>
     </nav>
 
+
+    <!-- ================= HEADER ================= -->
     <header>
         <h1>Kas Kelas Dashboard</h1>
-        <p>Sistem Pencatatan Arus Kas Transparan & Otomatis</p>
+        <p>Sistem Pencatatan Arus Kas Transparan &amp; Otomatis</p>
     </header>
 
-    <div class="container">
-        <!-- Formulir Input Kas Kelas -->
+
+    <main class="container">
+
+        <!-- ================= FORM INPUT ================= -->
         <section class="card-genz" id="form-input">
+
             <h2>Pencatatan Kas Kelas</h2>
+
             <form id="cashflowForm">
+
                 <div class="form-group">
-                    <label>Tanggal Transaksi</label>
-                    <input type="date" id="tanggal" required>
+                    <label for="tanggal">
+                        Tanggal Transaksi
+                    </label>
+
+                    <input
+                        type="date"
+                        id="tanggal"
+                        required
+                    >
                 </div>
-                
+
+
                 <div class="form-group">
-                    <label>Nama Anggota Kelas</label>
-                    <select id="keterangan">
-                        <option value="Ahmad Dhani">Ahmad Dhani</option>
-                        <option value="Budi Sudarsono">Budi Sudarsono</option>
-                        <option value="Citra Lestari">Citra Lestari</option>
-                        <option value="Dedi Corbuzier">Dedi Corbuzier</option>
-                        <option value="Eka Rahmawati">Eka Rahmawati</option>
-                        <option value="Keperluan Umum Kelas">Keperluan Umum Kelas (Beli Spidol, dll)</option>
+                    <label for="keterangan">
+                        Nama Anggota Kelas
+                    </label>
+
+                    <select id="keterangan" required>
+
+                        <option value="Ahmad Dhani">
+                            Ahmad Dhani
+                        </option>
+
+                        <option value="Budi Sudarsono">
+                            Budi Sudarsono
+                        </option>
+
+                        <option value="Citra Lestari">
+                            Citra Lestari
+                        </option>
+
+                        <option value="Dedi Corbuzier">
+                            Dedi Corbuzier
+                        </option>
+
+                        <option value="Eka Rahmawati">
+                            Eka Rahmawati
+                        </option>
+
+                        <option value="Keperluan Umum Kelas">
+                            Keperluan Umum Kelas
+                        </option>
+
                     </select>
                 </div>
-                
+
+
                 <div class="form-group">
-                    <label>Jenis Transaksi</label>
-                    <select id="jenis">
-                        <option value="masuk">Uang Masuk (Bayar Kas)</option>
-                        <option value="keluar">Uang Keluar (Pengeluaran)</option>
+
+                    <label for="jenis">
+                        Jenis Transaksi
+                    </label>
+
+                    <select id="jenis" required>
+
+                        <option value="masuk">
+                            Uang Masuk (Bayar Kas)
+                        </option>
+
+                        <option value="keluar">
+                            Uang Keluar (Pengeluaran)
+                        </option>
+
                     </select>
+
                 </div>
+
+
                 <div class="form-group">
-                    <label>Nominal (Rp)</label>
-                    <input type="number" id="nominal" placeholder="Masukkan jumlah uang" required>
+
+                    <label for="nominal">
+                        Nominal (Rp)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="nominal"
+                        placeholder="Masukkan jumlah uang"
+                        min="1"
+                        step="1"
+                        required
+                    >
+
                 </div>
-                <button type="button" class="btn-genz btn-primary" onclick="tambahTransaksi()">Simpan Catatan Kas</button>
+
+
+                <button
+                    type="submit"
+                    class="btn-genz btn-primary"
+                >
+                    Simpan Catatan Kas
+                </button>
+
             </form>
+
         </section>
 
-        <!-- KOTAK REKAP TOTAL UANG PER SISWA -->
-        <section class="card-genz" id="tabungan-siswa">
+
+        <!-- ================= REKAP SISWA ================= -->
+        <section
+            class="card-genz"
+            id="tabungan-siswa"
+        >
+
             <h2>Tabungan Anggota Kelas</h2>
-            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 15px;">Total uang kas yang sudah dibayarkan oleh masing-masing siswa:</p>
-            <div id="boxRekapSiswa" style="display: flex; flex-direction: column; gap: 10px;">
-                <!-- Data siswa otomatis muncul di sini -->
+
+            <p>
+                Total uang kas yang sudah dibayarkan oleh
+                masing-masing siswa:
+            </p>
+
+            <div id="boxRekapSiswa">
+                <!-- Rekap siswa otomatis muncul -->
             </div>
+
         </section>
 
-        <!-- Baris Bawah: Hasil Laporan Keuangan & Grafik -->
-        <section class="card-genz full-width" id="tabel-data">
+
+        <!-- ================= LAPORAN ================= -->
+        <section
+            class="card-genz full-width"
+            id="tabel-data"
+        >
+
             <h2>Ikhtisar Finansial Kelas</h2>
-            
+
+
+            <!-- TOTAL -->
             <div class="summary-container">
-                <div class="stat-box stat-masuk">Total Kas Masuk <span>Rp <span id="totalMasuk">0</span></span></div>
-                <div class="stat-box stat-keluar">Total Kas Keluar <span>Rp <span id="totalKeluar">0</span></span></div>
-                <div class="stat-box stat-saldo">Sisa Saldo Kas <span>Rp <span id="saldoAkhir">0</span></span></div>
+
+                <div class="stat-box stat-masuk">
+
+                    Total Kas Masuk
+
+                    <span>
+                        Rp
+                        <span id="totalMasuk">0</span>
+                    </span>
+
+                </div>
+
+
+                <div class="stat-box stat-keluar">
+
+                    Total Kas Keluar
+
+                    <span>
+                        Rp
+                        <span id="totalKeluar">0</span>
+                    </span>
+
+                </div>
+
+
+                <div class="stat-box stat-saldo">
+
+                    Sisa Saldo Kas
+
+                    <span>
+                        Rp
+                        <span id="saldoAkhir">0</span>
+                    </span>
+
+                </div>
+
             </div>
 
-            <!-- Dashboard Grafik Analisis Visual -->
+
+            <!-- ================= GRAFIK ================= -->
             <div class="chart-container">
-                <div class="chart-title">📊 Analisis Visual Perputaran Dana Kelas</div>
-                
-                <div class="chart-bar-wrapper">
-                    <div class="chart-label"><span style="color:#86efac;">Total Pemasukan</span><span id="labelPersenMasuk">0%</span></div>
-                    <div class="chart-track"><div class="chart-fill fill-masuk" id="barMasuk"></div></div>
+
+                <div class="chart-title">
+                    📊 Analisis Visual Perputaran Dana Kelas
                 </div>
 
+
                 <div class="chart-bar-wrapper">
-                    <div class="chart-label"><span style="color:#fca5a5;">Total Pengeluaran</span><span id="labelPersenKeluar">0%</span></div>
-                    <div class="chart-track"><div class="chart-fill fill-keluar" id="barKeluar"></div></div>
+
+                    <div class="chart-label">
+
+                        <span style="color:#86efac;">
+                            Total Pemasukan
+                        </span>
+
+                        <span id="labelPersenMasuk">
+                            0%
+                        </span>
+
+                    </div>
+
+
+                    <div class="chart-track">
+
+                        <div
+                            class="chart-fill fill-masuk"
+                            id="barMasuk"
+                        ></div>
+
+                    </div>
+
                 </div>
+
+
+                <div class="chart-bar-wrapper">
+
+                    <div class="chart-label">
+
+                        <span style="color:#fca5a5;">
+                            Total Pengeluaran
+                        </span>
+
+                        <span id="labelPersenKeluar">
+                            0%
+                        </span>
+
+                    </div>
+
+
+                    <div class="chart-track">
+
+                        <div
+                            class="chart-fill fill-keluar"
+                            id="barKeluar"
+                        ></div>
+
+                    </div>
+
+                </div>
+
             </div>
 
+
+            <!-- ================= TABEL ================= -->
             <div class="table-wrapper">
-                <table id="tabelTransaksi">
-                    <thead>
-                        <tr>
-                            <th>Tanggal</th>
-                            <th>Nama / Keterangan</th>
-                            <th>Kas Masuk</th>
-                            <th>Kas Keluar</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabelBody">
-                        <!-- Data otomatis masuk di sini -->
-                    </tbody>
-                </table>
-            </div>
-            
-            <button type="button" class="btn-genz" style="background-color: #262626; color: #fff; margin-top: 20px; font-size: 12px; padding: 8px;" onclick="hapusMemori()">Hapus Semua Data Tabel</button>
-        </section>
-    </div>
 
+                <table id="tabelTransaksi">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Tanggal</th>
+
+                            <th>
+                                Nama / Keterangan
+                            </th>
+
+                            <th>
+                                Kas Masuk
+                            </th>
+
+                            <th>
+                                Kas Keluar
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelBody">
+
+                        <!-- Data transaksi otomatis -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ================= HAPUS DATA ================= -->
+            <button
+                type="button"
+                id="btnHapusData"
+                class="btn-genz"
+                style="
+                    background-color:#262626;
+                    color:#fff;
+                    margin-top:20px;
+                    font-size:12px;
+                    padding:8px;
+                "
+            >
+                Hapus Semua Data Tabel
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
     <footer>
-        <p>&copy; 2026 Wahidun Project. All Rights Reserved.</p>
+
+        <p>
+            &copy; 2026 Wahidun Project.
+            All Rights Reserved.
+        </p>
+
     </footer>
 
+
+    <!-- ================= JAVASCRIPT ================= -->
     <script>
-        let databaseKey = 'wahidun_kas_kelas_fixed_v2';
-        let transaksiList = JSON.parse(localStorage.getItem(databaseKey)) || [];
-        
-        updateTampilanSistem();
 
-        function tambahTransaksi() {
-            const tanggal = document.getElementById('tanggal').value;
-            const keterangan = document.getElementById('keterangan').value;
-            const jenis = document.getElementById('jenis').value;
-            const nominal = parseFloat(document.getElementById('nominal').value);
+        "use strict";
 
-            if (!tanggal || !keterangan || isNaN(nominal)) {
-                alert("Mohon isi semua data kas terlebih dahulu!");
-                return;
-            }
 
-            const dataBaru = { tanggal, keterangan, jenis, nominal };
-            transaksiList.unshift(dataBaru);
-            localStorage.setItem(databaseKey, JSON.stringify(transaksiList));
+        /*
+        ==========================================
+        DATABASE LOCAL
+        ==========================================
+        */
 
-            updateTampilanSistem();
-            document.getElementById('cashflowForm').reset();
-        }
+        const databaseKey =
+            "wahidun_kas_kelas_fixed_v3";
 
-        function updateTampilanSistem() {
-            let totalPemasukan = 0;
-            let totalPengeluaran = 0;
-            
-            let daftarSiswa = ["Ahmad Dhani", "Budi Sudarsono", "Citra Lestari", "Dedi Corbuzier", "Eka Rahmawati"];
-            let akumulasiSiswa = {};
-            
-            daftarSiswa.forEach(nama => {
-                akumulasiSiswa[nama] = 0;
-            });
 
-            const tbody = document.getElementById('tabelBody');
-            tbody.innerHTML = "";
+        /*
+        ==========================================
+        DAFTAR SISWA
+        ==========================================
+        */
 
-            transaksiList.forEach(item => {
-                const row = tbody.insertRow();
-                const cell1 = row.insertCell(0);
-                const cell2 = row.insertCell(1);
-                const cell3 = row.insertCell(2);
-                const cell4 = row.insertCell(3);
+        const daftarSiswa = [
 
-                cell1.innerHTML = item.tanggal;
-                cell2.innerHTML = item.keterangan;
+            "Ahmad Dhani",
 
-                if (item.jenis === 'masuk') {
-                    cell3.innerHTML = item.nominal.toLocaleString('id-ID');
-                    cell4.innerHTML = "-";
-                    cell3.style.color = "#86efac";
-                    totalPemasukan += item.nominal;
-                    
-                    if (akumulasiSiswa[item.keterangan] !== undefined) {
-                        akumulasiSiswa[item.keterangan] += item.nominal;
-                    }
-                } else {
-                    cell3.innerHTML = "-";
-                    cell4.innerHTML = item.nominal.toLocaleString('id-ID');
-                    cell4.style.color = "#fca5a5";
-                    totalPengeluaran += item.nominal;
+            "Budi Sudarsono",
+
+            "Citra Lestari",
+
+            "Dedi Corbuzier",
+
+            "Eka Rahmawati"
+
+        ];
+
+
+        /*
+        ==========================================
+        AMBIL DATA
+        ==========================================
+        */
+
+        let transaksiList = [];
+
+
+        try {
+
+            const data =
+                localStorage.getItem(databaseKey);
+
+
+            if (data) {
+
+                const parsed =
+                    JSON.parse(data);
+
+
+                if (Array.isArray(parsed)) {
+
+                    transaksiList = parsed;
+
                 }
 
-                cell1.style.padding = "10px"; cell1.style.border = "1px solid #1f2937";
-                cell2.style.padding = "10px"; cell2.style.border = "1px solid #1f2937";
-                cell3.style.padding = "10px"; cell3.style.border = "1px solid #1f2937";
-                cell4.style.padding = "10px"; cell4.style.border = "1px solid #1f2937";
-            });
+            }
 
-            const saldoAkhir = totalPemasukan - totalPengeluaran;
-            const totalOmset = totalPemasukan + totalPengeluaran;
+        } catch (error) {
 
-            let persenMasuk = totalOmset > 0 ? ((totalPemasukan / totalOmset) * 100).toFixed(0) : 0;
-            let persenKeluar = totalOmset > 0 ? ((totalPengeluaran / totalOmset) * 100).toFixed(0) : 0;
+            console.error(
+                "Gagal membaca data:",
+                error
+            );
 
-            document.getElementById('totalMasuk').innerText = totalPemasukan.toLocaleString('id-ID');
-            document.getElementById('totalKeluar').innerText = totalPengeluaran.toLocaleString('id-ID');
-            document.getElementById('saldoAkhir').innerText = saldoAkhir.toLocaleString('id-ID');
+            transaksiList = [];
 
-            document.getElementById('barMasuk').style.width = persenMasuk + "%";
-            document.getElementById('barKeluar').style.width = persenKeluar + "%";
-            document.getElementById('labelPersenMasuk').innerText = persenMasuk + "%";
-            document.getElementById('labelPersenKeluar').innerText = persenKeluar + "%";
-            
-            const boxRekap = document.getElementById('boxRekapSiswa');
+        }
+
+
+        /*
+        ==========================================
+        ELEMENT HTML
+        ==========================================
+        */
+
+        const form =
+            document.getElementById(
+                "cashflowForm"
+            );
+
+
+        const tanggalInput =
+            document.getElementById(
+                "tanggal"
+            );
+
+
+        const keteranganInput =
+            document.getElementById(
+                "keterangan"
+            );
+
+
+        const jenisInput =
+            document.getElementById(
+                "jenis"
+            );
+
+
+        const nominalInput =
+            document.getElementById(
+                "nominal"
+            );
+
+
+        const tbody =
+            document.getElementById(
+                "tabelBody"
+            );
+
+
+        const boxRekap =
+            document.getElementById(
+                "boxRekapSiswa"
+            );
+
+
+        /*
+        ==========================================
+        FORMAT RUPIAH
+        ==========================================
+        */
+
+        function formatRupiah(nominal) {
+
+            return Number(nominal || 0)
+                .toLocaleString("id-ID");
+
+        }
+
+
+        /*
+        ==========================================
+        SIMPAN DATA
+        ==========================================
+        */
+
+        function simpanData() {
+
+            try {
+
+                localStorage.setItem(
+
+                    databaseKey,
+
+                    JSON.stringify(
+                        transaksiList
+                    )
+
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Gagal menyimpan data:",
+                    error
+                );
+
+                alert(
+                    "Data gagal disimpan."
+                );
+
+            }
+
+        }
+
+
+        /*
+        ==========================================
+        FORMAT TANGGAL
+        ==========================================
+        */
+
+        function formatTanggal(tanggal) {
+
+            if (!tanggal) {
+                return "-";
+            }
+
+
+            const date =
+                new Date(
+                    tanggal + "T00:00:00"
+                );
+
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+
+                return tanggal;
+
+            }
+
+
+            return date.toLocaleDateString(
+                "id-ID",
+                {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric"
+                }
+            );
+
+        }
+
+
+        /*
+        ==========================================
+        TAMBAH TRANSAKSI
+        ==========================================
+        */
+
+        function tambahTransaksi() {
+
+            const tanggal =
+                tanggalInput.value;
+
+
+            const keterangan =
+                keteranganInput.value;
+
+
+            const jenis =
+                jenisInput.value;
+
+
+            const nominal =
+                Number(
+                    nominalInput.value
+                );
+
+
+            if (
+                !tanggal ||
+                !keterangan ||
+                !jenis ||
+                !Number.isFinite(nominal)
+            ) {
+
+                alert(
+                    "Mohon isi semua data kas terlebih dahulu!"
+                );
+
+                return;
+
+            }
+
+
+            if (nominal <= 0) {
+
+                alert(
+                    "Nominal harus lebih dari Rp 0."
+                );
+
+                nominalInput.focus();
+
+                return;
+
+            }
+
+
+            const dataBaru = {
+
+                id: Date.now(),
+
+                tanggal: tanggal,
+
+                keterangan: keterangan,
+
+                jenis: jenis,
+
+                nominal: nominal
+
+            };
+
+
+            transaksiList.unshift(
+                dataBaru
+            );
+
+
+            simpanData();
+
+
+            updateTampilanSistem();
+
+
+            form.reset();
+
+
+            setTanggalHariIni();
+
+
+            alert(
+                "Catatan kas berhasil disimpan!"
+            );
+
+        }
+
+
+        /*
+        ==========================================
+        UPDATE DASHBOARD
+        ==========================================
+        */
+
+        function updateTampilanSistem() {
+
+            let totalPemasukan = 0;
+
+            let totalPengeluaran = 0;
+
+
+            const akumulasiSiswa = {};
+
+
+            daftarSiswa.forEach(
+                function(nama) {
+
+                    akumulasiSiswa[nama] = 0;
+
+                }
+            );
+
+
+            tbody.innerHTML = "";
+
+
+            /*
+            DATA KOSONG
+            */
+
+            if (
+                transaksiList.length === 0
+            ) {
+
+                const row =
+                    tbody.insertRow();
+
+
+                const cell =
+                    row.insertCell(0);
+
+
+                cell.colSpan = 4;
+
+
+                cell.textContent =
+                    "Belum ada transaksi kas.";
+
+
+                cell.style.textAlign =
+                    "center";
+
+
+                cell.style.padding =
+                    "25px";
+
+
+                cell.style.color =
+                    "#94a3b8";
+
+            }
+
+
+            /*
+            TAMPILKAN TRANSAKSI
+            */
+
+            transaksiList.forEach(
+                function(item) {
+
+                    const nominal =
+                        Number(item.nominal) || 0;
+
+
+                    const row =
+                        tbody.insertRow();
+
+
+                    const cellTanggal =
+                        row.insertCell(0);
+
+
+                    const cellKeterangan =
+                        row.insertCell(1);
+
+
+                    const cellMasuk =
+                        row.insertCell(2);
+
+
+                    const cellKeluar =
+                        row.insertCell(3);
+
+
+                    cellTanggal.textContent =
+                        formatTanggal(
+                            item.tanggal
+                        );
+
+
+                    cellKeterangan.textContent =
+                        item.keterangan || "-";
+
+
+                    /*
+                    UANG MASUK
+                    */
+
+                    if (
+                        item.jenis === "masuk"
+                    ) {
+
+                        cellMasuk.textContent =
+                            formatRupiah(
+                                nominal
+                            );
+
+
+                        cellKeluar.textContent =
+                            "-";
+
+
+                        cellMasuk.style.color =
+                            "#86efac";
+
+
+                        totalPemasukan +=
+                            nominal;
+
+
+                        if (
+                            Object.prototype
+                            .hasOwnProperty.call(
+                                akumulasiSiswa,
+                                item.keterangan
+                            )
+                        ) {
+
+                            akumulasiSiswa[
+                                item.keterangan
+                            ] += nominal;
+
+                        }
+
+                    }
+
+
+                    /*
+                    UANG KELUAR
+                    */
+
+                    else {
+
+                        cellMasuk.textContent =
+                            "-";
+
+
+                        cellKeluar.textContent =
+                            formatRupiah(
+                                nominal
+                            );
+
+
+                        cellKeluar.style.color =
+                            "#fca5a5";
+
+
+                        totalPengeluaran +=
+                            nominal;
+
+                    }
+
+                }
+            );
+
+
+            /*
+            ======================================
+            SALDO
+            ======================================
+            */
+
+            const saldoAkhir =
+                totalPemasukan -
+                totalPengeluaran;
+
+
+            const totalOmset =
+                totalPemasukan +
+                totalPengeluaran;
+
+
+            const persenMasuk =
+                totalOmset > 0
+
+                ? Math.round(
+                    (
+                        totalPemasukan /
+                        totalOmset
+                    ) * 100
+                )
+
+                : 0;
+
+
+            const persenKeluar =
+                totalOmset > 0
+
+                ? Math.round(
+                    (
+                        totalPengeluaran /
+                        totalOmset
+                    ) * 100
+                )
+
+                : 0;
+
+
+            /*
+            UPDATE TOTAL
+            */
+
+            document.getElementById(
+                "totalMasuk"
+            ).textContent =
+                formatRupiah(
+                    totalPemasukan
+                );
+
+
+            document.getElementById(
+                "totalKeluar"
+            ).textContent =
+                formatRupiah(
+                    totalPengeluaran
+                );
+
+
+            document.getElementById(
+                "saldoAkhir"
+            ).textContent =
+                formatRupiah(
+                    saldoAkhir
+                );
+
+
+            /*
+            UPDATE GRAFIK
+            */
+
+            document.getElementById(
+                "barMasuk"
+            ).style.width =
+                persenMasuk + "%";
+
+
+            document.getElementById(
+                "barKeluar"
+            ).style.width =
+                persenKeluar + "%";
+
+
+            document.getElementById(
+                "labelPersenMasuk"
+            ).textContent =
+                persenMasuk + "%";
+
+
+            document.getElementById(
+                "labelPersenKeluar"
+            ).textContent =
+                persenKeluar + "%";
+
+
+            /*
+            ======================================
+            REKAP SISWA
+            ======================================
+            */
+
             boxRekap.innerHTML = "";
-            
-            daftarSiswa.forEach(namaSiswa => {
-                const divSiswa = document.createElement('div');
-                divSiswa.style.display = "flex";
-                divSiswa.style.justifyContent = "space-between";
-                divSiswa.style.padding = "8px 12px";
-                divSiswa.style.background = "#0b0f19";
-                divSiswa.style.border = "1px solid #1f2937";
-                divSiswa.style.borderRadius = "8px";
-                divSiswa.style.fontSize = "14px";
+
+
+            daftarSiswa.forEach(
+                function(namaSiswa) {
+
+                    const divSiswa =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    divSiswa.style.display =
+                        "flex";
+
+
+                    divSiswa.style.justifyContent =
+                        "space-between";
+
+
+                    divSiswa.style.alignItems =
+                        "center";
+
+
+                    divSiswa.style.padding =
+                        "10px 12px";
+
+
+                    divSiswa.style.background =
+                        "#0b0f19";
+
+
+                    divSiswa.style.border =
+                        "1px solid #1f2937";
+
+
+                    divSiswa.style.borderRadius =
+                        "8px";
+
+
+                    const nama =
+                        document.createElement(
+                            "span"
+                        );
+
+
+                    nama.textContent =
+                        namaSiswa;
+
+
+                    const nominal =
+                        document.createElement(
+                            "strong"
+                        );
+
+
+                    nominal.textContent =
+                        "Rp " +
+                        formatRupiah(
+                            akumulasiSiswa[
+                                namaSiswa
+                            ]
+                        );
+
+
+                    nominal.style.color =
+                        "#86efac";
+
+
+                    divSiswa.appendChild(
+                        nama
+                    );
+
+
+                    divSiswa.appendChild(
+                        nominal
+                    );
+
+
+                    boxRekap.appendChild(
+                        divSiswa
+                    );
+
+                }
+            );
+
+        }
+
+
+        /*
+        ==========================================
+        HAPUS SEMUA DATA
+        ==========================================
+        */
+
+        function hapusMemori() {
+
+            if (
+                transaksiList.length === 0
+            ) {
+
+                alert(
+                    "Belum ada data yang bisa dihapus."
+                );
+
+                return;
+
+            }
+
+
+            const yakin =
+                confirm(
+                    "Yakin ingin menghapus SEMUA data transaksi?"
+                );
+
+
+            if (!yakin) {
+
+                return;
+
+            }
+
+
+            transaksiList = [];
+
+
+            localStorage.removeItem(
+                databaseKey
+            );
+
+
+            updateTampilanSistem();
+
+
+            alert(
+                "Semua data berhasil dihapus."
+            );
+
+        }
+
+
+        /*
+        ==========================================
+        TANGGAL OTOMATIS
+        ==========================================
+        */
+
+        function setTanggalHariIni() {
+
+            const hariIni =
+                new Date();
+
+
+            const tahun =
+                hariIni.getFullYear();
+
+
+            const bulan =
+                String(
+                    hariIni.getMonth() + 1
+                ).padStart(2, "0");
+
+
+            const hari =
+                String(
+                    hariIni.getDate()
+                ).padStart(2, "0");
+
+
+            tanggalInput.value =
+                tahun +
+                "-" +
+                bulan +
+                "-" +
+                hari;
+
+        }
+
+
+        /*
+        ==========================================
+        EVENT FORM
+        ==========================================
+        */
+
+        form.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                tambahTransaksi();
+
+            }
+        );
+
+
+        /*
+        EVENT HAPUS
+        */
+
+        document
+            .getElementById(
+                "btnHapusData"
+            )
+            .addEventListener(
+                "click",
+                hapusMemori
+            );
+
+
+        /*
+        ==========================================
+        JALANKAN SISTEM
+        ==========================================
+        */
+
+        setTanggalHariIni();
+
+        updateTampilanSistem();
+
+    </script>
+
+</body>
+</html>
