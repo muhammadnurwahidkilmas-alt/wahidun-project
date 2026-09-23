@@ -317,25 +317,152 @@ function setTanggalHariIni() {
    ===================================================== */
 
 function updateAuthUI(user) {
-    if (user) {
+    const loginSection = document.getElementById("loginSection");
+    const logoutButton = document.getElementById("logoutButton");
+    const userRoleBadge = document.getElementById("userRoleBadge");
+
+    // ==============================
+    // BELUM LOGIN
+    // ==============================
+    if (!user) {
+        // Website tetap bisa dilihat tanpa login
+        if (loginSection) {
+            loginSection.style.display = "none";
+        }
+
+        if (logoutButton) {
+            logoutButton.style.display = "none";
+        }
+
+        if (userRoleBadge) {
+            userRoleBadge.style.display = "none";
+        }
+
+        // Buat tombol Login Admin
+        let loginAdminButton = document.getElementById("loginAdminButton");
+
+        if (!loginAdminButton && logoutButton) {
+            loginAdminButton = document.createElement("button");
+            loginAdminButton.id = "loginAdminButton";
+            loginAdminButton.type = "button";
+            loginAdminButton.textContent = "🔐 Login Admin";
+
+            loginAdminButton.style.background = "#2563eb";
+            loginAdminButton.style.color = "white";
+            loginAdminButton.style.border = "none";
+            loginAdminButton.style.padding = "10px 16px";
+            loginAdminButton.style.borderRadius = "10px";
+            loginAdminButton.style.cursor = "pointer";
+            loginAdminButton.style.fontWeight = "600";
+            loginAdminButton.style.marginRight = "10px";
+
+            loginAdminButton.addEventListener("click", function () {
+                if (loginSection) {
+                    loginSection.style.display = "flex";
+
+                    loginSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+                }
+            });
+
+            logoutButton.parentNode.insertBefore(
+                loginAdminButton,
+                logoutButton
+            );
+        }
+
+        if (loginAdminButton) {
+            loginAdminButton.style.display = "inline-block";
+        }
+
+        return;
+    }
+
+    // ==============================
+    // SUDAH LOGIN
+    // ==============================
+
+    // Sembunyikan form login
+    if (loginSection) {
         loginSection.style.display = "none";
-    } else {
-        loginSection.style.display = "flex";
-        currentUserRole = null;
-        userRoleBadge.textContent = "";
-        btnHapusData.style.display = "none";
+    }
+
+    // Tampilkan logout
+    if (logoutButton) {
+        logoutButton.style.display = "inline-block";
+    }
+
+    // Hilangkan tombol Login Admin
+    const loginAdminButton =
+        document.getElementById("loginAdminButton");
+
+    if (loginAdminButton) {
+        loginAdminButton.style.display = "none";
     }
 }
 
 async function cekRole(user) {
+    const userRoleBadge = document.getElementById("userRoleBadge");
+    const formInput = document.getElementById("form-input");
+
+    // Jika belum login
     if (!user) {
         currentUserRole = null;
+
         userRoleBadge.textContent = "";
         userRoleBadge.style.display = "none";
-        btnHapusData.style.display = "none";
-        updateTampilanSistem();
+
+        if (formInput) {
+            formInput.style.display = "none";
+        }
+
         return;
     }
+
+    const { data, error } = await supabaseClient
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", user.id)
+        .single();
+
+    if (error) {
+        console.error("Gagal mengambil role:", error);
+
+        currentUserRole = "siswa";
+
+        userRoleBadge.textContent = "👤 Siswa";
+        userRoleBadge.style.display = "inline-block";
+
+        if (formInput) {
+            formInput.style.display = "none";
+        }
+
+        return;
+    }
+
+    currentUserRole = data.role;
+
+    if (data.role === "admin") {
+        // ADMIN
+        userRoleBadge.textContent = "👑 Admin";
+        userRoleBadge.style.display = "inline-block";
+
+        if (formInput) {
+            formInput.style.display = "";
+        }
+
+    } else {
+        // SISWA
+        userRoleBadge.textContent = "👤 Siswa";
+        userRoleBadge.style.display = "inline-block";
+
+        if (formInput) {
+            formInput.style.display = "none";
+        }
+    }
+}
 
     const { data, error } = await supabaseClient
         .from("user_roles")
@@ -377,9 +504,10 @@ async function cekLogin() {
         await supabaseClient.auth.getUser();
 
     if (error || !data.user) {
-        updateAuthUI(null);
-        return;
-    }
+    updateAuthUI(null);
+    await cekRole(null);
+    return;
+}
 
     updateAuthUI(data.user);
     await cekRole(data.user);
@@ -440,8 +568,6 @@ supabaseClient.auth.onAuthStateChange(
         const user = session?.user ?? null;
 
         updateAuthUI(user);
-
-        if (user) {
             await cekRole(user);
         }
     }
