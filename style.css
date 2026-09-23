@@ -2625,3 +2625,304 @@ header,
         font-size: 21px;
     }
 }
+/* =====================================================
+   KAS KELAS BRAVO - DAFTAR ANGGOTA
+   ===================================================== */
+
+.member-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.member-section-header h2 {
+    margin-bottom: 8px;
+}
+
+.member-section-header p {
+    margin: 0;
+    color: #8fa8c7;
+    font-size: 14px;
+}
+
+.member-count {
+    padding: 10px 18px;
+    border: 1px solid rgba(45, 196, 255, 0.35);
+    border-radius: 999px;
+    color: #58d8ff;
+    background: rgba(20, 90, 140, 0.15);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.member-card {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    min-height: 180px;
+
+    border: 1px solid rgba(64, 190, 255, 0.20);
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 75, 130, 0.35),
+            rgba(4, 19, 42, 0.75)
+        );
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.20),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(58, 205, 255, 0.60);
+
+    box-shadow:
+        0 15px 35px rgba(0, 170, 255, 0.15),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.member-card::after {
+    content: "✈";
+    position: absolute;
+    right: -10px;
+    bottom: -25px;
+
+    font-size: 90px;
+    color: rgba(65, 190, 255, 0.035);
+
+    transform: rotate(-10deg);
+}
+
+.member-number {
+    position: absolute;
+    top: 15px;
+    right: 17px;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    color: rgba(130, 190, 230, 0.55);
+}
+
+.member-plane {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #16bfff,
+        #0879d8
+    );
+
+    color: white;
+    font-size: 18px;
+
+    margin-bottom: 14px;
+
+    box-shadow:
+        0 8px 20px rgba(0, 174, 255, 0.22);
+}
+
+.member-info h3 {
+    margin: 0 35px 7px 0;
+
+    color: #f4f9ff;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    line-height: 1.35;
+}
+
+.member-nit {
+    margin: 0 0 16px;
+
+    color: #8faecc;
+
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.member-saving {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid rgba(255,255,255,0.07);
+
+    font-size: 12px;
+    color: #8fa8c7;
+}
+
+.member-saving strong {
+    color: #32f0bd;
+    font-size: 14px;
+}
+
+/* TABLET */
+@media (max-width: 1000px) {
+
+    .member-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* HP */
+@media (max-width: 600px) {
+
+    .member-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .member-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .member-card {
+        min-height: 165px;
+    }
+}
+/* =====================================================
+   DAFTAR ANGGOTA BRAVO
+   ===================================================== */
+
+.anggota-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.anggota-header h2 {
+    margin-bottom: 7px;
+}
+
+.anggota-header p {
+    margin: 0;
+    color: #91aac7;
+    font-size: 14px;
+}
+
+.anggota-badge {
+    padding: 10px 18px;
+    border-radius: 30px;
+    color: #55d9ff;
+    border: 1px solid rgba(70,200,255,.35);
+    background: rgba(30,130,190,.12);
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.anggota-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.anggota-card {
+    position: relative;
+    padding: 18px;
+    border-radius: 18px;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22,78,135,.38),
+            rgba(5,20,43,.75)
+        );
+
+    border: 1px solid rgba(70,190,255,.18);
+
+    transition: .25s ease;
+}
+
+.anggota-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(60,210,255,.6);
+    box-shadow: 0 12px 30px rgba(0,160,255,.15);
+}
+
+.anggota-card > span {
+    display: inline-block;
+    margin-bottom: 12px;
+
+    color: #45d5ff;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.anggota-card h3 {
+    margin: 0 0 8px;
+
+    color: #f4f8ff;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.anggota-card p {
+    margin: 0;
+
+    color: #91aac7;
+    font-size: 12px;
+}
+
+.anggota-card::after {
+    content: "✈";
+    position: absolute;
+    right: 10px;
+    bottom: -15px;
+
+    font-size: 60px;
+    color: rgba(70,200,255,.035);
+    transform: rotate(-10deg);
+}
+
+@media (max-width: 900px) {
+    .anggota-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .anggota-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .anggota-grid {
+        grid-template-columns: 1fr;
+    }
+}
