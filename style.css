@@ -1,29 +1,34 @@
 /* =========================================================
-   WAHIDUN PROJECT — PREMIUM GLASSMORPHISM
+   KAS KELAS BRAVO
+   AVIATION GLASSMORPHISM EDITION
    ========================================================= */
 
 :root {
-    --bg: #050816;
-    --bg-soft: #0a1020;
+    --bg: #020817;
+    --bg2: #07152d;
 
-    --glass: rgba(15, 23, 42, 0.58);
-    --glass-strong: rgba(15, 23, 42, 0.78);
+    --glass: rgba(10, 27, 54, 0.58);
+    --glass-strong: rgba(7, 20, 43, 0.78);
     --glass-light: rgba(255, 255, 255, 0.055);
 
-    --border: rgba(255, 255, 255, 0.10);
-    --border-light: rgba(255, 255, 255, 0.16);
+    --border: rgba(115, 190, 255, 0.16);
+    --border-bright: rgba(73, 185, 255, 0.34);
 
-    --text: #f8fafc;
-    --muted: #94a3b8;
+    --white: #f8fbff;
+    --text: #dbeafe;
+    --muted: #8ea7c7;
 
-    --blue: #3b82f6;
-    --cyan: #22d3ee;
-    --green: #34d399;
-    --red: #fb7185;
-    --purple: #a78bfa;
+    --blue: #168cff;
+    --cyan: #16d9ff;
+    --sky: #60a5fa;
+
+    --green: #38f2b0;
+    --red: #ff6687;
+    --purple: #9d7cff;
+    --gold: #f6c453;
 
     --radius: 24px;
-    --blur: 22px;
+    --blur: 25px;
 }
 
 /* =========================================================
@@ -34,7 +39,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family:
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
 }
 
 html {
@@ -43,44 +53,119 @@ html {
 
 body {
     min-height: 100vh;
-    color: var(--text);
-    line-height: 1.6;
-    padding-bottom: 60px;
     overflow-x: hidden;
 
+    color: var(--white);
+
     background:
-        radial-gradient(circle at 8% 5%, rgba(59, 130, 246, 0.22), transparent 28%),
-        radial-gradient(circle at 92% 12%, rgba(34, 211, 238, 0.14), transparent 26%),
-        radial-gradient(circle at 50% 85%, rgba(124, 58, 237, 0.12), transparent 30%),
-        linear-gradient(135deg, #030712, #07111f 55%, #050816);
+        radial-gradient(
+            circle at 12% 10%,
+            rgba(0, 132, 255, 0.24),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 87% 17%,
+            rgba(0, 220, 255, 0.17),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 50% 85%,
+            rgba(115, 70, 255, 0.15),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #020617 0%,
+            #04152d 48%,
+            #020817 100%
+        );
 
     background-attachment: fixed;
 }
 
-/* decorative glow */
-
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    filter: blur(90px);
-    pointer-events: none;
-    z-index: -1;
-}
+/* =========================================================
+   AVIATION ATMOSPHERE
+   ========================================================= */
 
 body::before {
-    top: 15%;
-    left: -120px;
-    background: rgba(37, 99, 235, 0.14);
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: -3;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(3, 20, 45, 0.1),
+            rgba(2, 8, 23, 0.45)
+        );
+
+    opacity: 0.9;
 }
 
+/* large airplane */
+
 body::after {
-    right: -120px;
-    bottom: 10%;
-    background: rgba(6, 182, 212, 0.12);
+    content: "✈";
+
+    position: fixed;
+
+    top: 125px;
+    right: 4%;
+
+    z-index: -1;
+
+    color: rgba(102, 202, 255, 0.10);
+
+    font-size: clamp(110px, 15vw, 240px);
+
+    transform: rotate(-8deg);
+
+    filter:
+        drop-shadow(0 0 25px rgba(0, 179, 255, 0.35))
+        blur(0.2px);
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   RUNWAY EFFECT
+   ========================================================= */
+
+body {
+    position: relative;
+}
+
+body > footer::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: 0;
+
+    height: 180px;
+
+    z-index: -2;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(14, 165, 233, 0.08),
+            transparent
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 70px,
+            rgba(255,255,255,0.04) 70px 72px
+        );
+
+    pointer-events: none;
 }
 
 /* =========================================================
@@ -89,26 +174,40 @@ body::after {
 
 #loginSection {
     position: fixed;
+
     inset: 0;
+
     z-index: 9999;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     padding: 20px;
 
     background:
-        radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.22), transparent 35%),
-        radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.16), transparent 35%),
-        rgba(3, 7, 18, 0.88);
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(0, 132, 255, 0.20),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(0, 220, 255, 0.14),
+            transparent 35%
+        ),
+        rgba(1, 7, 20, 0.90);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
 }
 
 .login-box {
+    position: relative;
+
     width: min(430px, 100%);
+
     padding: 42px 34px;
 
     text-align: center;
@@ -116,15 +215,18 @@ body::after {
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,0.09),
-            rgba(255,255,255,0.025)
+            rgba(16, 53, 98, 0.70),
+            rgba(4, 19, 42, 0.58)
         );
 
-    border: 1px solid var(--border-light);
+    border:
+        1px solid rgba(96, 200, 255, 0.24);
+
     border-radius: 28px;
 
     box-shadow:
-        0 35px 100px rgba(0,0,0,0.55),
+        0 30px 90px rgba(0, 0, 0, 0.60),
+        0 0 50px rgba(0, 145, 255, 0.10),
         inset 0 1px 0 rgba(255,255,255,0.08);
 
     backdrop-filter: blur(28px);
@@ -132,103 +234,118 @@ body::after {
 }
 
 .login-box::before {
-    content: "⚡";
+    content: "✈";
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    width: 72px;
-    height: 72px;
+    width: 74px;
+    height: 74px;
 
     margin: 0 auto 20px;
 
     border-radius: 22px;
 
     background:
-        linear-gradient(135deg, var(--blue), var(--cyan));
+        linear-gradient(
+            135deg,
+            #168cff,
+            #12d8ff
+        );
 
     font-size: 34px;
 
     box-shadow:
-        0 15px 40px rgba(37, 99, 235, 0.35),
-        inset 0 1px 0 rgba(255,255,255,0.25);
+        0 0 35px rgba(0, 177, 255, 0.35);
 }
 
 .login-box h2 {
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 
-    color: white;
     font-size: 29px;
     font-weight: 900;
+
     letter-spacing: -0.8px;
 }
 
-.login-box::after {
-    content: "Kelola kas kelas dengan aman dan transparan";
+.login-box h2::after {
+    content: "BRAVO AVIATION CLASS";
 
     display: block;
 
-    margin-bottom: 28px;
+    margin-top: 7px;
 
-    color: var(--muted);
-    font-size: 13px;
+    color: #58cfff;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
 }
 
 .login-box input {
     width: 100%;
 
     margin-bottom: 14px;
+
     padding: 15px 17px;
 
-    border: 1px solid rgba(255,255,255,0.09);
+    border:
+        1px solid rgba(125, 211, 252, 0.12);
+
     border-radius: 14px;
 
     outline: none;
 
-    background: rgba(2, 6, 23, 0.58);
+    background:
+        rgba(1, 10, 25, 0.65);
+
     color: white;
 
     font-size: 14px;
 
     transition: 0.25s ease;
-
-    backdrop-filter: blur(10px);
 }
 
 .login-box input::placeholder {
-    color: #64748b;
+    color: #617895;
 }
 
 .login-box input:focus {
-    border-color: rgba(56,189,248,0.65);
+    border-color: rgba(34, 211, 238, 0.65);
 
     box-shadow:
-        0 0 0 4px rgba(56,189,248,0.08),
-        0 10px 30px rgba(34,211,238,0.08);
+        0 0 0 4px rgba(34, 211, 238, 0.07),
+        0 0 30px rgba(34, 211, 238, 0.08);
 }
 
 #loginButton {
     width: 100%;
 
-    margin-top: 8px;
     padding: 15px;
 
     border: none;
+
     border-radius: 14px;
 
     background:
-        linear-gradient(135deg, #2563eb, #06b6d4);
+        linear-gradient(
+            100deg,
+            #147cff,
+            #10cfff
+        );
 
     color: white;
 
     font-size: 15px;
-    font-weight: 800;
+    font-weight: 850;
 
     cursor: pointer;
 
     box-shadow:
-        0 12px 30px rgba(37,99,235,0.28);
+        0 12px 35px rgba(0, 132, 255, 0.30);
 
     transition: 0.25s ease;
 }
@@ -237,18 +354,16 @@ body::after {
     transform: translateY(-2px);
 
     box-shadow:
-        0 18px 38px rgba(37,99,235,0.36);
-}
-
-#loginButton:active {
-    transform: translateY(0);
+        0 18px 45px rgba(0, 178, 255, 0.40);
 }
 
 #loginMessage {
     min-height: 20px;
+
     margin-top: 14px;
 
     color: var(--muted);
+
     font-size: 13px;
 }
 
@@ -258,40 +373,49 @@ body::after {
 
 .navbar {
     position: sticky;
-    top: 15px;
+
+    top: 14px;
+
     z-index: 1000;
 
-    width: min(94%, 1180px);
+    width: min(94%, 1220px);
 
-    margin: 15px auto 0;
-    padding: 14px 18px;
+    margin: 14px auto 0;
+
+    padding: 12px 16px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
     gap: 20px;
 
-    border: 1px solid var(--border);
-    border-radius: 20px;
+    border:
+        1px solid rgba(109, 201, 255, 0.17);
+
+    border-radius: 22px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(15,23,42,0.72),
-            rgba(15,23,42,0.48)
+            rgba(8, 31, 65, 0.78),
+            rgba(5, 20, 43, 0.58)
         );
 
     box-shadow:
-        0 20px 55px rgba(0,0,0,0.28),
-        inset 0 1px 0 rgba(255,255,255,0.07);
+        0 18px 60px rgba(0, 0, 0, 0.32),
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        0 0 35px rgba(0, 136, 255, 0.06);
 
     backdrop-filter: blur(var(--blur));
     -webkit-backdrop-filter: blur(var(--blur));
 }
 
 .navbar-brand {
-    position: relative;
+    display: flex;
+
+    align-items: center;
 
     color: white;
 
@@ -299,51 +423,60 @@ body::after {
     font-weight: 900;
 
     white-space: nowrap;
-    letter-spacing: -0.4px;
 }
 
 .navbar-brand::before {
-    content: "⚡";
+    content: "✈";
 
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
-    width: 34px;
-    height: 34px;
+    width: 40px;
+    height: 40px;
 
-    margin-right: 8px;
+    margin-right: 10px;
 
-    border-radius: 10px;
+    border-radius: 13px;
 
-    background: linear-gradient(135deg, var(--blue), var(--cyan));
+    background:
+        linear-gradient(
+            135deg,
+            #168cff,
+            #15d5ff
+        );
 
-    box-shadow: 0 8px 22px rgba(37,99,235,0.25);
+    font-size: 21px;
+
+    box-shadow:
+        0 0 28px rgba(0, 179, 255, 0.35);
 }
 
 .navbar-menu {
     display: flex;
+
     align-items: center;
     justify-content: flex-end;
 
     gap: 6px;
+
     flex-wrap: wrap;
 }
 
 .navbar-menu a {
-    position: relative;
-
     padding: 9px 13px;
 
     border: 1px solid transparent;
+
     border-radius: 12px;
 
-    color: #a8b5c7;
+    color: #9db3ce;
 
     text-decoration: none;
 
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 750;
 
     transition: 0.25s ease;
 }
@@ -351,48 +484,70 @@ body::after {
 .navbar-menu a:hover {
     color: white;
 
-    background: rgba(59,130,246,0.10);
-    border-color: rgba(59,130,246,0.16);
+    background:
+        rgba(21, 145, 255, 0.10);
+
+    border-color:
+        rgba(73, 185, 255, 0.18);
 
     transform: translateY(-1px);
 }
 
+/* =========================================================
+   ADMIN BADGE
+   ========================================================= */
+
 .user-role-badge {
     display: inline-block;
 
-    padding: 7px 12px;
+    padding: 8px 14px;
 
-    border: 1px solid rgba(255,255,255,0.10);
+    border:
+        1px solid rgba(246, 196, 83, 0.25);
+
     border-radius: 999px;
-
-    background: rgba(255,255,255,0.055);
-
-    color: white;
-
-    font-size: 12px;
-    font-weight: 800;
-
-    backdrop-filter: blur(10px);
-}
-
-/* =========================================================
-   LOGIN ADMIN BUTTON
-   ========================================================= */
-
-#loginAdminButton {
-    border: 1px solid rgba(96,165,250,0.25) !important;
 
     background:
         linear-gradient(
             135deg,
-            rgba(37,99,235,0.95),
-            rgba(6,182,212,0.92)
+            rgba(246,196,83,0.13),
+            rgba(255,255,255,0.04)
+        );
+
+    color: #fff;
+
+    font-size: 12px;
+    font-weight: 850;
+
+    box-shadow:
+        0 0 20px rgba(246,196,83,0.07);
+}
+
+/* =========================================================
+   LOGIN ADMIN
+   ========================================================= */
+
+#loginAdminButton {
+    padding: 9px 15px !important;
+
+    border:
+        1px solid rgba(80, 190, 255, 0.25) !important;
+
+    border-radius: 12px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20, 126, 255, 0.95),
+            rgba(0, 205, 255, 0.90)
         ) !important;
 
     color: white !important;
 
+    font-weight: 800 !important;
+
     box-shadow:
-        0 8px 25px rgba(37,99,235,0.22);
+        0 8px 28px rgba(0, 151, 255, 0.22);
 
     transition: 0.25s ease !important;
 }
@@ -401,7 +556,7 @@ body::after {
     transform: translateY(-2px);
 
     box-shadow:
-        0 14px 32px rgba(37,99,235,0.32);
+        0 13px 35px rgba(0, 182, 255, 0.34);
 }
 
 /* =========================================================
@@ -411,15 +566,18 @@ body::after {
 .logout-button {
     padding: 9px 14px;
 
-    border: 1px solid rgba(248,113,113,0.20);
-    border-radius: 11px;
+    border:
+        1px solid rgba(255, 102, 135, 0.22);
 
-    background: rgba(239,68,68,0.12);
+    border-radius: 12px;
 
-    color: #fda4af;
+    background:
+        rgba(255, 75, 112, 0.10);
+
+    color: #ff9db2;
 
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 850;
 
     cursor: pointer;
 
@@ -427,7 +585,8 @@ body::after {
 }
 
 .logout-button:hover {
-    background: rgba(239,68,68,0.22);
+    background:
+        rgba(255, 75, 112, 0.20);
 
     color: white;
 
@@ -435,103 +594,173 @@ body::after {
 }
 
 /* =========================================================
-   HEADER
+   HEADER / HERO
    ========================================================= */
 
 header {
-    width: min(1100px, 92%);
+    position: relative;
+
+    width: min(1180px, 94%);
 
     margin: 0 auto;
 
-    padding: 78px 20px 42px;
+    min-height: 330px;
 
-    text-align: center;
+    padding: 78px 40px 48px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 0 0 34px 34px;
 }
 
-header h1 {
-    color: white;
+header::before {
+    content: "✈";
 
-    font-size: clamp(34px, 5vw, 56px);
-    font-weight: 950;
+    position: absolute;
 
-    line-height: 1.08;
-    letter-spacing: -2px;
+    right: 4%;
+    top: 18px;
 
-    text-shadow:
-        0 10px 35px rgba(59,130,246,0.12);
-}
+    color: rgba(78, 194, 255, 0.11);
 
-header p {
-    margin-top: 13px;
+    font-size: clamp(140px, 22vw, 310px);
 
-    color: #8fa1b8;
+    transform: rotate(-8deg);
 
-    font-size: 15px;
+    filter:
+        drop-shadow(0 0 35px rgba(0,170,255,0.25));
 }
 
 header::after {
-    content: "";
+    content: "✦  DISCIPLINE   •   SAFETY   •   TOGETHER";
+
+    position: absolute;
+
+    right: 8%;
+    bottom: 42px;
+
+    color: rgba(135, 211, 255, 0.65);
+
+    font-size: 10px;
+    font-weight: 850;
+
+    letter-spacing: 2px;
+}
+
+header h1 {
+    position: relative;
+
+    max-width: 720px;
+
+    color: white;
+
+    font-size: clamp(38px, 6vw, 68px);
+
+    line-height: 1.04;
+
+    font-weight: 950;
+
+    letter-spacing: -2.5px;
+
+    text-shadow:
+        0 10px 45px rgba(0, 132, 255, 0.16);
+}
+
+header h1::first-letter {
+    color: white;
+}
+
+header p {
+    position: relative;
+
+    max-width: 660px;
+
+    margin-top: 16px;
+
+    color: #a9bed8;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+header p::after {
+    content:
+        "Terbang lebih tinggi dengan disiplin, kebersamaan, dan tanggung jawab.";
 
     display: block;
 
-    width: 90px;
-    height: 3px;
+    margin-top: 8px;
 
-    margin: 24px auto 0;
+    color: #61d8ff;
 
-    border-radius: 999px;
+    font-size: 13px;
 
-    background:
-        linear-gradient(90deg, var(--blue), var(--cyan));
+    font-style: italic;
+}
 
-    box-shadow:
-        0 0 20px rgba(34,211,238,0.35);
+header > * {
+    z-index: 1;
 }
 
 /* =========================================================
-   CONTENT
+   MAIN CONTAINER
    ========================================================= */
 
 .container {
-    width: min(94%, 1180px);
+    position: relative;
 
-    margin: 20px auto;
+    width: min(1220px, 94%);
+
+    margin: 12px auto 30px;
 
     display: grid;
 
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
 
-    gap: 24px;
+    gap: 22px;
 }
+
+/* =========================================================
+   GLASS CARDS
+   ========================================================= */
 
 .card-genz {
     position: relative;
 
     overflow: hidden;
 
-    padding: 30px;
+    padding: 29px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius: var(--radius);
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,0.065),
-            rgba(255,255,255,0.025)
+            rgba(15, 48, 87, 0.62),
+            rgba(5, 22, 46, 0.54)
         );
 
     box-shadow:
-        0 20px 55px rgba(0,0,0,0.24),
-        inset 0 1px 0 rgba(255,255,255,0.05);
+        0 20px 55px rgba(0,0,0,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.07);
 
     backdrop-filter: blur(var(--blur));
     -webkit-backdrop-filter: blur(var(--blur));
 
     transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
+        transform .28s ease,
+        border-color .28s ease,
+        box-shadow .28s ease;
 }
 
 .card-genz::before {
@@ -540,8 +769,8 @@ header::after {
     position: absolute;
 
     top: 0;
-    left: 25px;
-    right: 25px;
+    left: 30px;
+    right: 30px;
 
     height: 1px;
 
@@ -549,32 +778,46 @@ header::after {
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,0.18),
+            rgba(103, 214, 255, 0.55),
             transparent
         );
 }
 
 .card-genz:hover {
-    border-color: rgba(96,165,250,0.15);
+    border-color:
+        rgba(78, 194, 255, 0.25);
 
     box-shadow:
-        0 25px 65px rgba(0,0,0,0.28),
-        inset 0 1px 0 rgba(255,255,255,0.06);
+        0 25px 70px rgba(0,0,0,0.32),
+        0 0 35px rgba(0, 142, 255, 0.06),
+        inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .card-genz h2 {
-    margin-bottom: 16px;
+    margin-bottom: 15px;
 
     color: white;
 
     font-size: 21px;
-    font-weight: 850;
 
-    letter-spacing: -0.3px;
+    font-weight: 900;
+
+    letter-spacing: -0.4px;
+}
+
+.card-genz h2::before {
+    content: "✦";
+
+    margin-right: 9px;
+
+    color: #4fdcff;
+
+    text-shadow:
+        0 0 15px rgba(50,210,255,0.6);
 }
 
 .card-genz p {
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 
     color: var(--muted);
 
@@ -598,13 +841,15 @@ header::after {
 
     margin-bottom: 8px;
 
-    color: #a9b7c9;
+    color: #9eb7d3;
 
     font-size: 11px;
-    font-weight: 800;
+
+    font-weight: 850;
 
     text-transform: uppercase;
-    letter-spacing: 0.8px;
+
+    letter-spacing: 1px;
 }
 
 .form-group input,
@@ -613,34 +858,41 @@ header::after {
 
     padding: 14px 15px;
 
-    border: 1px solid rgba(255,255,255,0.09);
-    border-radius: 13px;
+    border:
+        1px solid rgba(118, 196, 255, 0.11);
+
+    border-radius: 14px;
 
     outline: none;
 
     background:
-        rgba(2,6,23,0.48);
+        rgba(1, 10, 25, 0.56);
 
     color: white;
 
     font-size: 14px;
 
-    transition: 0.25s ease;
-}
-
-.form-group select option {
-    background: #0f172a;
-    color: white;
+    transition: .25s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: rgba(59,130,246,0.65);
+    border-color:
+        rgba(40, 200, 255, 0.58);
 
     box-shadow:
-        0 0 0 4px rgba(59,130,246,0.08),
-        0 10px 30px rgba(59,130,246,0.07);
+        0 0 0 4px rgba(40,200,255,0.07),
+        0 0 25px rgba(40,200,255,0.06);
 }
+
+.form-group select option {
+    background: #07172d;
+    color: white;
+}
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
 
 .btn-genz {
     width: 100%;
@@ -648,43 +900,41 @@ header::after {
     padding: 14px;
 
     border: none;
-    border-radius: 13px;
+
+    border-radius: 14px;
 
     font-size: 14px;
-    font-weight: 800;
+
+    font-weight: 850;
 
     cursor: pointer;
 
-    transition: 0.25s ease;
+    transition: .25s ease;
 }
 
 .btn-primary {
     background:
         linear-gradient(
-            135deg,
-            #2563eb,
-            #06b6d4
+            100deg,
+            #147cff,
+            #09d7ff
         );
 
     color: white;
 
     box-shadow:
-        0 12px 30px rgba(37,99,235,0.22);
+        0 12px 35px rgba(0, 139, 255, 0.24);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
 
     box-shadow:
-        0 18px 38px rgba(37,99,235,0.32);
-}
-
-.btn-primary:active {
-    transform: translateY(0);
+        0 18px 45px rgba(0, 182, 255, 0.34);
 }
 
 /* =========================================================
-   TABUNGAN SISWA
+   STUDENT SAVINGS
    ========================================================= */
 
 #boxRekapSiswa {
@@ -698,41 +948,48 @@ header::after {
 
     padding: 16px 18px;
 
-    border: 1px solid rgba(255,255,255,0.07);
+    border:
+        1px solid rgba(109, 201, 255, 0.10);
+
     border-radius: 15px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.055),
             rgba(255,255,255,0.018)
         );
 
-    color: #e5e7eb;
+    color: #eaf5ff;
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.03);
+        inset 0 1px 0 rgba(255,255,255,0.04);
 
-    transition: 0.22s ease;
+    transition: .22s ease;
 }
 
 #boxRekapSiswa > div:hover {
-    transform: translateX(3px);
+    transform: translateX(4px);
 
-    border-color: rgba(52,211,153,0.18);
+    border-color:
+        rgba(56,242,176,0.22);
 
     background:
-        rgba(52,211,153,0.045);
+        rgba(56,242,176,0.045);
+
+    box-shadow:
+        0 0 22px rgba(56,242,176,0.05);
 }
 
 /* =========================================================
-   SUMMARY
+   FINANCIAL SUMMARY
    ========================================================= */
 
 .summary-container {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
     gap: 15px;
 
@@ -744,33 +1001,45 @@ header::after {
 
     overflow: hidden;
 
+    min-height: 112px;
+
     padding: 21px;
 
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 17px;
+    border:
+        1px solid rgba(111, 203, 255, 0.12);
+
+    border-radius: 18px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,0.055),
+            rgba(255,255,255,0.065),
             rgba(255,255,255,0.018)
         );
 
-    color: #94a3b8;
+    color: #9fb5ce;
 
     font-size: 12px;
-    font-weight: 800;
+
+    font-weight: 850;
 
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,0.04);
 
-    transition: 0.25s ease;
+    transition: .25s ease;
 }
 
-.stat-box:hover {
-    transform: translateY(-3px);
+.stat-box::after {
+    content: "✦";
 
-    border-color: rgba(255,255,255,0.14);
+    position: absolute;
+
+    right: 17px;
+    bottom: 10px;
+
+    color: rgba(255,255,255,0.08);
+
+    font-size: 42px;
 }
 
 .stat-box span {
@@ -780,28 +1049,37 @@ header::after {
 
     color: white;
 
-    font-size: 22px;
-    font-weight: 900;
+    font-size: 23px;
 
-    letter-spacing: -0.4px;
+    font-weight: 950;
+}
+
+.stat-box:hover {
+    transform: translateY(-4px);
 }
 
 .stat-masuk {
-    border-top: 3px solid var(--green);
+    border-top:
+        3px solid var(--green);
+
     box-shadow:
-        0 10px 30px rgba(52,211,153,0.06);
+        0 12px 35px rgba(56,242,176,0.06);
 }
 
 .stat-keluar {
-    border-top: 3px solid var(--red);
+    border-top:
+        3px solid var(--red);
+
     box-shadow:
-        0 10px 30px rgba(251,113,133,0.06);
+        0 12px 35px rgba(255,102,135,0.06);
 }
 
 .stat-saldo {
-    border-top: 3px solid var(--blue);
+    border-top:
+        3px solid var(--blue);
+
     box-shadow:
-        0 10px 30px rgba(59,130,246,0.08);
+        0 12px 35px rgba(22,140,255,0.09);
 }
 
 /* =========================================================
@@ -809,30 +1087,31 @@ header::after {
    ========================================================= */
 
 .chart-container {
-    margin-top: 25px;
+    margin-top: 24px;
 
-    padding: 23px;
+    padding: 22px;
 
-    border: 1px solid rgba(255,255,255,0.07);
+    border:
+        1px solid rgba(110, 204, 255, 0.08);
+
     border-radius: 18px;
 
     background:
-        rgba(2,6,23,0.32);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.03);
+        rgba(1, 10, 25, 0.30);
 }
 
 .chart-title {
     margin-bottom: 19px;
 
-    color: #a8b5c7;
+    color: #a9c0da;
 
     font-size: 12px;
+
     font-weight: 850;
 
     text-transform: uppercase;
-    letter-spacing: 0.7px;
+
+    letter-spacing: .8px;
 }
 
 .chart-bar-wrapper {
@@ -841,15 +1120,19 @@ header::after {
 
 .chart-label {
     display: flex;
+
     justify-content: space-between;
 
     margin-bottom: 7px;
+
+    color: #bdd0e4;
 
     font-size: 13px;
 }
 
 .chart-track {
     width: 100%;
+
     height: 10px;
 
     overflow: hidden;
@@ -857,7 +1140,7 @@ header::after {
     border-radius: 999px;
 
     background:
-        rgba(255,255,255,0.065);
+        rgba(255,255,255,0.06);
 
     box-shadow:
         inset 0 1px 3px rgba(0,0,0,0.35);
@@ -865,11 +1148,13 @@ header::after {
 
 .chart-fill {
     height: 100%;
-    width: 0%;
+
+    width: 0;
 
     border-radius: 999px;
 
-    transition: width 0.7s cubic-bezier(.2,.8,.2,1);
+    transition:
+        width .8s cubic-bezier(.2,.8,.2,1);
 }
 
 .fill-masuk {
@@ -877,25 +1162,25 @@ header::after {
         linear-gradient(
             90deg,
             #10b981,
-            #34d399,
-            #6ee7b7
+            #38f2b0,
+            #8affd1
         );
 
     box-shadow:
-        0 0 18px rgba(52,211,153,0.25);
+        0 0 20px rgba(56,242,176,0.30);
 }
 
 .fill-keluar {
     background:
         linear-gradient(
             90deg,
-            #ef4444,
-            #fb7185,
-            #fda4af
+            #ef476f,
+            #ff6687,
+            #ff9bb0
         );
 
     box-shadow:
-        0 0 18px rgba(251,113,133,0.22);
+        0 0 20px rgba(255,102,135,0.25);
 }
 
 /* =========================================================
@@ -903,113 +1188,71 @@ header::after {
    ========================================================= */
 
 .table-wrapper {
-    margin-top: 25px;
+    margin-top: 24px;
 
     overflow-x: auto;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border:
+        1px solid rgba(111, 203, 255, 0.10);
+
     border-radius: 18px;
 
-    background: rgba(2,6,23,0.28);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.03);
+    background:
+        rgba(1, 10, 25, 0.30);
 }
 
 table {
     width: 100%;
 
     border-collapse: separate;
+
     border-spacing: 0;
 
     font-size: 14px;
-
-    text-align: left;
 }
 
 th {
     padding: 15px 16px;
 
     background:
-        rgba(30,41,59,0.72);
+        rgba(17, 51, 88, 0.76);
 
-    color: #9fb0c5;
+    color: #9db7d3;
 
     font-size: 11px;
+
     font-weight: 850;
 
     text-transform: uppercase;
-    letter-spacing: 0.6px;
+
+    letter-spacing: .7px;
 
     white-space: nowrap;
-}
-
-th:first-child {
-    border-top-left-radius: 17px;
-}
-
-th:last-child {
-    border-top-right-radius: 17px;
 }
 
 td {
     padding: 15px 16px;
 
-    border-bottom: 1px solid rgba(255,255,255,0.055);
+    border-bottom:
+        1px solid rgba(255,255,255,0.045);
 
     background:
-        rgba(15,23,42,0.36);
+        rgba(7, 22, 43, 0.36);
 
-    color: #e2e8f0;
+    color: #e5f1ff;
 }
 
 tbody tr {
-    transition: 0.2s ease;
+    transition: .2s ease;
 }
 
 tbody tr:hover td {
     background:
-        rgba(59,130,246,0.055);
+        rgba(22, 140, 255, 0.065);
 }
 
 tbody tr:last-child td {
     border-bottom: none;
-}
-
-/* =========================================================
-   GENERAL BUTTONS CREATED BY JAVASCRIPT
-   ========================================================= */
-
-button {
-    font-family: inherit;
-}
-
-button:not(:disabled) {
-    cursor: pointer;
-}
-
-button:disabled {
-    opacity: 0.55;
-    cursor: not-allowed;
-}
-
-/* edit/delete buttons inside table */
-
-#tabelTransaksi button {
-    border-radius: 9px;
-
-    padding: 7px 10px;
-
-    border: 1px solid rgba(255,255,255,0.08);
-
-    font-size: 12px;
-    font-weight: 750;
-
-    transition: 0.2s ease;
-}
-
-#tabelTransaksi button:hover {
-    transform: translateY(-1px);
 }
 
 /* =========================================================
@@ -1019,21 +1262,22 @@ button:disabled {
 #btnHapusData {
     margin-top: 20px !important;
 
-    border: 1px solid rgba(248,113,113,0.18) !important;
+    border:
+        1px solid rgba(255,102,135,0.18) !important;
 
     border-radius: 12px !important;
 
     background:
-        rgba(239,68,68,0.10) !important;
+        rgba(255,75,112,0.10) !important;
 
-    color: #fda4af !important;
+    color: #ff9db2 !important;
 
-    transition: 0.25s ease !important;
+    transition: .25s ease !important;
 }
 
 #btnHapusData:hover {
     background:
-        rgba(239,68,68,0.20) !important;
+        rgba(255,75,112,0.20) !important;
 
     transform: translateY(-1px);
 }
@@ -1043,17 +1287,37 @@ button:disabled {
    ========================================================= */
 
 footer {
-    padding: 45px 20px 25px;
+    position: relative;
+
+    width: min(1180px, 94%);
+
+    margin: 45px auto 0;
+
+    padding: 30px 20px;
 
     text-align: center;
 
-    color: #526176;
+    border-top:
+        1px solid rgba(100, 195, 255, 0.10);
+
+    color: #617b99;
 
     font-size: 12px;
 }
 
-footer p {
-    opacity: 0.85;
+footer p::before {
+    content: "✈  KAS KELAS BRAVO  •  DISCIPLINE  •  SAFETY  •  TOGETHER";
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #64cfff;
+
+    font-size: 10px;
+
+    font-weight: 850;
+
+    letter-spacing: 1.5px;
 }
 
 /* =========================================================
@@ -1066,15 +1330,15 @@ footer p {
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(2,6,23,0.7);
+    background: #020817;
 }
 
 ::-webkit-scrollbar-thumb {
     background:
         linear-gradient(
             180deg,
-            #2563eb,
-            #06b6d4
+            #168cff,
+            #12d8ff
         );
 
     border-radius: 999px;
@@ -1084,8 +1348,8 @@ footer p {
     background:
         linear-gradient(
             180deg,
-            #3b82f6,
-            #22d3ee
+            #42a5ff,
+            #52e5ff
         );
 }
 
@@ -1094,82 +1358,73 @@ footer p {
    ========================================================= */
 
 ::selection {
-    background: rgba(59,130,246,0.35);
+    background:
+        rgba(22, 140, 255, 0.35);
+
     color: white;
 }
 
 /* =========================================================
-   RESPONSIVE — TABLET
+   MOBILE
    ========================================================= */
 
-@media (min-width: 768px) {
-    .container {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-/* =========================================================
-   RESPONSIVE — MOBILE
-   ========================================================= */
-
-@media (max-width: 760px) {
+@media (max-width: 850px) {
 
     .navbar {
-        top: 8px;
-
-        width: 94%;
-
         flex-direction: column;
 
         align-items: stretch;
-
-        padding: 14px;
     }
 
     .navbar-brand {
-        text-align: center;
+        justify-content: center;
     }
 
     .navbar-menu {
         justify-content: center;
     }
 
-    .navbar-menu a,
-    .logout-button,
-    #loginAdminButton {
-        font-size: 12px;
-    }
-
     header {
-        padding-top: 62px;
+        min-height: 300px;
+
+        padding:
+            65px 24px 40px;
     }
 
-    header h1 {
-        font-size: 37px;
-        letter-spacing: -1.3px;
+    header::before {
+        opacity: .5;
+
+        right: -30px;
+    }
+
+    header::after {
+        right: 24px;
+        bottom: 25px;
+
+        font-size: 8px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: auto;
     }
 
     .summary-container {
         grid-template-columns: 1fr;
     }
-
-    .card-genz {
-        padding: 23px;
-    }
 }
 
-/* =========================================================
-   RESPONSIVE — SMALL PHONE
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-    body {
-        padding-bottom: 35px;
-    }
+@media (max-width: 520px) {
 
     .navbar {
-        border-radius: 17px;
+        top: 7px;
+
+        width: 94%;
+
+        border-radius: 18px;
     }
 
     .navbar-brand {
@@ -1177,38 +1432,46 @@ footer p {
     }
 
     .navbar-brand::before {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
     }
 
     .navbar-menu {
-        gap: 4px;
+        gap: 3px;
     }
 
     .navbar-menu a {
         padding: 8px 9px;
+
+        font-size: 11px;
     }
 
     header {
         width: 94%;
-        padding: 52px 10px 32px;
+
+        min-height: 270px;
+
+        padding:
+            55px 10px 35px;
     }
 
     header h1 {
-        font-size: 30px;
+        font-size: 34px;
+
+        letter-spacing: -1.5px;
     }
 
     header p {
         font-size: 13px;
     }
 
-    .container {
-        width: 94%;
-        gap: 18px;
+    header p::after {
+        font-size: 11px;
     }
 
     .card-genz {
-        padding: 20px;
+        padding: 21px;
+
         border-radius: 20px;
     }
 
@@ -1216,34 +1479,24 @@ footer p {
         font-size: 19px;
     }
 
-    .login-box {
-        padding: 34px 22px;
-        border-radius: 23px;
-    }
-
-    .login-box h2 {
-        font-size: 25px;
-    }
-
-    .summary-container {
-        gap: 10px;
-    }
-
     .stat-box {
-        padding: 18px;
+        min-height: 100px;
     }
 
-    .stat-box span {
-        font-size: 20px;
-    }
-
-    .chart-container {
-        padding: 18px;
+    .table-wrapper {
+        border-radius: 14px;
     }
 
     th,
     td {
         padding: 12px;
+
         font-size: 12px;
+    }
+
+    body::after {
+        font-size: 100px;
+
+        top: 170px;
     }
 }
