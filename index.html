@@ -444,6 +444,20 @@ loginButton.addEventListener("click", async () => {
 
     updateAuthUI(data.user);
 });
+     
+const logoutButton = document.getElementById("logoutButton");
+
+logoutButton.addEventListener("click", async () => {
+    const { error } = await supabaseClient.auth.signOut();
+
+    if (error) {
+        console.error("Logout gagal:", error);
+        alert("Logout gagal.");
+        return;
+    }
+
+    window.location.reload();
+});
 
 supabaseClient.auth.onAuthStateChange((_event, session) => {
     updateAuthUI(session?.user ?? null);
