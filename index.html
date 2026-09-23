@@ -464,41 +464,6 @@ async function cekRole(user) {
     }
 }
 
-    const { data, error } = await supabaseClient
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", user.id)
-        .single();
-
-    if (error) {
-        console.error("Gagal mengambil role:", error);
-
-        currentUserRole = null;
-        userRoleBadge.textContent = "User";
-        userRoleBadge.style.display = "inline-block";
-        btnHapusData.style.display = "none";
-
-        updateTampilanSistem();
-        return;
-    }
-
-    currentUserRole = data.role;
-
-    userRoleBadge.textContent =
-        currentUserRole === "admin"
-            ? "👑 Admin"
-            : "👤 Siswa";
-
-    userRoleBadge.style.display = "inline-block";
-
-    btnHapusData.style.display =
-        currentUserRole === "admin"
-            ? "block"
-            : "none";
-
-    updateTampilanSistem();
-}
-
 async function cekLogin() {
     const { data, error } =
         await supabaseClient.auth.getUser();
