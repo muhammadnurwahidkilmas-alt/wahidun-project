@@ -579,7 +579,7 @@ const supabaseClient = window.supabase.createClient(
         ==========================================
         */
 
-        function tambahTransaksi() {
+        async function tambahTransaksi() {
 
             const tanggal =
                 tanggalInput.value;
@@ -628,27 +628,31 @@ const supabaseClient = window.supabase.createClient(
             }
 
 
-            const dataBaru = {
+            const { data: dataBaru, error } = await supabaseClient
+    .from("transaksi_kas")
+    .insert([
+        {
+            tanggal: tanggal,
+            keterangan: keterangan,
+            jenis: jenis,
+            nominal: nominal,
+            created_by: (await supabaseClient.auth.getUser()).data.user.id
+        }
+    ])
+    .select()
+    .single();
 
-                id: Date.now(),
+if (error) {
+    console.error("Gagal menyimpan ke Supabase:", error);
 
-                tanggal: tanggal,
+    alert("Gagal menyimpan transaksi: " + error.message);
 
-                keterangan: keterangan,
+    return;
+}
 
-                jenis: jenis,
+transaksiList.unshift(dataBaru);
 
-                nominal: nominal
-
-            };
-
-
-            transaksiList.unshift(
-                dataBaru
-            );
-
-
-            simpanData();
+updateTampilanSistem();
 
 
             updateTampilanSistem();
