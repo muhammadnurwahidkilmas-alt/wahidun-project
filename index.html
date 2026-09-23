@@ -16,7 +16,192 @@ body.light-mode{--text:#102033;--muted:#64748b;background:#dbeafe}body.light-mod
 @media(max-width:860px){.app-shell{display:block}.sidebar{position:fixed;left:0;right:0;bottom:0;top:auto;height:auto;z-index:1200;padding:7px 8px;display:block;border-right:0;border-top:1px solid var(--stroke)}.brand,.side-spacer,.side-quote,.side-user{display:none}.side-nav{display:flex;justify-content:space-around}.side-nav button{justify-content:center;padding:9px 6px;font-size:9px;display:grid;gap:3px;min-width:58px}.side-icon{margin:auto;width:26px;height:26px}.main{padding:13px 12px 85px}.topbar{grid-template-columns:1fr}.top-actions{justify-content:flex-start}.grid-main,.dashboard-bottom{grid-template-columns:1fr}.hero{padding:24px;min-height:205px}.hero h1{font-size:40px}.member-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.kpis{grid-template-columns:1fr 1fr}.b30-grid{grid-template-columns:1fr}.bar-chart{gap:7px}.chart-bar{width:9px}.v2-timeline-row{grid-template-columns:60px 1fr}.v2-timeline-row>span{grid-column:2}.search{max-width:none}}
 @media(max-width:520px){.kpis{grid-template-columns:1fr}.hero{border-radius:25px}.hero h1{font-size:34px}.top-actions{flex-wrap:wrap}.role{order:5}.chart-wrap{padding-left:10px;padding-right:10px}.card-head{padding-left:15px;padding-right:15px}.dashboard-bottom{gap:10px}.quick-grid{padding-left:12px;padding-right:12px}.member-grid{padding-left:12px;padding-right:12px}.section-toolbar{padding-left:12px;padding-right:12px}.table-wrap{padding-left:12px;padding-right:12px}}
 @media print{body:before,body:after{display:none}.sidebar,.topbar,.hero,.quick-grid,.status,.side-stack,.member-toolbar,.footer,.login-overlay,.toast-container{display:none!important}.main{padding:0}.glass-card{background:white;color:#111;border:1px solid #ddd;box-shadow:none}.modern-table td,.modern-table th{color:#111}.app-shell{display:block}}
-</style></head><body><div class="app-shell">
+</style>
+<style id="bravo-glass-bubble-overrides">
+/* BRAVO 4.1 — Apple Bubble Glass visual layer */
+:root{
+  --glass:rgba(255,255,255,.075);
+  --glass-strong:rgba(255,255,255,.105);
+  --glass-soft:rgba(255,255,255,.045);
+  --stroke:rgba(255,255,255,.20);
+  --shadow:0 24px 80px rgba(0,0,0,.24);
+}
+html,body{background:#071323!important}
+body{position:relative;isolation:isolate;overflow-x:hidden;background:#071323!important}
+body:before{
+  content:""!important;position:fixed!important;inset:0!important;z-index:-10!important;
+  background:
+    linear-gradient(180deg,rgba(4,12,27,.34),rgba(3,12,26,.64)),
+    url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2400&q=90") center center/cover no-repeat!important;
+  filter:saturate(1.08) contrast(1.03)!important;
+  transform:scale(1.015);will-change:transform;
+}
+body:after{
+  content:""!important;position:fixed!important;inset:0!important;z-index:-9!important;pointer-events:none!important;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(115,191,255,.16),transparent 26%),
+    radial-gradient(circle at 82% 18%,rgba(161,120,255,.13),transparent 28%),
+    linear-gradient(115deg,rgba(5,14,31,.15),rgba(255,255,255,.025) 42%,rgba(6,16,35,.32));
+  backdrop-filter:blur(2px) saturate(120%);-webkit-backdrop-filter:blur(2px) saturate(120%);
+}
+/* fixed animated bubbles: the background stays fixed while bubbles float over it */
+.bravo-bubbles{position:fixed;inset:0;z-index:-3;pointer-events:none;overflow:hidden}
+.bravo-bubble{position:absolute;bottom:-180px;border-radius:50%;border:1px solid rgba(255,255,255,.28);
+  background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.26),rgba(255,255,255,.055) 35%,rgba(95,180,255,.035) 68%,rgba(255,255,255,.01));
+  box-shadow:inset 0 0 25px rgba(255,255,255,.08),0 0 35px rgba(101,178,255,.08);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:.6;animation:bravoFloat linear infinite;
+}
+.bravo-bubble:before{content:"";position:absolute;left:18%;top:13%;width:24%;height:13%;border-radius:50%;background:rgba(255,255,255,.45);filter:blur(2px);transform:rotate(-25deg)}
+.bravo-bubble:after{content:"";position:absolute;right:20%;bottom:22%;width:10%;height:10%;border-radius:50%;background:rgba(131,214,255,.18);filter:blur(2px)}
+@keyframes bravoFloat{0%{transform:translate3d(0,0,0) scale(.84);opacity:0}10%{opacity:.52}50%{transform:translate3d(42px,-55vh,0) scale(1);opacity:.58}80%{opacity:.34}100%{transform:translate3d(-35px,-118vh,0) scale(1.12);opacity:0}}
+/* remove competing scrolling image layers from cards; let one aircraft background breathe through all glass */
+.hero,.side-quote{background-image:none!important;background-color:rgba(255,255,255,.055)!important}
+.hero{background:linear-gradient(135deg,rgba(255,255,255,.095),rgba(255,255,255,.025))!important;backdrop-filter:blur(18px) saturate(145%)!important;-webkit-backdrop-filter:blur(18px) saturate(145%)!important}
+.side-quote{background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.035))!important;backdrop-filter:blur(28px) saturate(145%)!important;-webkit-backdrop-filter:blur(28px) saturate(145%)!important}
+.sidebar{background:rgba(7,17,34,.30)!important;backdrop-filter:blur(34px) saturate(150%)!important;-webkit-backdrop-filter:blur(34px) saturate(150%)!important;border-right-color:rgba(255,255,255,.18)!important}
+.main{position:relative}
+.search,.glass-btn,.role,.glass-card,.kpi,.side-user,.hero-quote,.pill,.side-quote,.b30-person,.b30-card,.modal-card,.toast,.quick,.member-card,.feature-card{
+  background-color:rgba(255,255,255,.065)!important;
+  border-color:rgba(255,255,255,.19)!important;
+  box-shadow:0 18px 60px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.08)!important;
+  backdrop-filter:blur(25px) saturate(145%)!important;-webkit-backdrop-filter:blur(25px) saturate(145%)!important;
+}
+.glass-card,.kpi{background:linear-gradient(145deg,rgba(255,255,255,.095),rgba(255,255,255,.035))!important}
+.kpi:hover,.glass-card:hover,.side-quote:hover{border-color:rgba(255,255,255,.27)!important;transform:translateY(-2px);transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+.kpi,.glass-card,.side-quote,.hero,.search,.side-user{transition:transform .35s ease,border-color .35s ease,background .35s ease,box-shadow .35s ease}
+.hero:before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle,rgba(130,205,255,.12),transparent 55%);animation:heroGlow 9s ease-in-out infinite alternate;pointer-events:none}
+@keyframes heroGlow{from{transform:translate3d(-8%,0,0) scale(.9);opacity:.45}to{transform:translate3d(10%,4%,0) scale(1.1);opacity:.9}}
+.hero>*{position:relative;z-index:1}
+@media(max-width:900px){.bravo-bubble{opacity:.35}.main{padding:14px}.hero{min-height:260px}.hero-quote{position:relative;right:auto;top:auto;margin-top:20px;max-width:100%}}
+@media(prefers-reduced-motion:reduce){.bravo-bubble,.hero:before{animation:none!important}.kpi:hover,.glass-card:hover,.side-quote:hover{transform:none!important}}
+</style>
+
+<style id="bravo-42-pixel-glass">
+:root{
+ --glass42:rgba(255,255,255,.075);
+ --glass42-strong:rgba(255,255,255,.105);
+ --line42:rgba(255,255,255,.20);
+ --shine42:rgba(255,255,255,.34);
+ --blur42:34px;
+}
+html{scroll-behavior:smooth;background:#071427}
+body{
+ background:#071427!important;
+ font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,Segoe UI,Arial,sans-serif!important;
+}
+body:before{
+ content:"";position:fixed!important;inset:0!important;z-index:-20!important;
+ background:
+ linear-gradient(180deg,rgba(3,12,27,.22),rgba(3,12,27,.55)),
+ url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2400&q=90") center center/cover no-repeat!important;
+ background-attachment:fixed!important;
+ filter:saturate(1.12) contrast(1.02)!important;
+ transform:scale(1.015);
+}
+body:after{
+ content:"";position:fixed!important;inset:0!important;z-index:-19!important;pointer-events:none;
+ background:
+ radial-gradient(circle at 72% 15%,rgba(87,181,255,.24),transparent 28%),
+ radial-gradient(circle at 17% 72%,rgba(151,113,255,.15),transparent 28%),
+ linear-gradient(120deg,rgba(3,12,25,.10),rgba(20,70,130,.05) 45%,rgba(10,20,50,.28));
+ backdrop-filter:blur(1px) saturate(120%);
+}
+/* Floating glass bubbles: decorative layer only, never blocks clicks */
+.bubble-field{position:fixed;inset:0;z-index:-10;pointer-events:none;overflow:hidden;isolation:isolate}
+.bubble-field .bubble{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.24),rgba(154,217,255,.06) 38%,rgba(255,255,255,.015) 68%,transparent 72%);box-shadow:inset 8px 8px 22px rgba(255,255,255,.08),inset -10px -12px 25px rgba(63,127,255,.05),0 18px 55px rgba(0,0,0,.16);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);animation:floatBubble 13s ease-in-out infinite}
+.bubble-field .b1{width:115px;height:115px;left:17%;top:20%;animation-duration:15s}
+.bubble-field .b2{width:54px;height:54px;left:77%;top:15%;animation-duration:11s;animation-delay:-4s}
+.bubble-field .b3{width:82px;height:82px;left:5%;top:68%;animation-duration:17s;animation-delay:-7s}
+.bubble-field .b4{width:42px;height:42px;left:67%;top:72%;animation-duration:10s;animation-delay:-2s}
+.bubble-field .b5{width:70px;height:70px;left:91%;top:49%;animation-duration:14s;animation-delay:-8s}
+.bubble-field .b6{width:31px;height:31px;left:43%;top:9%;animation-duration:9s;animation-delay:-3s}
+@keyframes floatBubble{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.45}50%{transform:translate3d(18px,-28px,0) scale(1.08);opacity:.72}}
+.app-shell{max-width:1760px;grid-template-columns:252px minmax(0,1fr);min-height:100vh}
+.sidebar{
+ position:sticky!important;top:16px!important;height:calc(100vh - 32px)!important;margin:16px 0 16px 16px!important;
+ padding:20px 14px!important;border:1px solid var(--line42)!important;border-radius:30px!important;
+ background:linear-gradient(160deg,rgba(255,255,255,.105),rgba(8,21,42,.33))!important;
+ box-shadow:0 30px 90px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.13)!important;
+ backdrop-filter:blur(var(--blur42)) saturate(155%)!important;-webkit-backdrop-filter:blur(var(--blur42)) saturate(155%)!important;
+ overflow:hidden!important;
+}
+.sidebar:before,.glass-card:before,.kpi:before,.hero:before,.search:before,.side-user:before,.side-quote:before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(135deg,rgba(255,255,255,.13),transparent 25%,transparent 68%,rgba(255,255,255,.04));opacity:.75}
+.sidebar>*{position:relative;z-index:1}
+.brand{padding:8px 10px 18px!important}
+.brand-mark{width:45px!important;height:45px!important;border-radius:16px!important;background:rgba(255,255,255,.10)!important;box-shadow:0 10px 30px rgba(90,170,255,.20)!important}
+.side-nav{gap:7px!important}
+.side-nav button{border-radius:18px!important;padding:12px 12px!important;color:rgba(239,247,255,.82)!important}
+.side-nav button:hover,.side-nav button.active{background:linear-gradient(135deg,rgba(112,187,255,.24),rgba(255,255,255,.075))!important;border-color:rgba(255,255,255,.22)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 12px 35px rgba(42,119,255,.12)!important}
+.side-icon{background:rgba(255,255,255,.09)!important;border:1px solid rgba(255,255,255,.08)!important}
+.side-quote{border-radius:25px!important;background:linear-gradient(180deg,rgba(8,20,40,.08),rgba(5,18,35,.48)),url("https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=900&q=85") center/cover!important;box-shadow:0 22px 60px rgba(0,0,0,.24)!important}
+.side-user{border-radius:22px!important;background:rgba(255,255,255,.07)!important}
+.main{padding:16px 22px 56px!important}
+.topbar{margin-bottom:16px!important;position:relative;z-index:5}
+.search{height:48px!important;max-width:620px!important;border-radius:25px!important;background:rgba(255,255,255,.075)!important;border:1px solid rgba(255,255,255,.20)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 15px 45px rgba(0,0,0,.10)!important;backdrop-filter:blur(28px) saturate(150%)!important}
+.search input{font-size:12px!important}
+.glass-btn,.role{border-color:rgba(255,255,255,.20)!important;background:rgba(255,255,255,.075)!important;backdrop-filter:blur(22px)!important;-webkit-backdrop-filter:blur(22px)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.10)!important}
+.hero{
+ min-height:235px!important;border-radius:34px!important;padding:32px 34px!important;
+ background:linear-gradient(90deg,rgba(3,14,30,.36),rgba(5,17,35,.07))!important;
+ border:1px solid rgba(255,255,255,.18)!important;box-shadow:0 30px 100px rgba(0,0,0,.20)!important;
+ backdrop-filter:blur(12px) saturate(125%)!important;-webkit-backdrop-filter:blur(12px) saturate(125%)!important;
+}
+.hero:after{content:"✦"!important;right:22%;top:5px!important;font-size:130px!important;color:rgba(255,255,255,.035)!important}
+.hero h1{font-size:clamp(44px,5vw,70px)!important;letter-spacing:-3.6px!important;text-shadow:0 8px 35px rgba(0,0,0,.28)!important}
+.hero p{font-size:15px!important;color:rgba(235,244,255,.84)!important}
+.hero-quote{background:rgba(255,255,255,.09)!important;border-color:rgba(255,255,255,.18)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 18px 60px rgba(0,0,0,.15)!important;backdrop-filter:blur(28px) saturate(150%)!important}
+.pill{background:rgba(255,255,255,.075)!important;border-color:rgba(255,255,255,.17)!important;backdrop-filter:blur(20px)!important}
+.kpis{gap:14px!important;margin-top:14px!important}
+.kpi,.glass-card{
+ border-radius:28px!important;
+ background:linear-gradient(145deg,rgba(255,255,255,.095),rgba(6,18,37,.28))!important;
+ border:1px solid rgba(255,255,255,.19)!important;
+ box-shadow:0 26px 75px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.12)!important;
+ backdrop-filter:blur(32px) saturate(145%)!important;-webkit-backdrop-filter:blur(32px) saturate(145%)!important;
+}
+.kpi{padding:20px!important;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,border-color .35s ease!important}
+.kpi:hover{transform:translateY(-5px)!important;box-shadow:0 35px 90px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.16)!important;border-color:rgba(255,255,255,.27)!important}
+.kpi:after{background:radial-gradient(circle,rgba(112,192,255,.16),transparent 68%)!important}
+.kpi-icon{background:rgba(255,255,255,.095)!important;border-color:rgba(255,255,255,.17)!important}
+.grid-main,.dashboard-bottom{gap:14px!important;margin-top:14px!important}
+.card-head{padding:20px 21px 12px!important}
+.bar-chart{border-bottom-color:rgba(255,255,255,.10)!important}
+.chart-bar{box-shadow:0 0 25px rgba(95,225,179,.14)!important}
+.status-list{gap:12px!important}
+.dashboard-bottom .glass-card{min-height:100%}
+.v2-timeline-row{transition:background .25s ease,transform .25s ease;border-radius:14px;padding-left:10px;padding-right:10px}
+.v2-timeline-row:hover{background:rgba(255,255,255,.045);transform:translateX(3px)}
+.donut{box-shadow:0 0 55px rgba(85,215,183,.12)!important}
+.quick{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.15)!important;backdrop-filter:blur(20px)!important;transition:.25s ease!important}
+.quick:hover{background:rgba(116,186,255,.14)!important;box-shadow:0 12px 30px rgba(70,140,255,.12)!important}
+.member-grid{gap:12px!important}
+.b30-person{background:rgba(255,255,255,.055)!important;border-color:rgba(255,255,255,.13)!important;backdrop-filter:blur(20px)!important;transition:.3s cubic-bezier(.2,.8,.2,1)!important}
+.b30-person:hover{transform:translateY(-4px) scale(1.01)!important;background:rgba(112,183,255,.10)!important;border-color:rgba(150,215,255,.27)!important;box-shadow:0 18px 45px rgba(0,0,0,.16)!important}
+.control{background:rgba(255,255,255,.065)!important;border-color:rgba(255,255,255,.18)!important;backdrop-filter:blur(18px)!important}
+.modal-card,.login-card{background:rgba(9,24,44,.72)!important;border-color:rgba(255,255,255,.20)!important;backdrop-filter:blur(34px) saturate(150%)!important;-webkit-backdrop-filter:blur(34px) saturate(150%)!important}
+.toast{background:rgba(9,25,45,.68)!important;backdrop-filter:blur(30px)!important}
+.footer{opacity:.72}
+/* Add a gentle glass sheen on scrollable content while keeping background stationary */
+.main:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-5;background:radial-gradient(circle at 80% 30%,rgba(255,255,255,.035),transparent 24%),radial-gradient(circle at 35% 80%,rgba(75,150,255,.045),transparent 25%)}
+@media(max-width:860px){.sidebar{top:auto!important;bottom:10px!important;left:10px!important;right:10px!important;margin:0!important;height:auto!important;border-radius:25px!important;background:rgba(7,18,35,.60)!important}.main{padding:10px 12px 95px!important}.hero{min-height:220px!important}.hero-quote{display:none}.bubble-field .b1{left:8%;top:18%}.bubble-field .b3{left:2%;top:72%}.bubble-field .b5{right:0;left:auto}.kpi,.glass-card{border-radius:24px!important}}
+@media(prefers-reduced-motion:reduce){.bubble-field .bubble,.kpi,.b30-person,.quick,.v2-timeline-row{animation:none!important;transition:none!important}.bubble-field{display:none}}
+</style>
+</head><body>
+<div class="bubble-field" aria-hidden="true">
+  <span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span>
+  <span class="bubble b4"></span><span class="bubble b5"></span><span class="bubble b6"></span>
+</div>
+
+<div class="bravo-bubbles" aria-hidden="true">
+  <span class="bravo-bubble" style="left:5%;width:88px;height:88px;animation-duration:24s;animation-delay:-7s"></span>
+  <span class="bravo-bubble" style="left:18%;width:44px;height:44px;animation-duration:19s;animation-delay:-12s"></span>
+  <span class="bravo-bubble" style="left:31%;width:120px;height:120px;animation-duration:29s;animation-delay:-18s"></span>
+  <span class="bravo-bubble" style="left:47%;width:58px;height:58px;animation-duration:22s;animation-delay:-3s"></span>
+  <span class="bravo-bubble" style="left:61%;width:98px;height:98px;animation-duration:27s;animation-delay:-15s"></span>
+  <span class="bravo-bubble" style="left:76%;width:52px;height:52px;animation-duration:20s;animation-delay:-9s"></span>
+  <span class="bravo-bubble" style="left:88%;width:145px;height:145px;animation-duration:31s;animation-delay:-22s"></span>
+</div>
+<div class="app-shell">
 <aside class="sidebar">
   <div class="brand"><div class="brand-mark">✈</div><div><div class="brand-title">BRAVO CLASS</div><div class="brand-sub">FINANCIAL SYSTEM</div></div><span class="version">v4.0</span></div>
   <nav class="side-nav">
@@ -1040,4 +1225,17 @@ setupV2();
 })();
 </script>
 <script>initAplikasi();</script>
+
+<script id="bravo-bubble-enhancer">
+(function(){
+  const bubbles=[...document.querySelectorAll('.bravo-bubble')];
+  bubbles.forEach((b,i)=>{
+    b.style.filter='blur('+(i%3===0?'0.2px':'0px')+')';
+    b.addEventListener('animationiteration',()=>{
+      const drift=(Math.random()*90-45).toFixed(1);
+      b.style.marginLeft=drift+'px';
+    });
+  });
+})();
+</script>
 </body></html>
