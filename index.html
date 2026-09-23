@@ -235,6 +235,27 @@ footer{border-top:1px solid var(--line)}
 body.light-mode{background:#eef6ff!important;color:#10213a!important}body.light-mode .card-genz,body.light-mode .analytics-panel{background:rgba(255,255,255,.82)!important;color:#10213a}body.light-mode p,body.light-mode .analytics-caption,body.light-mode .chart-label{color:#5b6f89!important}body.light-mode input,body.light-mode select{background:#fff!important;color:#10213a!important;border-color:#cbd5e1!important}
 @media(max-width:820px){.analytics-grid{grid-template-columns:1fr}.section-heading{flex-direction:column}.monthly-chart{height:210px}.chart-bars{height:150px}.toast-container{left:14px;right:14px;bottom:14px}.toast{min-width:0;max-width:none}}
 </style>
+<style>
+/* ===== BRAVO 3.0 UPGRADE ===== */
+.b30-section{margin-top:22px}
+.b30-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:18px}
+.b30-head h2{margin:6px 0 5px;font-size:25px}.b30-head p{margin:0;color:#8ea4bf;line-height:1.6}
+.b30-pill{padding:8px 12px;border:1px solid rgba(103,232,249,.22);border-radius:999px;color:#67e8f9;background:rgba(56,189,248,.07);font-size:10px;font-weight:900;white-space:nowrap}
+.b30-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.b30-card{padding:18px;border:1px solid rgba(148,163,184,.14);border-radius:20px;background:linear-gradient(145deg,rgba(15,30,52,.82),rgba(8,17,31,.7));box-shadow:0 14px 35px rgba(0,0,0,.16)}
+.b30-card small{display:block;color:#7189a3;font-size:9px;font-weight:900;letter-spacing:1.3px}.b30-card strong{display:block;font-size:24px;margin-top:8px;color:#eaf7ff}.b30-card span{display:block;color:#8299b2;font-size:11px;margin-top:5px}
+.b30-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}.b30-btn{border:1px solid rgba(103,232,249,.2);background:rgba(8,22,39,.72);color:#dff9ff;padding:11px 14px;border-radius:13px;font-weight:900;font-size:11px;cursor:pointer}.b30-btn:hover{transform:translateY(-1px);border-color:#38bdf8}.b30-btn.primary{background:linear-gradient(135deg,#0891b2,#2563eb);border-color:transparent}.b30-btn.warn{background:rgba(245,158,11,.09);color:#fbbf24}
+.b30-report{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.b30-report-box{padding:20px;border-radius:20px;border:1px solid rgba(148,163,184,.13);background:rgba(8,17,31,.58)}
+.b30-progress{height:10px;border-radius:99px;background:rgba(148,163,184,.12);overflow:hidden;margin-top:12px}.b30-progress i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22d3ee,#2563eb);width:0;transition:width .5s}
+.b30-member-search{display:flex;gap:8px;margin-bottom:15px}.b30-member-search input{flex:1;min-width:0}.b30-member-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-height:520px;overflow:auto;padding-right:4px}.b30-person{padding:14px;border-radius:17px;border:1px solid rgba(148,163,184,.12);background:rgba(15,30,52,.55);cursor:pointer;transition:.2s}.b30-person:hover{border-color:rgba(56,189,248,.45);transform:translateY(-2px)}.b30-person-top{display:flex;gap:10px;align-items:center}.b30-avatar{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,#0e7490,#4f46e5);color:white;font-size:11px;font-weight:900}.b30-person h4{margin:0;font-size:12px}.b30-person p{margin:3px 0 0;color:#7189a3;font-size:9px}.b30-person-bottom{display:flex;justify-content:space-between;gap:8px;margin-top:12px;font-size:10px}.b30-person-bottom span{color:#7189a3}.b30-person-bottom strong{color:#dff9ff}
+.b30-empty{text-align:center;padding:28px;color:#7189a3;font-size:12px}
+.b30-modal{position:fixed;inset:0;background:rgba(2,8,18,.78);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:18px;z-index:9999}.b30-modal.show{display:flex}.b30-modal-card{width:min(760px,100%);max-height:90vh;overflow:auto;background:linear-gradient(145deg,#0c1a2d,#07111f);border:1px solid rgba(103,232,249,.22);border-radius:25px;box-shadow:0 30px 90px rgba(0,0,0,.5);padding:24px}.b30-modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px}.b30-modal-head h2{margin:4px 0}.b30-close{width:38px;height:38px;border-radius:12px;border:1px solid rgba(148,163,184,.15);background:rgba(255,255,255,.04);color:#dbeafe;cursor:pointer}.b30-receipt{margin-top:18px;border:1px dashed rgba(103,232,249,.25);border-radius:18px;padding:20px;background:rgba(255,255,255,.025)}.b30-receipt-line{display:flex;justify-content:space-between;gap:20px;padding:9px 0;border-bottom:1px solid rgba(148,163,184,.08);font-size:12px}.b30-receipt-line:last-child{border-bottom:0}.b30-receipt-line span{color:#7189a3}.b30-receipt-line strong{text-align:right;color:#e6f7ff}.b30-receipt-total{font-size:22px!important;color:#67e8f9!important}
+.b30-install{position:fixed;right:18px;bottom:18px;z-index:9000;display:none;align-items:center;gap:10px;padding:12px 14px;border:1px solid rgba(103,232,249,.22);border-radius:17px;background:rgba(7,17,31,.92);backdrop-filter:blur(14px);box-shadow:0 16px 45px rgba(0,0,0,.35)}.b30-install.show{display:flex}.b30-install small{color:#9fb3c9;display:block}.b30-install strong{font-size:12px}.b30-install button{border:0;border-radius:10px;padding:9px 12px;background:#0ea5e9;color:#fff;font-weight:900;cursor:pointer}
+@media(max-width:900px){.b30-grid{grid-template-columns:repeat(2,1fr)}.b30-report{grid-template-columns:1fr}.b30-member-list{grid-template-columns:1fr}}
+@media(max-width:560px){.b30-head{display:block}.b30-pill{display:inline-block;margin-top:12px}.b30-grid{grid-template-columns:1fr}.b30-actions{display:grid;grid-template-columns:1fr 1fr}.b30-btn{width:100%}.b30-install{left:12px;right:12px;bottom:12px;justify-content:space-between}}
+@media print{.b30-install,.b30-modal,.b30-actions{display:none!important}.b30-section{break-inside:avoid}}
+</style>
+
 </head>
 <body>
 
@@ -533,6 +554,60 @@ body.light-mode{background:#eef6ff!important;color:#10213a!important}body.light-
 <article class="member-card"><div class="member-no">36</div><div><h3>WAHYU DWI NUR ANGGRAINI</h3><p>Taruna Bravo • D4 Manajemen Transportasi Udara</p></div></article>
     </div>
   </section>
+
+
+  <!-- ===== BRAVO 3.0: REPORT & MEMBER COMMAND ===== -->
+  <section class="card-genz b30-section" id="bravo-command-30">
+    <div class="b30-head">
+      <div>
+        <div class="hero-kicker">BRAVO COMMAND CENTER 3.0</div>
+        <h2>🚦 Financial Control Deck</h2>
+        <p>Panel ringkas untuk membaca kesehatan data, membuat laporan, dan membuka detail transaksi tanpa mengubah database.</p>
+      </div>
+      <span class="b30-pill">LIVE • SUPABASE</span>
+    </div>
+    <div class="b30-grid">
+      <div class="b30-card"><small>CATATAN TERBARU</small><strong id="b30LatestCode">BRV-2026-0000</strong><span id="b30LatestInfo">Menunggu data transaksi...</span></div>
+      <div class="b30-card"><small>ANGGOTA TERCATAT</small><strong id="b30RecordedCount">0 / 36</strong><span id="b30RecordedInfo">Belum dihitung</span></div>
+      <div class="b30-card"><small>RASIO KAS MASUK</small><strong id="b30IncomeRatio">0%</strong><span>Proporsi pemasukan dari total arus kas</span></div>
+      <div class="b30-card"><small>UPDATE TERAKHIR</small><strong id="b30UpdatedAt">—</strong><span id="b30UpdatedAgo">Data tersinkron dari dashboard</span></div>
+    </div>
+    <div class="b30-actions">
+      <button class="b30-btn primary" id="b30MonthlyReport">📄 Laporan Bulanan</button>
+      <button class="b30-btn" id="b30LatestReceipt">🧾 Bukti Transaksi</button>
+      <button class="b30-btn" id="b30ScrollMembers">👥 Direktori Anggota</button>
+      <button class="b30-btn" id="b30Refresh">↻ Sinkronkan Data</button>
+    </div>
+  </section>
+
+  <section class="card-genz b30-section" id="bravo-member-directory">
+    <div class="b30-head">
+      <div>
+        <div class="hero-kicker">MEMBER FINANCIAL DIRECTORY</div>
+        <h2>👥 Direktori Keuangan Anggota</h2>
+        <p>Klik kartu anggota untuk membuka ringkasan transaksi yang sudah tercatat.</p>
+      </div>
+      <span class="b30-pill">36 TARUNA</span>
+    </div>
+    <div class="b30-member-search">
+      <input id="b30MemberSearch" type="search" placeholder="🔎 Cari nama atau NIT..." autocomplete="off">
+      <button class="b30-btn" id="b30MemberReset">Reset</button>
+    </div>
+    <div class="b30-member-list" id="b30MemberList"></div>
+  </section>
+
+  <div class="b30-install" id="b30InstallCard">
+    <div><strong>✈️ Bravo Mobile Mode</strong><small>Gunakan dashboard seperti aplikasi di HP.</small></div>
+    <button id="b30InstallDismiss">Tutup</button>
+  </div>
+
+  <div class="b30-modal" id="b30Modal">
+    <div class="b30-modal-card">
+      <div class="b30-modal-head"><div><div class="hero-kicker">BRAVO DIGITAL REPORT</div><h2 id="b30ModalTitle">Laporan Kas</h2></div><button class="b30-close" id="b30ModalClose">✕</button></div>
+      <div id="b30ModalContent"></div>
+      <div class="b30-actions"><button class="b30-btn primary" id="b30ModalPrint">🖨️ Cetak / Simpan PDF</button><button class="b30-btn" id="b30ModalClose2">Tutup</button></div>
+    </div>
+  </div>
 
   <section class="card-genz">
     <div class="hero-kicker">BRAVO PRINCIPLES</div>
@@ -1408,6 +1483,78 @@ function setupV2(){
   setTimeout(v2Render,250);
 }
 setupV2();
+
+
+<script>
+/* ===== BRAVO 3.0 ENGINE ===== */
+(function(){
+  const MEMBERS = (typeof BRAVO_MEMBERS_V2 !== 'undefined') ? BRAVO_MEMBERS_V2 : [];
+  const $ = id => document.getElementById(id);
+  const rup = n => 'Rp ' + new Intl.NumberFormat('id-ID').format(Number(n)||0);
+  const esc = s => String(s ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  function rows(){return Array.isArray(window.transaksiList)?window.transaksiList:[]}
+  function code(t){return typeof getTransactionCode==='function'?getTransactionCode(t):('BRV-2026-'+String(t?.id||0).padStart(4,'0'))}
+  function openModal(title,html){$('b30ModalTitle').textContent=title;$('b30ModalContent').innerHTML=html;$('b30Modal').classList.add('show')}
+  function closeModal(){$('b30Modal').classList.remove('show')}
+  function latest(){return rows().slice().sort((a,b)=>String(b.tanggal||'').localeCompare(String(a.tanggal||''))||Number(b.id||0)-Number(a.id||0))[0]}
+  function render30(){
+    const data=rows(); let income=0,out=0;
+    data.forEach(t=>t.jenis==='masuk'?income+=Number(t.nominal)||0:out+=Number(t.nominal)||0);
+    const recorded=new Set(data.filter(t=>t.jenis==='masuk').map(t=>String(t.keterangan||'').trim()).filter(Boolean));
+    const totalFlow=income+out;
+    $('b30RecordedCount').textContent=recorded.size+' / '+MEMBERS.length;
+    $('b30RecordedInfo').textContent=recorded.size?`${Math.max(0,MEMBERS.length-recorded.size)} anggota belum punya catatan pemasukan.`:'Belum ada catatan pemasukan anggota.';
+    $('b30IncomeRatio').textContent=(totalFlow?(income/totalFlow*100:0).toFixed(1):'0')+'%';
+    const t=latest();
+    if(t){$('b30LatestCode').textContent=code(t);$('b30LatestInfo').textContent=`${t.keterangan||'Transaksi'} • ${t.jenis==='masuk'?'+':'−'} ${rup(t.nominal)}`;$('b30UpdatedAt').textContent=typeof formatTanggal==='function'?formatTanggal(t.tanggal):t.tanggal;$('b30UpdatedAgo').textContent='Transaksi terbaru yang tersimpan';}
+    else{$('b30LatestCode').textContent='BRV-2026-0000';$('b30LatestInfo').textContent='Belum ada transaksi.';$('b30UpdatedAt').textContent='—';$('b30UpdatedAgo').textContent='Belum ada data.'}
+    renderMembers();
+  }
+  function initials(name){return String(name).split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
+  function renderMembers(){
+    const box=$('b30MemberList');if(!box)return;const q=($('b30MemberSearch')?.value||'').toLowerCase().trim();box.innerHTML='';
+    MEMBERS.forEach(([name,nit])=>{
+      if(q && !(name+' '+nit).toLowerCase().includes(q))return;
+      const incoming=rows().filter(t=>t.jenis==='masuk'&&String(t.keterangan||'').trim()===name);
+      const total=incoming.reduce((s,t)=>s+(Number(t.nominal)||0),0);
+      const last=incoming.slice().sort((a,b)=>String(b.tanggal||'').localeCompare(String(a.tanggal||''))||Number(b.id||0)-Number(a.id||0))[0];
+      const el=document.createElement('article');el.className='b30-person';
+      el.innerHTML=`<div class="b30-person-top"><div class="b30-avatar">${initials(name)}</div><div><h4>${esc(name)}</h4><p>NIT ${esc(nit)}</p></div></div><div class="b30-person-bottom"><div><span>Total tercatat</span><strong>${rup(total)}</strong></div><div><span>Transaksi</span><strong>${incoming.length}x</strong></div><div><span>Terakhir</span><strong>${last?(typeof formatTanggal==='function'?formatTanggal(last.tanggal):last.tanggal):'—'}</strong></div></div>`;
+      el.addEventListener('click',()=>memberReport(name,nit,incoming,total));box.appendChild(el);
+    });
+    if(!box.children.length)box.innerHTML='<div class="b30-empty" style="grid-column:1/-1">Anggota tidak ditemukan.</div>';
+  }
+  function memberReport(name,nit,incoming,total){
+    const list=incoming.slice().sort((a,b)=>String(b.tanggal||'').localeCompare(String(a.tanggal||''))||Number(b.id||0)-Number(a.id||0));
+    const items=list.length?list.map(t=>`<div class="b30-receipt-line"><span>${typeof formatTanggal==='function'?formatTanggal(t.tanggal):esc(t.tanggal)} • ${code(t)}</span><strong>${rup(t.nominal)}</strong></div>`).join(''):'<div class="b30-empty">Belum ada transaksi kas masuk untuk anggota ini.</div>';
+    openModal('Profil Keuangan Anggota',`<div class="b30-receipt"><div class="b30-receipt-line"><span>Nama</span><strong>${esc(name)}</strong></div><div class="b30-receipt-line"><span>NIT</span><strong>${esc(nit)}</strong></div><div class="b30-receipt-line"><span>Total tercatat</span><strong class="b30-receipt-total">${rup(total)}</strong></div><div class="b30-receipt-line"><span>Jumlah transaksi</span><strong>${list.length}x</strong></div><hr style="border:0;border-top:1px solid rgba(148,163,184,.1);margin:8px 0">${items}</div>`);
+  }
+  function monthlyReport(){
+    const data=rows(); const now=new Date(); const key=(now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0'));
+    const monthData=data.filter(t=>String(t.tanggal||'').slice(0,7)===key);let income=0,out=0;monthData.forEach(t=>t.jenis==='masuk'?income+=Number(t.nominal)||0:out+=Number(t.nominal)||0);
+    const balance=income-out; const title=now.toLocaleDateString('id-ID',{month:'long',year:'numeric'});
+    const trs=monthData.slice().sort((a,b)=>String(a.tanggal||'').localeCompare(String(b.tanggal||''))).map(t=>`<div class="b30-receipt-line"><span>${typeof formatTanggal==='function'?formatTanggal(t.tanggal):esc(t.tanggal)} • ${esc(t.keterangan||'-')}</span><strong>${t.jenis==='masuk'?'+':'−'} ${rup(t.nominal)}</strong></div>`).join('')||'<div class="b30-empty">Belum ada transaksi pada bulan berjalan.</div>';
+    openModal('Laporan Bulanan • '+title,`<div class="b30-grid"><div class="b30-card"><small>KAS MASUK</small><strong>${rup(income)}</strong></div><div class="b30-card"><small>KAS KELUAR</small><strong>${rup(out)}</strong></div><div class="b30-card"><small>SALDO PERIODE</small><strong>${rup(balance)}</strong></div><div class="b30-card"><small>TRANSAKSI</small><strong>${monthData.length}</strong></div></div><div class="b30-receipt" style="margin-top:14px">${trs}</div>`);
+  }
+  function latestReceipt(){
+    const t=latest(); if(!t){openModal('Bukti Transaksi','<div class="b30-empty">Belum ada transaksi.</div>');return}
+    openModal('Bukti Transaksi Digital',`<div class="b30-receipt"><div style="text-align:center;margin-bottom:12px"><div style="font-size:30px">✈️</div><strong style="font-size:15px">KAS KELAS BRAVO</strong><div style="font-size:10px;color:#7189a3;margin-top:3px">Financial Flight Log</div></div><div class="b30-receipt-line"><span>Kode transaksi</span><strong>${code(t)}</strong></div><div class="b30-receipt-line"><span>Tanggal</span><strong>${typeof formatTanggal==='function'?formatTanggal(t.tanggal):esc(t.tanggal)}</strong></div><div class="b30-receipt-line"><span>Keterangan</span><strong>${esc(t.keterangan||'-')}</strong></div><div class="b30-receipt-line"><span>Jenis</span><strong>${t.jenis==='masuk'?'KAS MASUK':'KAS KELUAR'}</strong></div><div class="b30-receipt-line"><span>Nominal</span><strong class="b30-receipt-total">${t.jenis==='masuk'?'+':'−'} ${rup(t.nominal)}</strong></div><div class="b30-receipt-line"><span>Status</span><strong>TERCATAT DI DATABASE</strong></div></div>`);
+  }
+  function bind(){
+    $('b30MemberSearch')?.addEventListener('input',renderMembers);$('b30MemberReset')?.addEventListener('click',()=>{$('b30MemberSearch').value='';renderMembers()});
+    $('b30MonthlyReport')?.addEventListener('click',monthlyReport);$('b30LatestReceipt')?.addEventListener('click',latestReceipt);$('b30ScrollMembers')?.addEventListener('click',()=>$('bravo-member-directory')?.scrollIntoView({behavior:'smooth'}));
+    $('b30Refresh')?.addEventListener('click',async()=>{if(typeof loadTransaksiDariSupabase==='function'){showToast?.('Menyinkronkan data...','success');await loadTransaksiDariSupabase();render30();showToast?.('Data Bravo berhasil disinkronkan.','success')}});
+    $('b30ModalClose')?.addEventListener('click',closeModal);$('b30ModalClose2')?.addEventListener('click',closeModal);$('b30Modal')?.addEventListener('click',e=>{if(e.target.id==='b30Modal')closeModal()});$('b30ModalPrint')?.addEventListener('click',()=>window.print());
+    $('b30InstallDismiss')?.addEventListener('click',()=>{$('b30InstallCard').classList.remove('show');localStorage.setItem('bravo30_notice','1')});
+  }
+  bind(); setTimeout(render30,400); setTimeout(render30,1200);
+  const oldRender=window.updateTampilanSistem;
+  if(typeof oldRender==='function') window.updateTampilanSistem=function(){const r=oldRender.apply(this,arguments);setTimeout(render30,80);return r};
+  const oldInit=window.initAplikasi;
+  if(typeof oldInit==='function') window.initAplikasi=async function(){const r=await oldInit.apply(this,arguments);setTimeout(render30,100);return r};
+  setTimeout(()=>{if(!localStorage.getItem('bravo30_notice'))$('b30InstallCard')?.classList.add('show')},2500);
+})();
+</script>
 
 initAplikasi();
 </script>
