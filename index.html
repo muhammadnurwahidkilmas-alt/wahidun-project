@@ -133,6 +133,40 @@ footer{border-top:1px solid var(--line)}
   .summary-container{grid-template-columns:1fr}.member-grid{grid-template-columns:1fr}.hero-panel h2{font-size:29px}.hero-balance{font-size:27px}
   .stats-grid{grid-template-columns:1fr 1fr}.quick-menu{grid-template-columns:1fr 1fr}
 }
+
+/* ===== BRAVO PRO FEATURES ===== */
+.feature-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0}
+.search-box{flex:1;min-width:220px}
+.search-box input,.filter-select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(2,8,23,.65);color:#e5eefb;outline:none}
+.filter-select{width:auto;min-width:170px}
+.search-box input:focus,.filter-select:focus{border-color:rgba(34,211,238,.55);box-shadow:0 0 0 3px rgba(34,211,238,.08)}
+.feature-btn{padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#dbeafe;font-weight:800;cursor:pointer}
+.feature-btn:hover{background:rgba(56,189,248,.1);transform:translateY(-1px)}
+.flight-panel{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.flight-card{padding:17px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}
+.flight-card small{display:block;color:var(--muted);font-size:10px;letter-spacing:1.4px;font-weight:900;margin-bottom:7px}
+.flight-card strong{font-size:20px}
+.flight-online{color:#6ee7b7}.flight-balance{color:#67e8f9}
+.member-row{cursor:pointer}
+.member-detail{display:none;margin-top:15px;padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(2,8,23,.35)}
+.member-detail.show{display:block}
+.member-detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.detail-stat{padding:14px;border-radius:13px;background:rgba(255,255,255,.035)}
+.detail-stat span{display:block;color:var(--muted);font-size:10px;font-weight:800;margin-bottom:5px}.detail-stat strong{font-size:17px}
+.export-menu{display:flex;gap:8px;flex-wrap:wrap}
+.notice{padding:12px 14px;border:1px solid rgba(34,211,238,.15);border-radius:12px;background:rgba(34,211,238,.05);color:#bae6fd;font-size:12px}
+.no-results{padding:25px;text-align:center;color:var(--muted)}
+@media(max-width:680px){.flight-panel,.member-detail-grid{grid-template-columns:1fr}.filter-select{width:100%}}
+
+
+@media print{
+  body{background:#fff!important;color:#111!important}
+  .navbar,#loginSection,.quick-menu,#form-input,#btnHapusData,.feature-toolbar,.hero-actions,footer{display:none!important}
+  .card-genz{box-shadow:none!important;border:1px solid #ddd!important;background:#fff!important;color:#111!important}
+  header{padding:20px}.container{max-width:none}
+  table{min-width:0}th,td{color:#111!important}
+}
+
 </style>
 </head>
 <body>
@@ -189,7 +223,7 @@ footer{border-top:1px solid var(--line)}
       <div class="mini-stat income"><span>↗ KAS MASUK</span><strong id="heroMasuk">Rp 0</strong></div>
       <div class="mini-stat expense"><span>↘ KAS KELUAR</span><strong id="heroKeluar">Rp 0</strong></div>
       <div class="mini-stat balance"><span>◈ TRANSAKSI</span><strong id="heroTransaksi">0</strong></div>
-      <div class="mini-stat members"><span>♟ ANGGOTA AKTIF</span><strong id="heroAnggota">0 / 36</strong></div>
+      <div class="mini-stat members"><span>♟ ANGGOTA TERCATAT</span><strong id="heroAnggota">0 / 36</strong></div>
     </div>
   </section>
 
@@ -198,6 +232,20 @@ footer{border-top:1px solid var(--line)}
     <a class="quick-item" href="#tabungan-siswa"><div class="quick-icon">💰</div><strong>Tabungan</strong><span>Pantau pembayaran anggota</span></a>
     <a class="quick-item" href="#tabel-data"><div class="quick-icon">📑</div><strong>Riwayat</strong><span>Lihat seluruh transaksi</span></a>
     <a class="quick-item" href="#daftar-anggota"><div class="quick-icon">👥</div><strong>Anggota</strong><span>Daftar Taruna Bravo</span></a>
+  </section>
+
+
+  <section class="card-genz">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:15px;">
+      <div><div class="hero-kicker">BRAVO FLIGHT STATUS</div><h2 style="margin-top:8px;">✈️ Financial Command Status</h2></div>
+      <span id="systemStatusCopy" class="system-status online">● ONLINE</span>
+    </div>
+    <div class="flight-panel" style="margin-top:18px;">
+      <div class="flight-card"><small>BALANCE</small><strong id="flightBalance" class="flight-balance">Rp 0</strong></div>
+      <div class="flight-card"><small>TRANSACTIONS</small><strong id="flightTransactions">0</strong></div>
+      <div class="flight-card"><small>ANGGOTA TERCATAT</small><strong id="flightMembers">0 / 36</strong></div>
+      <div class="flight-card"><small>LAST UPDATE</small><strong id="flightUpdate">-</strong></div>
+    </div>
   </section>
 
   <section class="card-genz">
@@ -268,6 +316,17 @@ footer{border-top:1px solid var(--line)}
     <h2>💰 Tabungan Anggota Kelas</h2>
     <p>Total pembayaran kas yang tercatat untuk setiap anggota.</p>
     <div id="boxRekapSiswa"></div>
+    <div id="memberDetail" class="member-detail">
+      <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;">
+        <div><div class="hero-kicker">MEMBER PROFILE</div><h3 id="memberDetailName" style="margin:7px 0 0;">-</h3></div>
+        <button type="button" id="closeMemberDetail" class="feature-btn">Tutup</button>
+      </div>
+      <div class="member-detail-grid" style="margin-top:15px;">
+        <div class="detail-stat"><span>TOTAL KAS MASUK</span><strong id="memberDetailTotal">Rp 0</strong></div>
+        <div class="detail-stat"><span>JUMLAH TRANSAKSI</span><strong id="memberDetailCount">0</strong></div>
+        <div class="detail-stat"><span>TRANSAKSI TERAKHIR</span><strong id="memberDetailLast">-</strong></div>
+      </div>
+    </div>
   </section>
 
   <section class="card-genz full-width" id="tabel-data">
@@ -283,6 +342,27 @@ footer{border-top:1px solid var(--line)}
       <div class="chart-bar-wrapper"><div class="chart-label"><span style="color:#86efac;">Total Pemasukan</span><span id="labelPersenMasuk">0%</span></div><div class="chart-track"><div class="chart-fill fill-masuk" id="barMasuk"></div></div></div>
       <div class="chart-bar-wrapper"><div class="chart-label"><span style="color:#fca5a5;">Total Pengeluaran</span><span id="labelPersenKeluar">0%</span></div><div class="chart-track"><div class="chart-fill fill-keluar" id="barKeluar"></div></div></div>
     </div>
+
+    <div class="feature-toolbar">
+      <div class="search-box">
+        <input id="searchTransaksi" type="search" placeholder="🔎 Cari nama atau keterangan...">
+      </div>
+      <select id="filterBulan" class="filter-select">
+        <option value="all">Semua Bulan</option>
+      </select>
+      <select id="filterJenis" class="filter-select">
+        <option value="all">Semua Jenis</option>
+        <option value="masuk">Kas Masuk</option>
+        <option value="keluar">Kas Keluar</option>
+      </select>
+      <button type="button" id="resetFilter" class="feature-btn">↻ Reset</button>
+      <div class="export-menu">
+        <button type="button" id="exportCsv" class="feature-btn">📥 CSV</button>
+        <button type="button" id="printReport" class="feature-btn">🖨️ Cetak</button>
+      </div>
+    </div>
+    <div id="filterInfo" class="notice">Menampilkan seluruh transaksi.</div>
+
     <div class="table-wrapper">
       <table id="tabelTransaksi">
         <thead><tr><th>Tanggal</th><th>Nama / Keterangan</th><th>Kas Masuk</th><th>Kas Keluar</th><th>Aksi</th></tr></thead>
@@ -936,6 +1016,15 @@ function renderProDashboard() {
   }
 }
 
+
+const _updateTampilanSistemOriginal = updateTampilanSistem;
+updateTampilanSistem = function() {
+  _updateTampilanSistemOriginal();
+  setupMonthFilter();
+  renderFilteredTable();
+  updateFeatureStatus();
+};
+
 loginButton.addEventListener("click", prosesLogin);
 loginPassword.addEventListener("keydown", event => {
   if (event.key === "Enter") prosesLogin();
@@ -980,6 +1069,139 @@ async function initAplikasi() {
     pesanLogin("Koneksi sistem gagal dibuat. Refresh halaman.", "error");
   }
 }
+
+
+/* ===== BRAVO PRO FEATURES ===== */
+let activeSearch = "";
+let activeMonth = "all";
+let activeJenis = "all";
+
+function getFilteredTransaksi() {
+  return transaksiList.filter(item => {
+    const q = activeSearch.toLowerCase();
+    const matchesSearch = !q || String(item.keterangan || "").toLowerCase().includes(q);
+    const matchesJenis = activeJenis === "all" || item.jenis === activeJenis;
+    const matchesMonth = activeMonth === "all" || String(item.tanggal || "").slice(0,7) === activeMonth;
+    return matchesSearch && matchesJenis && matchesMonth;
+  });
+}
+
+function setupMonthFilter() {
+  const select = document.getElementById("filterBulan");
+  if (!select) return;
+
+  const months = [...new Set(transaksiList.map(t => String(t.tanggal || "").slice(0,7)).filter(Boolean))]
+    .sort().reverse();
+
+  const old = select.value;
+  select.innerHTML = '<option value="all">Semua Bulan</option>';
+
+  months.forEach(month => {
+    const [year, mon] = month.split("-");
+    const d = new Date(Number(year), Number(mon)-1, 1);
+    const opt = document.createElement("option");
+    opt.value = month;
+    opt.textContent = d.toLocaleDateString("id-ID", {month:"long", year:"numeric"});
+    select.appendChild(opt);
+  });
+
+  if ([...select.options].some(o => o.value === old)) select.value = old;
+}
+
+function updateFeatureStatus() {
+  const totalMasuk = transaksiList.filter(t => t.jenis === "masuk").reduce((s,t)=>s+(Number(t.nominal)||0),0);
+  const totalKeluar = transaksiList.filter(t => t.jenis === "keluar").reduce((s,t)=>s+(Number(t.nominal)||0),0);
+  const saldo = totalMasuk-totalKeluar;
+  const anggota = new Set(transaksiList.filter(t=>t.jenis==="masuk" && daftarSiswa.includes(t.keterangan)).map(t=>t.keterangan)).size;
+
+  const set = (id,val) => { const e=document.getElementById(id); if(e)e.textContent=val; };
+  set("flightBalance","Rp "+formatRupiah(saldo));
+  set("flightTransactions",String(transaksiList.length));
+  set("flightMembers",anggota+" / "+daftarSiswa.length);
+  set("flightUpdate",new Date().toLocaleDateString("id-ID",{day:"2-digit",month:"short",year:"numeric"}));
+
+  const s=document.getElementById("systemStatusCopy");
+  if(s){s.textContent=supabaseClient?"● ONLINE":"● OFFLINE";s.className="system-status "+(supabaseClient?"online":"offline");}
+}
+
+function renderFilteredTable() {
+  const rows = getFilteredTransaksi();
+  tbody.innerHTML = "";
+
+  if (!rows.length) {
+    const row=tbody.insertRow(); const cell=row.insertCell(0);
+    cell.colSpan=5; cell.className="no-results"; cell.textContent="Tidak ada transaksi yang sesuai filter.";
+  }
+
+  rows.forEach(item => {
+    const nominal=Number(item.nominal)||0;
+    const row=tbody.insertRow();
+    const a=row.insertCell(0), b=row.insertCell(1), c=row.insertCell(2), d=row.insertCell(3), e=row.insertCell(4);
+    a.textContent=formatTanggal(item.tanggal);
+    b.textContent=item.keterangan||"-";
+    if(item.jenis==="masuk"){c.textContent=formatRupiah(nominal);c.style.color="#86efac";d.textContent="-";}
+    else{c.textContent="-";d.textContent=formatRupiah(nominal);d.style.color="#fca5a5";}
+    if(currentUserRole==="admin"){
+      const edit=document.createElement("button"); edit.textContent="📝"; edit.type="button"; edit.style.marginRight="6px";
+      edit.onclick=()=>editTransaksi(item.id);
+      const del=document.createElement("button"); del.textContent="🗑️"; del.type="button";
+      del.onclick=()=>hapusTransaksi(item.id);
+      e.append(edit,del);
+    } else e.textContent="-";
+  });
+
+  const info=document.getElementById("filterInfo");
+  if(info) info.textContent=`Menampilkan ${rows.length} dari ${transaksiList.length} transaksi.`;
+}
+
+function showMemberDetail(nama) {
+  const rows=transaksiList.filter(t=>t.keterangan===nama && t.jenis==="masuk");
+  const total=rows.reduce((s,t)=>s+(Number(t.nominal)||0),0);
+  const last=rows.slice().sort((a,b)=>String(b.tanggal).localeCompare(String(a.tanggal)))[0];
+
+  document.getElementById("memberDetailName").textContent=nama;
+  document.getElementById("memberDetailTotal").textContent="Rp "+formatRupiah(total);
+  document.getElementById("memberDetailCount").textContent=String(rows.length);
+  document.getElementById("memberDetailLast").textContent=last ? formatTanggal(last.tanggal) : "-";
+  document.getElementById("memberDetail").classList.add("show");
+  document.getElementById("memberDetail").scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function setupFeatureEvents() {
+  const search=document.getElementById("searchTransaksi");
+  const month=document.getElementById("filterBulan");
+  const jenis=document.getElementById("filterJenis");
+  const reset=document.getElementById("resetFilter");
+
+  if(search) search.addEventListener("input",e=>{activeSearch=e.target.value.trim();renderFilteredTable();});
+  if(month) month.addEventListener("change",e=>{activeMonth=e.target.value;renderFilteredTable();});
+  if(jenis) jenis.addEventListener("change",e=>{activeJenis=e.target.value;renderFilteredTable();});
+  if(reset) reset.addEventListener("click",()=>{
+    activeSearch="";activeMonth="all";activeJenis="all";
+    if(search)search.value="";if(month)month.value="all";if(jenis)jenis.value="all";
+    renderFilteredTable();
+  });
+
+  const close=document.getElementById("closeMemberDetail");
+  if(close) close.addEventListener("click",()=>document.getElementById("memberDetail").classList.remove("show"));
+
+  const csv=document.getElementById("exportCsv");
+  if(csv) csv.addEventListener("click",()=>{
+    const rows=getFilteredTransaksi();
+    const header=["Tanggal","Nama/Keterangan","Jenis","Nominal"];
+    const lines=[header,...rows.map(t=>[t.tanggal,t.keterangan,t.jenis,t.nominal])]
+      .map(r=>r.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\n");
+    const blob=new Blob(["\ufeff"+lines],{type:"text/csv;charset=utf-8"});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");a.href=url;a.download="laporan-kas-bravo.csv";a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  const print=document.getElementById("printReport");
+  if(print) print.addEventListener("click",()=>window.print());
+}
+
+setupFeatureEvents();
 
 initAplikasi();
 </script>
