@@ -134,6 +134,48 @@ footer{border-top:1px solid var(--line)}
   .stats-grid{grid-template-columns:1fr 1fr}.quick-menu{grid-template-columns:1fr 1fr}
 }
 
+
+/* ===== BRAVO 2.0 COMMAND CENTER ===== */
+.v2-section{position:relative;overflow:hidden}
+.v2-section:before{content:"";position:absolute;inset:auto -120px -140px auto;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.08),transparent 68%);pointer-events:none}
+.v2-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:18px}
+.v2-heading h2{margin:6px 0 4px;font-size:25px}
+.v2-heading p{margin:0;color:var(--muted);font-size:13px}
+.v2-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:16px}
+.v2-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.v2-kpi{padding:17px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025);position:relative;overflow:hidden}
+.v2-kpi small{display:block;color:var(--muted);font-weight:900;font-size:10px;letter-spacing:1px}
+.v2-kpi strong{display:block;font-size:20px;margin-top:8px}
+.v2-kpi em{display:block;font-style:normal;font-size:10px;color:#7dd3fc;margin-top:5px}
+.v2-kpi.cyan strong{color:#67e8f9}.v2-kpi.green strong{color:#86efac}.v2-kpi.red strong{color:#fda4af}.v2-kpi.purple strong{color:#c4b5fd}
+.v2-insight{padding:20px;border-radius:20px;border:1px solid rgba(34,211,238,.16);background:linear-gradient(145deg,rgba(34,211,238,.07),rgba(139,92,246,.05))}
+.v2-insight .status-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#34d399;box-shadow:0 0 16px #34d399;margin-right:7px}
+.v2-insight strong{display:block;font-size:18px;margin:9px 0}.v2-insight p{font-size:12px;line-height:1.65;color:var(--muted);margin:0}
+.v2-bars{display:flex;align-items:flex-end;gap:9px;height:190px;padding:18px 8px 5px;border-bottom:1px solid rgba(148,163,184,.1)}
+.v2-month{flex:1;min-width:34px;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end;gap:7px}
+.v2-bar-stack{height:150px;width:100%;display:flex;align-items:flex-end;justify-content:center;gap:4px}
+.v2-bar{width:45%;min-height:2px;border-radius:7px 7px 2px 2px;transition:.35s ease;position:relative}
+.v2-bar.in{background:linear-gradient(180deg,#22d3ee,#0ea5e9);box-shadow:0 6px 18px rgba(34,211,238,.12)}
+.v2-bar.out{background:linear-gradient(180deg,#fb7185,#f97316);box-shadow:0 6px 18px rgba(251,113,133,.1)}
+.v2-bar:hover{filter:brightness(1.25);transform:translateY(-3px)}
+.v2-month-label{font-size:10px;color:#9fb4cb;font-weight:900;text-transform:uppercase}
+.v2-legend{display:flex;gap:18px;margin-top:12px;font-size:11px;color:var(--muted)}
+.v2-legend span:before{content:"";display:inline-block;width:8px;height:8px;border-radius:3px;margin-right:6px}.v2-legend .in:before{background:#22d3ee}.v2-legend .out:before{background:#fb7185}
+.v2-member-tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}.v2-member-search{flex:1;min-width:230px}
+.v2-member-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.v2-member-card{padding:15px;border:1px solid rgba(125,211,252,.1);border-radius:18px;background:rgba(255,255,255,.025);cursor:pointer;transition:.2s;position:relative;overflow:hidden}
+.v2-member-card:hover{transform:translateY(-3px);border-color:rgba(34,211,238,.35);background:rgba(34,211,238,.045)}
+.v2-member-top{display:flex;align-items:center;gap:10px}.v2-avatar{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#0ea5e9,#6366f1);font-size:12px;font-weight:950}
+.v2-member-card h3{font-size:12px;margin:0;line-height:1.35}.v2-member-card p{font-size:10px;color:var(--muted);margin:3px 0 0}
+.v2-member-meta{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px}.v2-member-meta div{padding:8px 9px;border-radius:10px;background:rgba(255,255,255,.025)}.v2-member-meta span{display:block;font-size:9px;color:var(--muted);font-weight:800}.v2-member-meta strong{display:block;font-size:11px;margin-top:3px;color:#dbeafe}
+.v2-report-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.v2-report{padding:18px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.025)}.v2-report small{color:var(--muted);font-weight:900;font-size:10px;letter-spacing:1px}.v2-report strong{display:block;font-size:22px;margin-top:8px}.v2-report p{font-size:11px;color:var(--muted);margin:6px 0 0}
+.v2-timeline{display:grid;gap:8px;margin-top:15px}.v2-timeline-row{display:grid;grid-template-columns:90px 1fr auto;gap:12px;align-items:center;padding:11px 12px;border:1px solid rgba(148,163,184,.08);border-radius:12px;background:rgba(255,255,255,.018)}.v2-timeline-row time{font-size:10px;color:var(--muted);font-weight:800}.v2-timeline-row strong{font-size:12px}.v2-timeline-row span{font-size:11px;font-weight:900}
+.v2-empty{padding:30px;text-align:center;color:var(--muted);border:1px dashed rgba(148,163,184,.14);border-radius:16px}
+.light-mode .v2-kpi,.light-mode .v2-member-card,.light-mode .v2-report,.light-mode .v2-timeline-row{background:rgba(255,255,255,.58)}
+@media(max-width:900px){.v2-grid{grid-template-columns:1fr}.v2-kpis{grid-template-columns:repeat(2,1fr)}.v2-member-grid{grid-template-columns:repeat(2,1fr)}.v2-report-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.v2-heading{align-items:flex-start;flex-direction:column}.v2-kpis{grid-template-columns:1fr 1fr}.v2-member-grid,.v2-report-grid{grid-template-columns:1fr}.v2-bars{gap:5px}.v2-timeline-row{grid-template-columns:70px 1fr}.v2-timeline-row span{grid-column:2}}
+@media print{.v2-section{break-inside:avoid}.navbar,.hero-actions,.quick-menu,#form-input,.feature-toolbar,.member-tools,#themeToggle,#loginAdminButton,#logoutButton{display:none!important}}
+
 /* ===== BRAVO PRO FEATURES ===== */
 .feature-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0}
 .search-box{flex:1;min-width:220px}
@@ -260,6 +302,46 @@ body.light-mode{background:#eef6ff!important;color:#10213a!important}body.light-
     <a class="quick-item" href="#daftar-anggota"><div class="quick-icon">👥</div><strong>Anggota</strong><span>Daftar Taruna Bravo</span></a>
   </section>
 
+
+
+
+  <section class="card-genz v2-section" id="command-overview">
+    <div class="v2-heading">
+      <div><div class="hero-kicker">BRAVO COMMAND CENTER 2.0</div><h2>🎯 Financial Overview</h2><p>Ringkasan kondisi data kas kelas secara real-time dari transaksi yang tersimpan.</p></div>
+      <span class="anggota-badge">NO DATABASE CHANGE</span>
+    </div>
+    <div class="v2-grid">
+      <div class="v2-kpis">
+        <div class="v2-kpi cyan"><small>SALDO KAS</small><strong id="v2Saldo">Rp 0</strong><em>Kas masuk − kas keluar</em></div>
+        <div class="v2-kpi green"><small>KAS MASUK</small><strong id="v2Masuk">Rp 0</strong><em>Total pemasukan</em></div>
+        <div class="v2-kpi red"><small>KAS KELUAR</small><strong id="v2Keluar">Rp 0</strong><em>Total pengeluaran</em></div>
+        <div class="v2-kpi purple"><small>TRANSAKSI</small><strong id="v2Transaksi">0</strong><em>Seluruh catatan</em></div>
+      </div>
+      <div class="v2-insight"><small><span class="status-dot"></span>DATA STATUS</small><strong id="v2DataStatus">Terhubung & tersinkron</strong><p id="v2DataInsight">Dashboard akan memperbarui ringkasan setelah data transaksi berhasil dimuat.</p></div>
+    </div>
+  </section>
+
+  <section class="card-genz v2-section" id="cashflow-analysis">
+    <div class="v2-heading"><div><div class="hero-kicker">CASH FLOW TIMELINE</div><h2>📈 Pergerakan Kas 6 Bulan</h2><p>Perbandingan pemasukan dan pengeluaran berdasarkan data yang tersedia.</p></div><span class="anggota-badge">LIVE ANALYTICS</span></div>
+    <div id="v2MonthlyBars" class="v2-bars"></div>
+    <div class="v2-legend"><span class="in">Kas Masuk</span><span class="out">Kas Keluar</span></div>
+  </section>
+
+  <section class="card-genz v2-section" id="member-status">
+    <div class="v2-heading"><div><div class="hero-kicker">MEMBER FINANCIAL DIRECTORY</div><h2>👥 Status Catatan Anggota</h2><p>Ringkasan transaksi yang sudah tercatat untuk setiap anggota. Klik kartu untuk melihat detail.</p></div><span class="anggota-badge">36 TARUNA</span></div>
+    <div class="v2-member-tools"><input id="v2MemberSearch" class="search-box v2-member-search" type="search" placeholder="🔎 Cari nama anggota atau NIT..."/><button id="v2MemberReset" class="feature-btn" type="button">↻ Reset</button></div>
+    <div id="v2MemberGrid" class="v2-member-grid"></div>
+  </section>
+
+  <section class="card-genz v2-section" id="report-center">
+    <div class="v2-heading"><div><div class="hero-kicker">BRAVO REPORT CENTER</div><h2>🧾 Ringkasan Laporan</h2><p>Ringkasan otomatis yang bisa langsung dicetak melalui fitur laporan.</p></div><button class="feature-btn" type="button" onclick="window.print()">🖨️ Cetak Laporan</button></div>
+    <div class="v2-report-grid">
+      <div class="v2-report"><small>ANGGOTA TERCATAT</small><strong id="v2MemberRecorded">0 / 36</strong><p>Anggota yang memiliki minimal satu catatan pemasukan.</p></div>
+      <div class="v2-report"><small>BELUM ADA CATATAN</small><strong id="v2MemberNoRecord">36</strong><p>Anggota yang belum memiliki catatan kas masuk.</p></div>
+      <div class="v2-report"><small>TRANSAKSI TERBARU</small><strong id="v2LatestDate">-</strong><p id="v2LatestText">Belum ada transaksi.</p></div>
+    </div>
+    <div id="v2Timeline" class="v2-timeline"></div>
+  </section>
 
   <section class="card-genz">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:15px;">
@@ -1275,6 +1357,57 @@ function setupFeatureEvents() {
 
 setupFeatureEvents();
 setupUltraFeatures();
+
+
+/* ===== BRAVO 2.0 ENGINE ===== */
+const BRAVO_MEMBERS_V2 = [
+  ["ADITYA ZULFAN HAWARI","26094441"],["ANINDYA CANDRA WIJAYA","26094294"],["ANISA MAYLIA PERTIWI","26094383"],["ARTIKA KURNIA WATI","26094234"],["BERLIAN ADAM","26094228"],["EMIRA ARIIQA ZAYYAN","26094418"],["ENRICO RIFQI ANGGA","26094344"],["FADHI OEMAR KHADAFI","26094267"],["FADILAH ARDIAFARA","26094582"],["IBNU YAHYA ALFARIZI","26094373"],["INDRIANI BUDI SUSANTI","26094254"],["INNOCENTIUS WANSELINO SUNI","26094505"],["KHALIF NISAR ABDILLAH","26094464"],["LAODE AZAR","26094478"],["LEONARDUS PENANA SONA","26994598"],["M FACHRI KURNIAWAN M","26094570"],["MALIKA AZZAHRA PUTRI RADITA","26094321"],["MALIK FAJAR HASSANUDIN","26094553"],["MARGARETH ALVERA FERNANDEZ","26094428"],["MOHAMMAD FATHAN ALFARIZKI","26094504"],["MUHAMMAD HAZIQ","26094390"],["MUHAMMAD RIDWAN","26094482"],["MUHAMMAD RIZKI BUDI ZATMIKO","26094539"],["MUUAMMAD NUR WAHID KILMAS","26094233"],["NOEL RANGGA SAPUTRA TARIGAN","26094303"],["NURITA EKA APRILIA","26094451"],["RAFLY SYAH ALAM BIDU","26094329"],["RESHYA INAYAH PUTRI","26094232"],["RUHANA FITRIANI","26094568"],["RUSMIANITA NUR","26094513"],["SIFA PUTRI NUR AZIZAH","26094361"],["STATIKA WAHYU OKTAVIANI","26094380"],["SYAFHA ANNISA MAURIEND","26094388"],["SYIFA KHAIRUNNISA","26094320"],["VERI VARNANDO","26094340"],["WAHYU DWI NUR ANGGRAINI","26094548"]
+];
+function v2Rupiah(n){return new Intl.NumberFormat('id-ID').format(Number(n)||0)}
+function v2Initials(name){return name.split(/\\s+/).filter(Boolean).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
+function v2Render(){
+  if(typeof transaksiList==='undefined') return;
+  let masuk=0,keluar=0;
+  transaksiList.forEach(t=>{const n=Number(t.nominal)||0;if(t.jenis==='masuk')masuk+=n;else keluar+=n});
+  const saldo=masuk-keluar;
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+  set('v2Saldo','Rp '+v2Rupiah(saldo));set('v2Masuk','Rp '+v2Rupiah(masuk));set('v2Keluar','Rp '+v2Rupiah(keluar));set('v2Transaksi',transaksiList.length);
+  const recorded=new Set(transaksiList.filter(t=>t.jenis==='masuk').map(t=>String(t.keterangan||'').trim()).filter(Boolean));
+  set('v2MemberRecorded',recorded.size+' / '+BRAVO_MEMBERS_V2.length);set('v2MemberNoRecord',Math.max(0,BRAVO_MEMBERS_V2.length-recorded.size));
+  const latest=transaksiList.slice().sort((a,b)=>String(b.tanggal||'').localeCompare(String(a.tanggal||'')) || Number(b.id||0)-Number(a.id||0))[0];
+  if(latest){set('v2LatestDate',formatTanggal(latest.tanggal));set('v2LatestText',(latest.keterangan||'Transaksi')+' • '+(latest.jenis==='masuk'?'+':'−')+' Rp '+v2Rupiah(latest.nominal))}else{set('v2LatestDate','-');set('v2LatestText','Belum ada transaksi.')} 
+  const insight=document.getElementById('v2DataInsight');
+  if(insight) insight.textContent=transaksiList.length?`Terdapat ${transaksiList.length} transaksi dengan saldo tercatat Rp ${v2Rupiah(saldo)}.`:'Belum ada transaksi yang tersedia.';
+  v2RenderMonthly();v2RenderMembers();v2RenderTimeline();
+}
+function v2RenderMonthly(){
+  const box=document.getElementById('v2MonthlyBars');if(!box)return;const map={};
+  transaksiList.forEach(t=>{const m=String(t.tanggal||'').slice(0,7);if(!m)return;if(!map[m])map[m]={in:0,out:0};if(t.jenis==='masuk')map[m].in+=Number(t.nominal)||0;else map[m].out+=Number(t.nominal)||0});
+  const keys=Object.keys(map).sort().slice(-6);box.innerHTML='';
+  if(!keys.length){box.innerHTML='<div class="v2-empty" style="width:100%">Belum ada data bulanan untuk ditampilkan.</div>';return}
+  const max=Math.max(1,...keys.flatMap(k=>[map[k].in,map[k].out]));
+  keys.forEach(k=>{const [y,m]=k.split('-');const d=new Date(Number(y),Number(m)-1,1);const wrap=document.createElement('div');wrap.className='v2-month';const stack=document.createElement('div');stack.className='v2-bar-stack';const bi=document.createElement('div');bi.className='v2-bar in';bi.style.height=Math.max(3,(map[k].in/max)*145)+'px';bi.title='Masuk: Rp '+v2Rupiah(map[k].in);const bo=document.createElement('div');bo.className='v2-bar out';bo.style.height=Math.max(3,(map[k].out/max)*145)+'px';bo.title='Keluar: Rp '+v2Rupiah(map[k].out);stack.append(bi,bo);const lab=document.createElement('div');lab.className='v2-month-label';lab.textContent=d.toLocaleDateString('id-ID',{month:'short'});wrap.append(stack,lab);box.appendChild(wrap)});
+}
+function v2RenderMembers(){
+  const box=document.getElementById('v2MemberGrid');if(!box)return;const q=(document.getElementById('v2MemberSearch')?.value||'').toLowerCase().trim();box.innerHTML='';
+  BRAVO_MEMBERS_V2.forEach(([name,nit],i)=>{if(q && !(name+' '+nit).toLowerCase().includes(q))return;const rows=transaksiList.filter(t=>t.keterangan===name&&t.jenis==='masuk');const total=rows.reduce((s,t)=>s+(Number(t.nominal)||0),0);const last=rows.slice().sort((a,b)=>String(b.tanggal||'').localeCompare(String(a.tanggal||'')))[0];const card=document.createElement('article');card.className='v2-member-card';card.innerHTML=`<div class="v2-member-top"><div class="v2-avatar">${v2Initials(name)}</div><div><h3>${name}</h3><p>NIT ${nit}</p></div></div><div class="v2-member-meta"><div><span>TOTAL TERCATAT</span><strong>Rp ${v2Rupiah(total)}</strong></div><div><span>TRANSAKSI</span><strong>${rows.length}x</strong></div><div><span>TERAKHIR</span><strong>${last?formatTanggal(last.tanggal):'-'}</strong></div><div><span>STATUS DATA</span><strong>${rows.length?'Tercatat':'Belum ada'}</strong></div></div>`;card.addEventListener('click',()=>showMemberDetail(name));box.appendChild(card)});
+  if(!box.children.length)box.innerHTML='<div class="v2-empty" style="grid-column:1/-1">Anggota yang dicari tidak ditemukan.</div>';
+}
+function v2RenderTimeline(){
+  const box=document.getElementById('v2Timeline');if(!box)return;const rows=transaksiList.slice().sort((a,b)=>String(b.tanggal||'').localeCompare(String(a.tanggal||''))||Number(b.id||0)-Number(a.id||0)).slice(0,8);box.innerHTML='';
+  if(!rows.length){box.innerHTML='<div class="v2-empty">Belum ada transaksi untuk timeline.</div>';return}
+  rows.forEach(t=>{const row=document.createElement('div');row.className='v2-timeline-row';const sign=t.jenis==='masuk'?'+':'−';row.innerHTML=`<time>${formatTanggal(t.tanggal)}</time><div><strong>${t.keterangan||'-'}</strong><div style="font-size:10px;color:#7189a3;margin-top:3px">${getTransactionCode(t)} • ${t.jenis==='masuk'?'Kas Masuk':'Kas Keluar'}</div></div><span class="${t.jenis==='masuk'?'income-text':'expense-text'}">${sign} Rp ${v2Rupiah(t.nominal)}</span>`;box.appendChild(row)});
+}
+function setupV2(){
+  const input=document.getElementById('v2MemberSearch');if(input)input.addEventListener('input',v2RenderMembers);const reset=document.getElementById('v2MemberReset');if(reset)reset.addEventListener('click',()=>{if(input)input.value='';v2RenderMembers});
+  const oldInit=window.initAplikasi;
+  if(typeof oldInit==='function'){
+    const original=oldInit;
+    window.initAplikasi=async function(){const result=await original.apply(this,arguments);setTimeout(v2Render,80);return result;};
+  }
+  setTimeout(v2Render,250);
+}
+setupV2();
 
 initAplikasi();
 </script>
