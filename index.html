@@ -1,266 +1,161 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dashboard pencatatan kas kelas Wahidun Project">
-    <title>Kas Kelas Bravo - Aviation Class</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dashboard kas kelas Bravo - D4 Manajemen Transportasi Udara">
+<title>Kas Kelas Bravo - Aviation Class</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- ================= LOGIN ================= -->
 <div id="loginSection">
-    <div class="login-box">
-        <h2>Login Kas Kelas</h2>
-
-        <input
-            type="email"
-            id="loginEmail"
-            placeholder="Email"
-            autocomplete="email"
-        >
-
-        <input
-            type="password"
-            id="loginPassword"
-            placeholder="Password"
-            autocomplete="current-password"
-        >
-
-        <button type="button" id="loginButton">Login</button>
-        <p id="loginMessage"></p>
-    </div>
+  <div class="login-box">
+    <div style="font-size:56px;text-align:center;margin-bottom:10px;">✈️</div>
+    <h2>Login Kas Kelas</h2>
+    <p style="text-align:center;margin-top:-8px;margin-bottom:22px;color:#38bdf8;font-weight:700;letter-spacing:3px;">BRAVO AVIATION CLASS</p>
+    <input type="email" id="loginEmail" placeholder="Email" autocomplete="email">
+    <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password">
+    <button type="button" id="loginButton">Login</button>
+    <p id="loginMessage" style="text-align:center;min-height:24px;margin-top:14px;"></p>
+  </div>
 </div>
 
-<!-- ================= NAVBAR ================= -->
 <nav class="navbar">
-    <div class="navbar-brand">Kas Kelas Bravo</div>
-
-    <div class="navbar-menu">
-        <a href="#form-input">Input Kas</a>
-        <a href="#tabungan-siswa">Tabungan Siswa</a>
-        <a href="#tabel-data">Tabel Kas</a>
-
-        <span id="userRoleBadge" class="user-role-badge"></span>
-
-        <button type="button" id="logoutButton" class="logout-button">
-            Logout
-        </button>
-    </div>
+  <div class="navbar-brand">✈️ Kas Kelas Bravo</div>
+  <div class="navbar-menu">
+    <a href="#form-input">Input Kas</a>
+    <a href="#tabungan-siswa">Tabungan</a>
+    <a href="#tabel-data">Tabel Kas</a>
+    <a href="#daftar-anggota">Anggota</a>
+    <span id="userRoleBadge" class="user-role-badge"></span>
+    <button type="button" id="loginAdminButton" class="btn-genz" style="display:none;">🔐 Login Admin</button>
+    <button type="button" id="logoutButton" class="logout-button" style="display:none;">Logout</button>
+  </div>
 </nav>
 
-<!-- ================= HEADER ================= -->
 <header>
-    <h1>Kas Kelas Bravo</h1>
-    <p>Sistem Pencatatan Arus Kas Transparan &amp; Otomatis</p>
+  <h1>Kas Kelas Bravo</h1>
+  <p>Discipline • Safety • Higher • Together</p>
+  <p>Sistem Pencatatan Arus Kas Transparan &amp; Otomatis</p>
 </header>
 
 <main class="container">
 
-    <!-- ================= FORM INPUT ================= -->
-    <section class="card-genz" id="form-input">
-        <h2>Pencatatan Kas Kelas</h2>
-
-        <form id="cashflowForm">
-
-            <div class="form-group">
-                <label for="tanggal">Tanggal Transaksi</label>
-                <input type="date" id="tanggal" required>
-            </div>
-
-            <div class="form-group">
-                <label for="keterangan">Nama Anggota Kelas</label>
-
-                <select id="keterangan" required>
-                    <select id="keterangan" required>
-    <option value="">-- Pilih Nama Anggota --</option>
-
-    <option value="ADITYA ZULFAN HAWARI">ADITYA ZULFAN HAWARI — 26094441</option>
-    <option value="ANINDYA CANDRA WIJAYA">ANINDYA CANDRA WIJAYA — 26094294</option>
-    <option value="ANISA MAYLIA PERTIWI">ANISA MAYLIA PERTIWI — 26094383</option>
-    <option value="ARTIKA KURNIA WATI">ARTIKA KURNIA WATI — 26094234</option>
-    <option value="BERLIAN ADAM">BERLIAN ADAM — 26094228</option>
-    <option value="EMIRA ARIIQA ZAYYAN">EMIRA ARIIQA ZAYYAN — 26094418</option>
-    <option value="ENRICO RIFQI ANGGA">ENRICO RIFQI ANGGA — 26094344</option>
-    <option value="FADHI OEMAR KHADAFI">FADHI OEMAR KHADAFI — 26094267</option>
-    <option value="FADILAH ARDIAFARA">FADILAH ARDIAFARA — 26094582</option>
-    <option value="IBNU YAHYA ALFARIZI">IBNU YAHYA ALFARIZI — 26094373</option>
-    <option value="INDRIANI BUDI SUSANTI">INDRIANI BUDI SUSANTI — 26094254</option>
-    <option value="INNOCENTIUS WANSELINO SUNI">INNOCENTIUS WANSELINO SUNI — 26094505</option>
-    <option value="KHALIF NISAR ABDILLAH">KHALIF NISAR ABDILLAH — 26094464</option>
-    <option value="LAODE AZAR">LAODE AZAR — 26094478</option>
-    <option value="LEONARDUS PENANA SONA">LEONARDUS PENANA SONA — 26994598</option>
-    <option value="M FACHRI KURNIAWAN M">M FACHRI KURNIAWAN M — 26094570</option>
-    <option value="MALIKA AZZAHRA PUTRI RADITA">MALIKA AZZAHRA PUTRI RADITA — 26094321</option>
-    <option value="MALIK FAJAR HASSANUDIN">MALIK FAJAR HASSANUDIN — 26094553</option>
-    <option value="MARGARETH ALVERA FERNANDEZ">MARGARETH ALVERA FERNANDEZ — 26094428</option>
-    <option value="MOHAMMAD FATHAN ALFARIZKI">MOHAMMAD FATHAN ALFARIZKI — 26094504</option>
-    <option value="MUHAMMAD HAZIQ">MUHAMMAD HAZIQ — 26094390</option>
-    <option value="MUHAMMAD RIDWAN">MUHAMMAD RIDWAN — 26094482</option>
-    <option value="MUHAMMAD RIZKI BUDI ZATMIKO">MUHAMMAD RIZKI BUDI ZATMIKO — 26094539</option>
-    <option value="MUUAMMAD NUR WAHID KILMAS">MUUAMMAD NUR WAHID KILMAS — 26094233</option>
-    <option value="NOEL RANGGA SAPUTRA TARIGAN">NOEL RANGGA SAPUTRA TARIGAN — 26094303</option>
-    <option value="NURITA EKA APRILIA">NURITA EKA APRILIA — 26094451</option>
-    <option value="RAFLY SYAH ALAM BIDU">RAFLY SYAH ALAM BIDU — 26094329</option>
-    <option value="RESHYA INAYAH PUTRI">RESHYA INAYAH PUTRI — 26094232</option>
-    <option value="RUHANA FITRIANI">RUHANA FITRIANI — 26094568</option>
-    <option value="RUSMIANITA NUR">RUSMIANITA NUR — 26094513</option>
-    <option value="SIFA PUTRI NUR AZIZAH">SIFA PUTRI NUR AZIZAH — 26094361</option>
-    <option value="STATIKA WAHYU OKTAVIANI">STATIKA WAHYU OKTAVIANI — 26094380</option>
-    <option value="SYAFHA ANNISA MAURIEND">SYAFHA ANNISA MAURIEND — 26094388</option>
-    <option value="SYIFA KHAIRUNNISA">SYIFA KHAIRUNNISA — 26094320</option>
-    <option value="VERI VARNANDO">VERI VARNANDO — 26094340</option>
-    <option value="WAHYU DWI NUR ANGGRAINI">WAHYU DWI NUR ANGGRAINI — 26094548</option>
-    <option value="Keperluan Umum Kelas">Keperluan Umum Kelas</option>
-</select>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="jenis">Jenis Transaksi</label>
-
-                <select id="jenis" required>
-                    <option value="masuk">Uang Masuk (Bayar Kas)</option>
-                    <option value="keluar">Uang Keluar (Pengeluaran)</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="nominal">Nominal (Rp)</label>
-
-                <input
-                    type="number"
-                    id="nominal"
-                    placeholder="Masukkan jumlah uang"
-                    min="1"
-                    step="1"
-                    required
-                >
-            </div>
-
-            <button type="submit" class="btn-genz btn-primary">
-                Simpan Catatan Kas
-            </button>
-        </form>
-    </section>
-
-    <!-- ================= REKAP SISWA ================= -->
-    <section class="card-genz" id="tabungan-siswa">
-        <h2>Tabungan Anggota Kelas</h2>
-
-        <p>
-            Total uang kas yang sudah dibayarkan oleh masing-masing siswa:
-        </p>
-
-        <div id="boxRekapSiswa"></div>
-    </section>
-
-    <!-- ================= LAPORAN ================= -->
-    <section class="card-genz full-width" id="tabel-data">
-        <h2>Ikhtisar Finansial Kelas</h2>
-
-        <!-- TOTAL -->
-        <div class="summary-container">
-            <div class="stat-box stat-masuk">
-                Total Kas Masuk
-                <span>Rp <span id="totalMasuk">0</span></span>
-            </div>
-
-            <div class="stat-box stat-keluar">
-                Total Kas Keluar
-                <span>Rp <span id="totalKeluar">0</span></span>
-            </div>
-
-            <div class="stat-box stat-saldo">
-                Sisa Saldo Kas
-                <span>Rp <span id="saldoAkhir">0</span></span>
-            </div>
-        </div>
-
-        <!-- ================= GRAFIK ================= -->
-        <div class="chart-container">
-            <div class="chart-title">
-                📊 Analisis Visual Perputaran Dana Kelas
-            </div>
-
-            <div class="chart-bar-wrapper">
-                <div class="chart-label">
-                    <span style="color:#86efac;">Total Pemasukan</span>
-                    <span id="labelPersenMasuk">0%</span>
-                </div>
-
-                <div class="chart-track">
-                    <div class="chart-fill fill-masuk" id="barMasuk"></div>
-                </div>
-            </div>
-
-            <div class="chart-bar-wrapper">
-                <div class="chart-label">
-                    <span style="color:#fca5a5;">Total Pengeluaran</span>
-                    <span id="labelPersenKeluar">0%</span>
-                </div>
-
-                <div class="chart-track">
-                    <div class="chart-fill fill-keluar" id="barKeluar"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= TABEL ================= -->
-        <div class="table-wrapper">
-            <table id="tabelTransaksi">
-                <thead>
-                    <tr>
-                        <th>Tanggal</th>
-                        <th>Nama / Keterangan</th>
-                        <th>Kas Masuk</th>
-                        <th>Kas Keluar</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-
-                <tbody id="tabelBody">
-                    <!-- Data transaksi otomatis -->
-                </tbody>
-            </table>
-        </div>
-
-        <button
-            type="button"
-            id="btnHapusData"
-            class="btn-genz"
-            style="
-                display:none;
-                background-color:#262626;
-                color:#fff;
-                margin-top:20px;
-                font-size:12px;
-                padding:8px;
-            "
-        >
-            Hapus Semua Data Tabel
-        </button>
-    </section>
-    <!-- ================= DAFTAR ANGGOTA BRAVO ================= -->
-<section class="card-genz full-width" id="daftar-anggota">
-
-    <div class="anggota-header">
-        <div>
-            <h2>✈️ Daftar Anggota Bravo</h2>
-            <p>36 Taruna • D4 Manajemen Transportasi Udara</p>
-        </div>
-
-        <span class="anggota-badge">BRAVO 2026</span>
+<section class="card-genz" id="form-input" style="display:none;">
+  <h2>💳 Pencatatan Kas Kelas</h2>
+  <form id="cashflowForm">
+    <div class="form-group">
+      <label for="tanggal">Tanggal Transaksi</label>
+      <input type="date" id="tanggal" required>
     </div>
+    <div class="form-group">
+      <label for="keterangan">Nama Anggota Kelas</label>
+      <select id="keterangan" required>
+        <option value="">-- Pilih Nama Anggota --</option>
+        <option value="ADITYA ZULFAN HAWARI">ADITYA ZULFAN HAWARI — 26094441</option>
+        <option value="ANINDYA CANDRA WIJAYA">ANINDYA CANDRA WIJAYA — 26094294</option>
+        <option value="ANISA MAYLIA PERTIWI">ANISA MAYLIA PERTIWI — 26094383</option>
+        <option value="ARTIKA KURNIA WATI">ARTIKA KURNIA WATI — 26094234</option>
+        <option value="BERLIAN ADAM">BERLIAN ADAM — 26094228</option>
+        <option value="EMIRA ARIIQA ZAYYAN">EMIRA ARIIQA ZAYYAN — 26094418</option>
+        <option value="ENRICO RIFQI ANGGA">ENRICO RIFQI ANGGA — 26094344</option>
+        <option value="FADHI OEMAR KHADAFI">FADHI OEMAR KHADAFI — 26094267</option>
+        <option value="FADILAH ARDIAFARA">FADILAH ARDIAFARA — 26094582</option>
+        <option value="IBNU YAHYA ALFARIZI">IBNU YAHYA ALFARIZI — 26094373</option>
+        <option value="INDRIANI BUDI SUSANTI">INDRIANI BUDI SUSANTI — 26094254</option>
+        <option value="INNOCENTIUS WANSELINO SUNI">INNOCENTIUS WANSELINO SUNI — 26094505</option>
+        <option value="KHALIF NISAR ABDILLAH">KHALIF NISAR ABDILLAH — 26094464</option>
+        <option value="LAODE AZAR">LAODE AZAR — 26094478</option>
+        <option value="LEONARDUS PENANA SONA">LEONARDUS PENANA SONA — 26994598</option>
+        <option value="M FACHRI KURNIAWAN M">M FACHRI KURNIAWAN M — 26094570</option>
+        <option value="MALIKA AZZAHRA PUTRI RADITA">MALIKA AZZAHRA PUTRI RADITA — 26094321</option>
+        <option value="MALIK FAJAR HASSANUDIN">MALIK FAJAR HASSANUDIN — 26094553</option>
+        <option value="MARGARETH ALVERA FERNANDEZ">MARGARETH ALVERA FERNANDEZ — 26094428</option>
+        <option value="MOHAMMAD FATHAN ALFARIZKI">MOHAMMAD FATHAN ALFARIZKI — 26094504</option>
+        <option value="MUHAMMAD HAZIQ">MUHAMMAD HAZIQ — 26094390</option>
+        <option value="MUHAMMAD RIDWAN">MUHAMMAD RIDWAN — 26094482</option>
+        <option value="MUHAMMAD RIZKI BUDI ZATMIKO">MUHAMMAD RIZKI BUDI ZATMIKO — 26094539</option>
+        <option value="MUUAMMAD NUR WAHID KILMAS">MUUAMMAD NUR WAHID KILMAS — 26094233</option>
+        <option value="NOEL RANGGA SAPUTRA TARIGAN">NOEL RANGGA SAPUTRA TARIGAN — 26094303</option>
+        <option value="NURITA EKA APRILIA">NURITA EKA APRILIA — 26094451</option>
+        <option value="RAFLY SYAH ALAM BIDU">RAFLY SYAH ALAM BIDU — 26094329</option>
+        <option value="RESHYA INAYAH PUTRI">RESHYA INAYAH PUTRI — 26094232</option>
+        <option value="RUHANA FITRIANI">RUHANA FITRIANI — 26094568</option>
+        <option value="RUSMIANITA NUR">RUSMIANITA NUR — 26094513</option>
+        <option value="SIFA PUTRI NUR AZIZAH">SIFA PUTRI NUR AZIZAH — 26094361</option>
+        <option value="STATIKA WAHYU OKTAVIANI">STATIKA WAHYU OKTAVIANI — 26094380</option>
+        <option value="SYAFHA ANNISA MAURIEND">SYAFHA ANNISA MAURIEND — 26094388</option>
+        <option value="SYIFA KHAIRUNNISA">SYIFA KHAIRUNNISA — 26094320</option>
+        <option value="VERI VARNANDO">VERI VARNANDO — 26094340</option>
+        <option value="WAHYU DWI NUR ANGGRAINI">WAHYU DWI NUR ANGGRAINI — 26094548</option>
+        <option value="Keperluan Umum Kelas">Keperluan Umum Kelas</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="jenis">Jenis Transaksi</label>
+      <select id="jenis" required>
+        <option value="masuk">Uang Masuk (Bayar Kas)</option>
+        <option value="keluar">Uang Keluar (Pengeluaran)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="nominal">Nominal (Rp)</label>
+      <input type="number" id="nominal" placeholder="Masukkan jumlah uang" min="1" step="1" required>
+    </div>
+    <button type="submit" class="btn-genz btn-primary">💾 Simpan Catatan Kas</button>
+  </form>
+</section>
 
-    <div class="anggota-grid">
+<section class="card-genz" id="tabungan-siswa">
+  <h2>💰 Tabungan Anggota Kelas</h2>
+  <p>Total uang kas yang sudah dibayarkan oleh masing-masing anggota:</p>
+  <div id="boxRekapSiswa"></div>
+</section>
 
+<section class="card-genz full-width" id="tabel-data">
+  <h2>📊 Ikhtisar Finansial Kelas</h2>
+  <div class="summary-container">
+    <div class="stat-box stat-masuk">Total Kas Masuk<span>Rp <span id="totalMasuk">0</span></span></div>
+    <div class="stat-box stat-keluar">Total Kas Keluar<span>Rp <span id="totalKeluar">0</span></span></div>
+    <div class="stat-box stat-saldo">Sisa Saldo Kas<span>Rp <span id="saldoAkhir">0</span></span></div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">📈 Analisis Visual Perputaran Dana Kelas</div>
+    <div class="chart-bar-wrapper">
+      <div class="chart-label"><span style="color:#86efac;">Total Pemasukan</span><span id="labelPersenMasuk">0%</span></div>
+      <div class="chart-track"><div class="chart-fill fill-masuk" id="barMasuk"></div></div>
+    </div>
+    <div class="chart-bar-wrapper">
+      <div class="chart-label"><span style="color:#fca5a5;">Total Pengeluaran</span><span id="labelPersenKeluar">0%</span></div>
+      <div class="chart-track"><div class="chart-fill fill-keluar" id="barKeluar"></div></div>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table id="tabelTransaksi">
+      <thead><tr><th>Tanggal</th><th>Nama / Keterangan</th><th>Kas Masuk</th><th>Kas Keluar</th><th>Aksi</th></tr></thead>
+      <tbody id="tabelBody"></tbody>
+    </table>
+  </div>
+
+  <button type="button" id="btnHapusData" class="btn-genz" style="display:none;background:#262626;color:#fff;margin-top:20px;font-size:12px;padding:8px;">
+    🗑️ Hapus Semua Data Tabel
+  </button>
+</section>
+
+<section class="card-genz full-width" id="daftar-anggota">
+  <div class="anggota-header">
+    <div><h2>✈️ Daftar Anggota Bravo</h2><p>36 Taruna • D4 Manajemen Transportasi Udara</p></div>
+    <span class="anggota-badge">BRAVO 2026</span>
+  </div>
+  <div class="anggota-grid">
         <div class="anggota-card"><span>01</span><h3>ADITYA ZULFAN HAWARI</h3><p>🎓 NIT 26094441</p></div>
         <div class="anggota-card"><span>02</span><h3>ANINDYA CANDRA WIJAYA</h3><p>🎓 NIT 26094294</p></div>
         <div class="anggota-card"><span>03</span><h3>ANISA MAYLIA PERTIWI</h3><p>🎓 NIT 26094383</p></div>
         <div class="anggota-card"><span>04</span><h3>ARTIKA KURNIA WATI</h3><p>🎓 NIT 26094234</p></div>
+        <div class="anggota-card"><span>05</span><h3>BERLIAN ADAM</h3><p>🎓 NIT 26094228</p></div>
         <div class="anggota-card"><span>06</span><h3>EMIRA ARIIQA ZAYYAN</h3><p>🎓 NIT 26094418</p></div>
         <div class="anggota-card"><span>07</span><h3>ENRICO RIFQI ANGGA</h3><p>🎓 NIT 26094344</p></div>
         <div class="anggota-card"><span>08</span><h3>FADHI OEMAR KHADAFI</h3><p>🎓 NIT 26094267</p></div>
@@ -270,9 +165,11 @@
         <div class="anggota-card"><span>12</span><h3>INNOCENTIUS WANSELINO SUNI</h3><p>🎓 NIT 26094505</p></div>
         <div class="anggota-card"><span>13</span><h3>KHALIF NISAR ABDILLAH</h3><p>🎓 NIT 26094464</p></div>
         <div class="anggota-card"><span>14</span><h3>LAODE AZAR</h3><p>🎓 NIT 26094478</p></div>
+        <div class="anggota-card"><span>15</span><h3>LEONARDUS PENANA SONA</h3><p>🎓 NIT 26994598</p></div>
         <div class="anggota-card"><span>16</span><h3>M FACHRI KURNIAWAN M</h3><p>🎓 NIT 26094570</p></div>
         <div class="anggota-card"><span>17</span><h3>MALIKA AZZAHRA PUTRI RADITA</h3><p>🎓 NIT 26094321</p></div>
         <div class="anggota-card"><span>18</span><h3>MALIK FAJAR HASSANUDIN</h3><p>🎓 NIT 26094553</p></div>
+        <div class="anggota-card"><span>19</span><h3>MARGARETH ALVERA FERNANDEZ</h3><p>🎓 NIT 26094428</p></div>
         <div class="anggota-card"><span>20</span><h3>MOHAMMAD FATHAN ALFARIZKI</h3><p>🎓 NIT 26094504</p></div>
         <div class="anggota-card"><span>21</span><h3>MUHAMMAD HAZIQ</h3><p>🎓 NIT 26094390</p></div>
         <div class="anggota-card"><span>22</span><h3>MUHAMMAD RIDWAN</h3><p>🎓 NIT 26094482</p></div>
@@ -290,50 +187,39 @@
         <div class="anggota-card"><span>34</span><h3>SYIFA KHAIRUNNISA</h3><p>🎓 NIT 26094320</p></div>
         <div class="anggota-card"><span>35</span><h3>VERI VARNANDO</h3><p>🎓 NIT 26094340</p></div>
         <div class="anggota-card"><span>36</span><h3>WAHYU DWI NUR ANGGRAINI</h3><p>🎓 NIT 26094548</p></div>
-
-    </div>
+  </div>
 </section>
+
 </main>
 
-<footer>
-    <title>Kas Kelas Bravo - Aviation Class</title>
+<footer style="text-align:center;padding:35px 15px;color:#94a3b8;">
+  <p>✈️ Kas Kelas Bravo • Aviation Class</p>
+  <p style="font-size:12px;">Runway to a Brighter Tomorrow</p>
 </footer>
 
-<!-- ================= SUPABASE ================= -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 
 <script>
 "use strict";
 
-/* =====================================================
-   SUPABASE
-   ===================================================== */
+const SUPABASE_URL = "https://yelsjntvfptkgdmgokgl.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_xIJD2zR37XApGKOVWkajGw_vsK5qX-x";
 
-const SUPABASE_URL =
-    "https://yelsjntvfptkgdmgokgl.supabase.co";
-
-const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_xIJD2zR37XApGKOVWkajGw_vsK5qX-x";
-
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-);
-
-
-/* =====================================================
-   ELEMENT HTML
-   ===================================================== */
+let supabaseClient = null;
+let transaksiList = [];
+let currentUserRole = null;
 
 const loginSection = document.getElementById("loginSection");
 const loginEmail = document.getElementById("loginEmail");
 const loginPassword = document.getElementById("loginPassword");
 const loginButton = document.getElementById("loginButton");
 const loginMessage = document.getElementById("loginMessage");
+const loginAdminButton = document.getElementById("loginAdminButton");
 const logoutButton = document.getElementById("logoutButton");
 const userRoleBadge = document.getElementById("userRoleBadge");
 
 const form = document.getElementById("cashflowForm");
+const formInput = document.getElementById("form-input");
 const tanggalInput = document.getElementById("tanggal");
 const keteranganInput = document.getElementById("keterangan");
 const jenisInput = document.getElementById("jenis");
@@ -343,842 +229,527 @@ const tbody = document.getElementById("tabelBody");
 const boxRekap = document.getElementById("boxRekapSiswa");
 const btnHapusData = document.getElementById("btnHapusData");
 
-
-/* =====================================================
-   DATA APLIKASI
-   ===================================================== */
-
 const daftarSiswa = [
-    const daftarSiswa = [
-    "ADITYA ZULFAN HAWARI",
-    "ANINDYA CANDRA WIJAYA",
-    "ANISA MAYLIA PERTIWI",
-    "ARTIKA KURNIA WATI",
-    "BERLIAN ADAM",
-    "EMIRA ARIIQA ZAYYAN",
-    "ENRICO RIFQI ANGGA",
-    "FADHI OEMAR KHADAFI",
-    "FADILAH ARDIAFARA",
-    "IBNU YAHYA ALFARIZI",
-    "INDRIANI BUDI SUSANTI",
-    "INNOCENTIUS WANSELINO SUNI",
-    "KHALIF NISAR ABDILLAH",
-    "LAODE AZAR",
-    "LEONARDUS PENANA SONA",
-    "M FACHRI KURNIAWAN M",
-    "MALIKA AZZAHRA PUTRI RADITA",
-    "MALIK FAJAR HASSANUDIN",
-    "MARGARETH ALVERA FERNANDEZ",
-    "MOHAMMAD FATHAN ALFARIZKI",
-    "MUHAMMAD HAZIQ",
-    "MUHAMMAD RIDWAN",
-    "MUHAMMAD RIZKI BUDI ZATMIKO",
-    "MUUAMMAD NUR WAHID KILMAS",
-    "NOEL RANGGA SAPUTRA TARIGAN",
-    "NURITA EKA APRILIA",
-    "RAFLY SYAH ALAM BIDU",
-    "RESHYA INAYAH PUTRI",
-    "RUHANA FITRIANI",
-    "RUSMIANITA NUR",
-    "SIFA PUTRI NUR AZIZAH",
-    "STATIKA WAHYU OKTAVIANI",
-    "SYAFHA ANNISA MAURIEND",
-    "SYIFA KHAIRUNNISA",
-    "VERI VARNANDO",
-    "WAHYU DWI NUR ANGGRAINI",
+        "ADITYA ZULFAN HAWARI",
+        "ANINDYA CANDRA WIJAYA",
+        "ANISA MAYLIA PERTIWI",
+        "ARTIKA KURNIA WATI",
+        "BERLIAN ADAM",
+        "EMIRA ARIIQA ZAYYAN",
+        "ENRICO RIFQI ANGGA",
+        "FADHI OEMAR KHADAFI",
+        "FADILAH ARDIAFARA",
+        "IBNU YAHYA ALFARIZI",
+        "INDRIANI BUDI SUSANTI",
+        "INNOCENTIUS WANSELINO SUNI",
+        "KHALIF NISAR ABDILLAH",
+        "LAODE AZAR",
+        "LEONARDUS PENANA SONA",
+        "M FACHRI KURNIAWAN M",
+        "MALIKA AZZAHRA PUTRI RADITA",
+        "MALIK FAJAR HASSANUDIN",
+        "MARGARETH ALVERA FERNANDEZ",
+        "MOHAMMAD FATHAN ALFARIZKI",
+        "MUHAMMAD HAZIQ",
+        "MUHAMMAD RIDWAN",
+        "MUHAMMAD RIZKI BUDI ZATMIKO",
+        "MUUAMMAD NUR WAHID KILMAS",
+        "NOEL RANGGA SAPUTRA TARIGAN",
+        "NURITA EKA APRILIA",
+        "RAFLY SYAH ALAM BIDU",
+        "RESHYA INAYAH PUTRI",
+        "RUHANA FITRIANI",
+        "RUSMIANITA NUR",
+        "SIFA PUTRI NUR AZIZAH",
+        "STATIKA WAHYU OKTAVIANI",
+        "SYAFHA ANNISA MAURIEND",
+        "SYIFA KHAIRUNNISA",
+        "VERI VARNANDO",
+        "WAHYU DWI NUR ANGGRAINI"
 ];
 
-let transaksiList = [];
-let currentUserRole = null;
-
-
-/* =====================================================
-   FORMAT
-   ===================================================== */
-
 function formatRupiah(nominal) {
-    return Number(nominal || 0).toLocaleString("id-ID");
+  return Number(nominal || 0).toLocaleString("id-ID");
 }
 
 function formatTanggal(tanggal) {
-    if (!tanggal) {
-        return "-";
-    }
-
-    const date = new Date(tanggal + "T00:00:00");
-
-    if (Number.isNaN(date.getTime())) {
-        return tanggal;
-    }
-
-    return date.toLocaleDateString("id-ID", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric"
-    });
+  if (!tanggal) return "-";
+  const date = new Date(tanggal + "T00:00:00");
+  if (Number.isNaN(date.getTime())) return tanggal;
+  return date.toLocaleDateString("id-ID", {day:"2-digit", month:"2-digit", year:"numeric"});
 }
 
 function setTanggalHariIni() {
-    const sekarang = new Date();
-
-    const tahun = sekarang.getFullYear();
-    const bulan = String(sekarang.getMonth() + 1).padStart(2, "0");
-    const hari = String(sekarang.getDate()).padStart(2, "0");
-
-    tanggalInput.value = `${tahun}-${bulan}-${hari}`;
+  const sekarang = new Date();
+  const tahun = sekarang.getFullYear();
+  const bulan = String(sekarang.getMonth() + 1).padStart(2, "0");
+  const hari = String(sekarang.getDate()).padStart(2, "0");
+  tanggalInput.value = `${tahun}-${bulan}-${hari}`;
 }
 
+function pesanLogin(pesan, tipe) {
+  loginMessage.textContent = pesan;
+  loginMessage.style.color =
+    tipe === "error" ? "#fca5a5" :
+    tipe === "success" ? "#86efac" : "#93c5fd";
+}
 
-/* =====================================================
-   AUTHENTICATION
-   ===================================================== */
+function bukaLogin() {
+  loginSection.style.display = "flex";
+  loginEmail.focus();
+  loginSection.scrollIntoView({behavior:"smooth", block:"center"});
+}
+
+function tutupLogin() {
+  loginSection.style.display = "none";
+}
 
 function updateAuthUI(user) {
-    const loginSection = document.getElementById("loginSection");
-    const logoutButton = document.getElementById("logoutButton");
-    const userRoleBadge = document.getElementById("userRoleBadge");
+  if (!user) {
+    tutupLogin();
+    loginAdminButton.style.display = "inline-block";
+    logoutButton.style.display = "none";
+    userRoleBadge.style.display = "none";
+    return;
+  }
 
-    // ==============================
-    // BELUM LOGIN
-    // ==============================
-    if (!user) {
-        // Website tetap bisa dilihat tanpa login
-        if (loginSection) {
-            loginSection.style.display = "none";
-        }
-
-        if (logoutButton) {
-            logoutButton.style.display = "none";
-        }
-
-        if (userRoleBadge) {
-            userRoleBadge.style.display = "none";
-        }
-
-        // Buat tombol Login Admin
-        let loginAdminButton = document.getElementById("loginAdminButton");
-
-        if (!loginAdminButton && logoutButton) {
-            loginAdminButton = document.createElement("button");
-            loginAdminButton.id = "loginAdminButton";
-            loginAdminButton.type = "button";
-            loginAdminButton.textContent = "🔐 Login Admin";
-
-            loginAdminButton.style.background = "#2563eb";
-            loginAdminButton.style.color = "white";
-            loginAdminButton.style.border = "none";
-            loginAdminButton.style.padding = "10px 16px";
-            loginAdminButton.style.borderRadius = "10px";
-            loginAdminButton.style.cursor = "pointer";
-            loginAdminButton.style.fontWeight = "600";
-            loginAdminButton.style.marginRight = "10px";
-
-            loginAdminButton.addEventListener("click", function () {
-                if (loginSection) {
-                    loginSection.style.display = "flex";
-
-                    loginSection.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center"
-                    });
-                }
-            });
-
-            logoutButton.parentNode.insertBefore(
-                loginAdminButton,
-                logoutButton
-            );
-        }
-
-        if (loginAdminButton) {
-            loginAdminButton.style.display = "inline-block";
-        }
-
-        return;
-    }
-
-    // ==============================
-    // SUDAH LOGIN
-    // ==============================
-
-    // Sembunyikan form login
-    if (loginSection) {
-        loginSection.style.display = "none";
-    }
-
-    // Tampilkan logout
-    if (logoutButton) {
-        logoutButton.style.display = "inline-block";
-    }
-
-    // Hilangkan tombol Login Admin
-    const loginAdminButton =
-        document.getElementById("loginAdminButton");
-
-    if (loginAdminButton) {
-        loginAdminButton.style.display = "none";
-    }
+  tutupLogin();
+  loginAdminButton.style.display = "none";
+  logoutButton.style.display = "inline-block";
+  userRoleBadge.style.display = "inline-block";
 }
 
 async function cekRole(user) {
-    const userRoleBadge = document.getElementById("userRoleBadge");
-    const formInput = document.getElementById("form-input");
-
-    // Jika belum login
-    if (!user) {
-        currentUserRole = null;
-
-        userRoleBadge.textContent = "";
-        userRoleBadge.style.display = "none";
-
-        if (formInput) {
-            formInput.style.display = "none";
-        }
-
-        return;
-    }
-
-    const { data, error } = await supabaseClient
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", user.id)
-        .single();
-
-    if (error) {
-        console.error("Gagal mengambil role:", error);
-
-        currentUserRole = "siswa";
-
-        userRoleBadge.textContent = "👤 Siswa";
-        userRoleBadge.style.display = "inline-block";
-
-        if (formInput) {
-            formInput.style.display = "none";
-        }
-
-        return;
-    }
-
-    currentUserRole = data.role;
-
-    if (data.role === "admin") {
-        // ADMIN
-        userRoleBadge.textContent = "👑 Admin";
-        userRoleBadge.style.display = "inline-block";
-
-        if (formInput) {
-            formInput.style.display = "";
-        }
-
-    } else {
-        // SISWA
-        userRoleBadge.textContent = "👤 Siswa";
-        userRoleBadge.style.display = "inline-block";
-
-        if (formInput) {
-            formInput.style.display = "none";
-        }
-    }
-}
-
-async function cekLogin() {
-    const { data, error } =
-        await supabaseClient.auth.getUser();
-
-    if (error || !data.user) {
-    updateAuthUI(null);
-    await cekRole(null);
+  if (!user) {
+    currentUserRole = null;
+    userRoleBadge.textContent = "";
+    userRoleBadge.style.display = "none";
+    formInput.style.display = "none";
+    btnHapusData.style.display = "none";
+    updateTampilanSistem();
     return;
+  }
+
+  const {data, error} = await supabaseClient
+    .from("user_roles")
+    .select("role")
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Gagal mengambil role:", error);
+    currentUserRole = "siswa";
+  } else {
+    currentUserRole = data?.role || "siswa";
+  }
+
+  if (currentUserRole === "admin") {
+    userRoleBadge.textContent = "👑 Admin";
+    formInput.style.display = "";
+    btnHapusData.style.display = "inline-block";
+  } else {
+    userRoleBadge.textContent = "👤 Siswa";
+    formInput.style.display = "none";
+    btnHapusData.style.display = "none";
+  }
+
+  userRoleBadge.style.display = "inline-block";
+  updateTampilanSistem();
 }
 
-    updateAuthUI(data.user);
-    await cekRole(data.user);
+async function loadTransaksiDariSupabase() {
+  if (!supabaseClient) return;
+
+  const {data, error} = await supabaseClient
+    .from("transaksi_kas")
+    .select("*")
+    .order("tanggal", {ascending:false})
+    .order("created_at", {ascending:false});
+
+  if (error) {
+    console.error("Gagal mengambil data:", error);
+    transaksiList = [];
+    updateTampilanSistem();
+    return;
+  }
+
+  transaksiList = data || [];
+  updateTampilanSistem();
 }
 
-loginButton.addEventListener("click", async () => {
-    const email = loginEmail.value.trim();
-    const password = loginPassword.value;
+async function refreshUser(user) {
+  updateAuthUI(user);
+  await cekRole(user);
+  await loadTransaksiDariSupabase();
+}
 
-    loginMessage.textContent = "";
+async function cekLoginAwal() {
+  const {data, error} = await supabaseClient.auth.getSession();
 
-    if (!email || !password) {
-        loginMessage.textContent =
-            "Email dan password wajib diisi.";
-        return;
-    }
+  if (error) {
+    console.error("Gagal membaca session:", error);
+    await refreshUser(null);
+    return;
+  }
 
-    loginButton.disabled = true;
-    loginMessage.textContent = "Sedang login...";
+  await refreshUser(data?.session?.user || null);
+}
 
-    const { data, error } =
-        await supabaseClient.auth.signInWithPassword({
-            email,
-            password
-        });
+async function prosesLogin() {
+  const email = loginEmail.value.trim();
+  const password = loginPassword.value;
 
-    loginButton.disabled = false;
+  if (!email || !password) {
+    pesanLogin("Email dan password wajib diisi.", "error");
+    return;
+  }
+
+  if (!supabaseClient) {
+    pesanLogin("Koneksi Supabase belum siap. Refresh halaman.", "error");
+    return;
+  }
+
+  loginButton.disabled = true;
+  loginButton.textContent = "Memproses...";
+  pesanLogin("Menghubungkan ke sistem...", "normal");
+
+  try {
+    const {data, error} = await supabaseClient.auth.signInWithPassword({email, password});
 
     if (error) {
-        console.error("Login gagal:", error);
-        loginMessage.textContent =
-            "Login gagal. Periksa email dan password.";
-        return;
+      console.error("Login gagal:", error);
+      pesanLogin("Login gagal: " + error.message, "error");
+      return;
+    }
+
+    if (!data?.user) {
+      pesanLogin("Akun belum menghasilkan session aktif.", "error");
+      return;
     }
 
     loginPassword.value = "";
-    loginMessage.textContent = "Login berhasil.";
+    pesanLogin("Login berhasil. Memuat dashboard...", "success");
+    await refreshUser(data.user);
 
-    updateAuthUI(data.user);
-    await cekRole(data.user);
-});
-
-logoutButton.addEventListener("click", async () => {
-    const { error } =
-        await supabaseClient.auth.signOut();
-
-    if (error) {
-        console.error("Logout gagal:", error);
-        alert("Logout gagal.");
-        return;
-    }
-
-    window.location.reload();
-});
-
-supabaseClient.auth.onAuthStateChange(
-    async (_event, session) => {
-        const user = session?.user ?? null;
-
-        updateAuthUI(user);
-            await cekRole(user);
-    }
-);
-
-
-/* =====================================================
-   AMBIL DATA DARI SUPABASE
-   ===================================================== */
-
-async function loadTransaksiDariSupabase() {
-    const { data, error } = await supabaseClient
-        .from("transaksi_kas")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-    if (error) {
-        console.error(
-            "Gagal mengambil data Supabase:",
-            error
-        );
-
-        transaksiList = [];
-        updateTampilanSistem();
-        return;
-    }
-
-    transaksiList = data || [];
-    updateTampilanSistem();
+  } catch (error) {
+    console.error("Error login:", error);
+    pesanLogin("Terjadi kesalahan koneksi. Coba refresh halaman.", "error");
+  } finally {
+    loginButton.disabled = false;
+    loginButton.textContent = "Login";
+  }
 }
 
+async function logout() {
+  if (!supabaseClient) return;
 
-/* =====================================================
-   TAMBAH TRANSAKSI
-   ===================================================== */
+  const {error} = await supabaseClient.auth.signOut();
+
+  if (error) {
+    alert("Logout gagal: " + error.message);
+    return;
+  }
+
+  window.location.reload();
+}
 
 async function tambahTransaksi() {
-    const tanggal = tanggalInput.value;
-    const keterangan = keteranganInput.value;
-    const jenis = jenisInput.value;
-    const nominal = Number(nominalInput.value);
+  if (currentUserRole !== "admin") {
+    alert("Hanya Admin yang dapat menambah transaksi.");
+    return;
+  }
 
-    if (
-        !tanggal ||
-        !keterangan ||
-        !jenis ||
-        !Number.isFinite(nominal)
-    ) {
-        alert("Mohon isi semua data kas terlebih dahulu!");
-        return;
-    }
+  const tanggal = tanggalInput.value;
+  const keterangan = keteranganInput.value;
+  const jenis = jenisInput.value;
+  const nominal = Number(nominalInput.value);
 
-    if (nominal <= 0) {
-        alert("Nominal harus lebih dari Rp 0.");
-        nominalInput.focus();
-        return;
-    }
+  if (!tanggal || !keterangan || !jenis || !Number.isFinite(nominal)) {
+    alert("Mohon isi semua data kas terlebih dahulu.");
+    return;
+  }
 
-    const {
-        data: { user },
-        error: userError
-    } = await supabaseClient.auth.getUser();
+  if (nominal <= 0) {
+    alert("Nominal harus lebih dari Rp 0.");
+    return;
+  }
 
-    if (userError || !user) {
-        alert("Silakan login terlebih dahulu.");
-        return;
-    }
+  const {data:{user}, error:userError} = await supabaseClient.auth.getUser();
 
-    const { data: dataBaru, error } =
-        await supabaseClient
-            .from("transaksi_kas")
-            .insert([
-                {
-                    tanggal,
-                    keterangan,
-                    jenis,
-                    nominal,
-                    created_by: user.id
-                }
-            ])
-            .select()
-            .single();
+  if (userError || !user) {
+    alert("Session login tidak ditemukan. Silakan login kembali.");
+    return;
+  }
 
-    if (error) {
-        console.error(
-            "Gagal menyimpan ke Supabase:",
-            error
-        );
+  const {data:dataBaru, error} = await supabaseClient
+    .from("transaksi_kas")
+    .insert([{tanggal, keterangan, jenis, nominal, created_by:user.id}])
+    .select()
+    .single();
 
-        alert(
-            "Gagal menyimpan transaksi: " +
-            error.message
-        );
-        return;
-    }
+  if (error) {
+    console.error("Gagal menyimpan:", error);
+    alert("Gagal menyimpan transaksi: " + error.message);
+    return;
+  }
 
-    transaksiList.unshift(dataBaru);
-
-    form.reset();
-    setTanggalHariIni();
-    updateTampilanSistem();
-
-    alert("Catatan kas berhasil disimpan!");
+  transaksiList.unshift(dataBaru);
+  form.reset();
+  setTanggalHariIni();
+  updateTampilanSistem();
+  alert("✅ Catatan kas berhasil disimpan!");
 }
-
-
-/* =====================================================
-   EDIT TRANSAKSI - ADMIN ONLY
-   ===================================================== */
 
 async function editTransaksi(id) {
-    if (currentUserRole !== "admin") {
-        alert("Hanya Admin yang dapat mengedit transaksi.");
-        return;
-    }
+  if (currentUserRole !== "admin") {
+    alert("Hanya Admin yang dapat mengedit transaksi.");
+    return;
+  }
 
-    const item = transaksiList.find(
-        transaksi => String(transaksi.id) === String(id)
-    );
+  const item = transaksiList.find(t => String(t.id) === String(id));
+  if (!item) return;
 
-    if (!item) {
-        alert("Data transaksi tidak ditemukan.");
-        return;
-    }
+  const tanggalBaru = prompt("Tanggal transaksi (YYYY-MM-DD):", item.tanggal || "");
+  if (tanggalBaru === null) return;
 
-    const tanggalBaru = prompt(
-        "Tanggal transaksi (YYYY-MM-DD):",
-        item.tanggal || ""
-    );
+  const keteranganBaru = prompt("Nama / Keterangan:", item.keterangan || "");
+  if (keteranganBaru === null) return;
 
-    if (tanggalBaru === null) {
-        return;
-    }
+  const jenisBaru = prompt("Jenis transaksi: masuk atau keluar", item.jenis || "masuk");
+  if (jenisBaru === null) return;
 
-    const keteranganBaru = prompt(
-        "Nama / Keterangan:",
-        item.keterangan || ""
-    );
+  const jenisNormal = jenisBaru.trim().toLowerCase();
+  const nominalBaru = Number(prompt("Nominal:", String(item.nominal || 0)));
 
-    if (keteranganBaru === null) {
-        return;
-    }
+  if (
+    !tanggalBaru.trim() ||
+    !keteranganBaru.trim() ||
+    !["masuk","keluar"].includes(jenisNormal) ||
+    !Number.isFinite(nominalBaru) ||
+    nominalBaru <= 0
+  ) {
+    alert("Data edit tidak valid.");
+    return;
+  }
 
-    const jenisBaru = prompt(
-        "Jenis transaksi: masuk atau keluar",
-        item.jenis || "masuk"
-    );
+  const {error} = await supabaseClient
+    .from("transaksi_kas")
+    .update({
+      tanggal: tanggalBaru.trim(),
+      keterangan: keteranganBaru.trim(),
+      jenis: jenisNormal,
+      nominal: nominalBaru
+    })
+    .eq("id", id);
 
-    if (jenisBaru === null) {
-        return;
-    }
+  if (error) {
+    alert("Gagal mengedit transaksi: " + error.message);
+    return;
+  }
 
-    const jenisNormal =
-        jenisBaru.trim().toLowerCase();
-
-    if (
-        jenisNormal !== "masuk" &&
-        jenisNormal !== "keluar"
-    ) {
-        alert(
-            'Jenis transaksi harus "masuk" atau "keluar".'
-        );
-        return;
-    }
-
-    const nominalBaruInput = prompt(
-        "Nominal:",
-        String(item.nominal || 0)
-    );
-
-    if (nominalBaruInput === null) {
-        return;
-    }
-
-    const nominalBaru =
-        Number(nominalBaruInput);
-
-    if (
-        !tanggalBaru.trim() ||
-        !keteranganBaru.trim() ||
-        !Number.isFinite(nominalBaru) ||
-        nominalBaru <= 0
-    ) {
-        alert("Data edit tidak valid.");
-        return;
-    }
-
-    const { error } = await supabaseClient
-        .from("transaksi_kas")
-        .update({
-            tanggal: tanggalBaru.trim(),
-            keterangan: keteranganBaru.trim(),
-            jenis: jenisNormal,
-            nominal: nominalBaru
-        })
-        .eq("id", id);
-
-    if (error) {
-        console.error("Gagal mengedit transaksi:", error);
-        alert(
-            "Gagal mengedit transaksi: " +
-            error.message
-        );
-        return;
-    }
-
-    await loadTransaksiDariSupabase();
-    alert("Transaksi berhasil diperbarui.");
+  await loadTransaksiDariSupabase();
+  alert("✅ Transaksi berhasil diperbarui.");
 }
-
-
-/* =====================================================
-   HAPUS SATU TRANSAKSI - ADMIN ONLY
-   ===================================================== */
 
 async function hapusTransaksi(id) {
-    if (currentUserRole !== "admin") {
-        alert("Hanya Admin yang dapat menghapus transaksi.");
-        return;
-    }
+  if (currentUserRole !== "admin") return;
 
-    const yakin = confirm(
-        "Yakin ingin menghapus transaksi ini?"
-    );
+  if (!confirm("Yakin ingin menghapus transaksi ini?")) return;
 
-    if (!yakin) {
-        return;
-    }
+  const {error} = await supabaseClient
+    .from("transaksi_kas")
+    .delete()
+    .eq("id", id);
 
-    const { error } = await supabaseClient
-        .from("transaksi_kas")
-        .delete()
-        .eq("id", id);
+  if (error) {
+    alert("Gagal menghapus transaksi: " + error.message);
+    return;
+  }
 
-    if (error) {
-        console.error("Gagal menghapus transaksi:", error);
-
-        alert(
-            "Gagal menghapus transaksi: " +
-            error.message
-        );
-        return;
-    }
-
-    await loadTransaksiDariSupabase();
+  await loadTransaksiDariSupabase();
 }
-
-
-/* =====================================================
-   HAPUS SEMUA TRANSAKSI - ADMIN ONLY
-   ===================================================== */
 
 async function hapusSemuaTransaksi() {
-    if (currentUserRole !== "admin") {
-        alert("Hanya Admin yang dapat menghapus data.");
-        return;
-    }
+  if (currentUserRole !== "admin") return;
 
-    if (transaksiList.length === 0) {
-        alert("Belum ada transaksi untuk dihapus.");
-        return;
-    }
+  if (!transaksiList.length) {
+    alert("Belum ada transaksi.");
+    return;
+  }
 
-    const yakin = confirm(
-        "Yakin ingin menghapus SEMUA transaksi? Tindakan ini tidak dapat dibatalkan."
-    );
+  if (!confirm("Yakin ingin menghapus SEMUA transaksi? Tindakan ini tidak dapat dibatalkan.")) return;
 
-    if (!yakin) {
-        return;
-    }
+  const ids = transaksiList.map(t => t.id);
 
-    const ids = transaksiList.map(
-        transaksi => transaksi.id
-    );
+  const {error} = await supabaseClient
+    .from("transaksi_kas")
+    .delete()
+    .in("id", ids);
 
-    const { error } = await supabaseClient
-        .from("transaksi_kas")
-        .delete()
-        .in("id", ids);
+  if (error) {
+    alert("Gagal menghapus semua transaksi: " + error.message);
+    return;
+  }
 
-    if (error) {
-        console.error(
-            "Gagal menghapus semua transaksi:",
-            error
-        );
-
-        alert(
-            "Gagal menghapus semua transaksi: " +
-            error.message
-        );
-        return;
-    }
-
-    await loadTransaksiDariSupabase();
-    alert("Semua transaksi berhasil dihapus.");
+  await loadTransaksiDariSupabase();
+  alert("✅ Semua transaksi berhasil dihapus.");
 }
-
-
-/* =====================================================
-   UPDATE DASHBOARD
-   ===================================================== */
 
 function updateTampilanSistem() {
-    let totalPemasukan = 0;
-    let totalPengeluaran = 0;
+  let totalPemasukan = 0;
+  let totalPengeluaran = 0;
+  const akumulasiSiswa = {};
 
-    const akumulasiSiswa = {};
+  daftarSiswa.forEach(nama => akumulasiSiswa[nama] = 0);
+  tbody.innerHTML = "";
 
-    daftarSiswa.forEach(nama => {
-        akumulasiSiswa[nama] = 0;
-    });
+  if (!transaksiList.length) {
+    const row = tbody.insertRow();
+    const cell = row.insertCell(0);
+    cell.colSpan = 5;
+    cell.textContent = "Belum ada transaksi kas.";
+    cell.style.textAlign = "center";
+    cell.style.padding = "25px";
+    cell.style.color = "#94a3b8";
+  }
 
-    tbody.innerHTML = "";
+  transaksiList.forEach(item => {
+    const nominal = Number(item.nominal) || 0;
+    const row = tbody.insertRow();
 
-    /* DATA KOSONG */
-    if (transaksiList.length === 0) {
-        const row = tbody.insertRow();
-        const cell = row.insertCell(0);
+    const cellTanggal = row.insertCell(0);
+    const cellKeterangan = row.insertCell(1);
+    const cellMasuk = row.insertCell(2);
+    const cellKeluar = row.insertCell(3);
+    const cellAksi = row.insertCell(4);
 
-        cell.colSpan = 5;
-        cell.textContent = "Belum ada transaksi kas.";
-        cell.style.textAlign = "center";
-        cell.style.padding = "25px";
-        cell.style.color = "#94a3b8";
+    cellTanggal.textContent = formatTanggal(item.tanggal);
+    cellKeterangan.textContent = item.keterangan || "-";
+
+    if (item.jenis === "masuk") {
+      cellMasuk.textContent = formatRupiah(nominal);
+      cellKeluar.textContent = "-";
+      cellMasuk.style.color = "#86efac";
+      totalPemasukan += nominal;
+
+      if (Object.prototype.hasOwnProperty.call(akumulasiSiswa, item.keterangan)) {
+        akumulasiSiswa[item.keterangan] += nominal;
+      }
+    } else {
+      cellMasuk.textContent = "-";
+      cellKeluar.textContent = formatRupiah(nominal);
+      cellKeluar.style.color = "#fca5a5";
+      totalPengeluaran += nominal;
     }
 
-    /* TAMPILKAN TRANSAKSI */
-    transaksiList.forEach(item => {
-        const nominal =
-            Number(item.nominal) || 0;
+    if (currentUserRole === "admin") {
+      const editButton = document.createElement("button");
+      editButton.type = "button";
+      editButton.textContent = "📝";
+      editButton.title = "Edit transaksi";
+      editButton.style.marginRight = "6px";
+      editButton.style.cursor = "pointer";
+      editButton.addEventListener("click", () => editTransaksi(item.id));
 
-        const row = tbody.insertRow();
+      const hapusButton = document.createElement("button");
+      hapusButton.type = "button";
+      hapusButton.textContent = "🗑️";
+      hapusButton.title = "Hapus transaksi";
+      hapusButton.style.cursor = "pointer";
+      hapusButton.addEventListener("click", () => hapusTransaksi(item.id));
 
-        const cellTanggal = row.insertCell(0);
-        const cellKeterangan = row.insertCell(1);
-        const cellMasuk = row.insertCell(2);
-        const cellKeluar = row.insertCell(3);
-        const cellAksi = row.insertCell(4);
+      cellAksi.appendChild(editButton);
+      cellAksi.appendChild(hapusButton);
+    } else {
+      cellAksi.textContent = "-";
+    }
+  });
 
-        cellTanggal.textContent =
-            formatTanggal(item.tanggal);
+  const saldoAkhir = totalPemasukan - totalPengeluaran;
+  const totalOmset = totalPemasukan + totalPengeluaran;
 
-        cellKeterangan.textContent =
-            item.keterangan || "-";
+  const persenMasuk = totalOmset > 0 ? Math.round(totalPemasukan / totalOmset * 100) : 0;
+  const persenKeluar = totalOmset > 0 ? Math.round(totalPengeluaran / totalOmset * 100) : 0;
 
-        if (item.jenis === "masuk") {
-            cellMasuk.textContent =
-                formatRupiah(nominal);
+  document.getElementById("totalMasuk").textContent = formatRupiah(totalPemasukan);
+  document.getElementById("totalKeluar").textContent = formatRupiah(totalPengeluaran);
+  document.getElementById("saldoAkhir").textContent = formatRupiah(saldoAkhir);
 
-            cellKeluar.textContent = "-";
-            cellMasuk.style.color = "#86efac";
+  document.getElementById("barMasuk").style.width = persenMasuk + "%";
+  document.getElementById("barKeluar").style.width = persenKeluar + "%";
+  document.getElementById("labelPersenMasuk").textContent = persenMasuk + "%";
+  document.getElementById("labelPersenKeluar").textContent = persenKeluar + "%";
 
-            totalPemasukan += nominal;
+  boxRekap.innerHTML = "";
 
-            if (
-                Object.prototype.hasOwnProperty.call(
-                    akumulasiSiswa,
-                    item.keterangan
-                )
-            ) {
-                akumulasiSiswa[
-                    item.keterangan
-                ] += nominal;
-            }
-        } else {
-            cellMasuk.textContent = "-";
+  daftarSiswa.forEach((namaSiswa, index) => {
+    const divSiswa = document.createElement("div");
+    divSiswa.style.display = "flex";
+    divSiswa.style.justifyContent = "space-between";
+    divSiswa.style.alignItems = "center";
+    divSiswa.style.gap = "15px";
+    divSiswa.style.padding = "10px 0";
 
-            cellKeluar.textContent =
-                formatRupiah(nominal);
+    const spanNama = document.createElement("span");
+    spanNama.textContent = String(index + 1).padStart(2, "0") + "  " + namaSiswa;
 
-            cellKeluar.style.color = "#fca5a5";
-            totalPengeluaran += nominal;
-        }
+    const spanTotal = document.createElement("strong");
+    spanTotal.textContent = "Rp " + formatRupiah(akumulasiSiswa[namaSiswa]);
+    spanTotal.style.color = "#86efac";
+    spanTotal.style.whiteSpace = "nowrap";
 
-        /* TOMBOL ADMIN */
-        if (currentUserRole === "admin") {
-            const editButton =
-                document.createElement("button");
-
-            editButton.type = "button";
-            editButton.textContent = "📝";
-            editButton.title = "Edit transaksi";
-            editButton.style.marginRight = "6px";
-            editButton.style.cursor = "pointer";
-
-            editButton.addEventListener(
-                "click",
-                () => editTransaksi(item.id)
-            );
-
-            const hapusButton =
-                document.createElement("button");
-
-            hapusButton.type = "button";
-            hapusButton.textContent = "🗑️";
-            hapusButton.title = "Hapus transaksi";
-            hapusButton.style.cursor = "pointer";
-
-            hapusButton.addEventListener(
-                "click",
-                () => hapusTransaksi(item.id)
-            );
-
-            cellAksi.appendChild(editButton);
-            cellAksi.appendChild(hapusButton);
-        } else {
-            cellAksi.textContent = "-";
-        }
-    });
-
-    /* SALDO */
-    const saldoAkhir =
-        totalPemasukan - totalPengeluaran;
-
-    const totalOmset =
-        totalPemasukan + totalPengeluaran;
-
-    const persenMasuk =
-        totalOmset > 0
-            ? Math.round(
-                (totalPemasukan / totalOmset) * 100
-            )
-            : 0;
-
-    const persenKeluar =
-        totalOmset > 0
-            ? Math.round(
-                (totalPengeluaran / totalOmset) * 100
-            )
-            : 0;
-
-    document.getElementById(
-        "totalMasuk"
-    ).textContent =
-        formatRupiah(totalPemasukan);
-
-    document.getElementById(
-        "totalKeluar"
-    ).textContent =
-        formatRupiah(totalPengeluaran);
-
-    document.getElementById(
-        "saldoAkhir"
-    ).textContent =
-        formatRupiah(saldoAkhir);
-
-    document.getElementById(
-        "barMasuk"
-    ).style.width =
-        persenMasuk + "%";
-
-    document.getElementById(
-        "barKeluar"
-    ).style.width =
-        persenKeluar + "%";
-
-    document.getElementById(
-        "labelPersenMasuk"
-    ).textContent =
-        persenMasuk + "%";
-
-    document.getElementById(
-        "labelPersenKeluar"
-    ).textContent =
-        persenKeluar + "%";
-
-    /* REKAP SISWA */
-    boxRekap.innerHTML = "";
-
-    daftarSiswa.forEach(namaSiswa => {
-        const divSiswa =
-            document.createElement("div");
-
-        divSiswa.style.display = "flex";
-        divSiswa.style.justifyContent =
-            "space-between";
-
-        divSiswa.style.alignItems =
-            "center";
-
-        const spanNama =
-            document.createElement("span");
-
-        spanNama.textContent = namaSiswa;
-
-        const spanTotal =
-            document.createElement("strong");
-
-        spanTotal.textContent =
-            "Rp " +
-            formatRupiah(
-                akumulasiSiswa[namaSiswa]
-            );
-
-        spanTotal.style.color = "#86efac";
-
-        divSiswa.appendChild(spanNama);
-        divSiswa.appendChild(spanTotal);
-
-        boxRekap.appendChild(divSiswa);
-    });
+    divSiswa.appendChild(spanNama);
+    divSiswa.appendChild(spanTotal);
+    boxRekap.appendChild(divSiswa);
+  });
 }
 
+loginButton.addEventListener("click", prosesLogin);
+loginPassword.addEventListener("keydown", event => {
+  if (event.key === "Enter") prosesLogin();
+});
+loginAdminButton.addEventListener("click", bukaLogin);
+logoutButton.addEventListener("click", logout);
 
-/* =====================================================
-   EVENT FORM
-   ===================================================== */
+form.addEventListener("submit", async event => {
+  event.preventDefault();
+  await tambahTransaksi();
+});
 
-form.addEventListener(
-    "submit",
-    async event => {
-        event.preventDefault();
-        await tambahTransaksi();
-    }
-);
+btnHapusData.addEventListener("click", hapusSemuaTransaksi);
 
-btnHapusData.addEventListener(
-    "click",
-    hapusSemuaTransaksi
-);
+function pasangAuthListener() {
+  supabaseClient.auth.onAuthStateChange((_event, session) => {
+    const user = session?.user || null;
+    setTimeout(() => refreshUser(user), 0);
+  });
+}
 
+async function initAplikasi() {
+  if (!window.supabase) {
+    loginSection.style.display = "flex";
+    pesanLogin("Library Supabase gagal dimuat. Refresh halaman.", "error");
+    return;
+  }
 
-/* =====================================================
-   START
-   ===================================================== */
+  try {
+    supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
 
-setTanggalHariIni();
-loadTransaksiDariSupabase();
-cekLogin();
+    setTanggalHariIni();
+    pasangAuthListener();
+    await cekLoginAwal();
 
+  } catch (error) {
+    console.error("Supabase gagal diinisialisasi:", error);
+    loginSection.style.display = "flex";
+    pesanLogin("Koneksi sistem gagal dibuat. Refresh halaman.", "error");
+  }
+}
+
+initAplikasi();
 </script>
 
 </body>
