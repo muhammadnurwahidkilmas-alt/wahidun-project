@@ -270,7 +270,7 @@ body:after{
 
   <section class="glass-card section" id="report-center"><div class="card-head"><div><div class="card-title">Bravo Report Center</div><div class="card-sub">Laporan dan bukti transaksi</div></div><span class="pill" id="b30LatestCode">BRV-2026-0000</span></div><div style="padding:0 20px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px"><button class="primary" id="b30LatestReceipt">▣ Bukti Terbaru</button><button class="glass-btn" id="printReport">🖨 Cetak Laporan</button><button class="glass-btn" onclick="document.getElementById('b30MonthlyReport').click()">▤ Laporan Bulanan</button></div><div style="padding:0 20px 20px;color:#91a6bd;font-size:11px">Transaksi terbaru: <b id="b30LatestInfo">Belum ada transaksi.</b> • Tanggal <b id="b30UpdatedAt">—</b></div></section>
 
-  <section class="glass-card section" id="form-input"><div class="card-head"><div><div class="card-title">Input Kas Admin</div><div class="card-sub">Panel ini hanya tersedia untuk Admin</div></div></div><form id="cashflowForm" class="admin-panel"><div class="form-grid"><div class="field"><label>Tanggal</label><input id="tanggal" type="date" required></div><div class="field"><label>Jenis</label><select id="jenis"><option value="masuk">Kas Masuk</option><option value="keluar">Kas Keluar</option></select></div><div class="field full"><label>Nama / Keterangan</label><input id="keterangan" list="daftarKeterangan" placeholder="Pilih anggota atau keperluan kelas" required><datalist id="daftarKeterangan"><option value="Keperluan Umum Kelas"></option></datalist></div><div class="field"><label>Nominal</label><input id="nominal" type="number" min="1" required placeholder="10000"></div><div class="field" style="align-content:end"><button class="primary" type="submit">Simpan Transaksi</button></div></div></form><div style="padding:0 20px 20px"><button class="danger" id="btnHapusData">Hapus Semua Data</button></div></section>
+  <section class="glass-card section" id="form-input"><div class="card-head"><div><div class="card-title">Input Kas Admin</div><div class="card-sub">Panel ini hanya tersedia untuk Admin</div></div></div><form id="cashflowForm" class="admin-panel"><div class="form-grid"><div class="field"><label>Tanggal</label><input id="tanggal" type="date" required></div><div class="field"><label>Jenis</label><select id="jenis"><option value="masuk">Kas Masuk</option><option value="keluar">Kas Keluar</option></select></div><div class="field full"><label>Nama / Keterangan</label><select id="keterangan" required><option value="" selected disabled>-- Pilih nama anggota / keterangan --</option><optgroup label="👥 Anggota Bravo" id="daftarAnggotaInput"></optgroup><optgroup label="📦 Keterangan Umum"><option value="Keperluan Umum Kelas">Keperluan Umum Kelas</option></optgroup></select><div class="field-hint">Untuk kas masuk, pilih nama anggota agar otomatis masuk ke rekap anggota.</div></div><div class="field"><label>Nominal</label><input id="nominal" type="number" min="1" required placeholder="10000"></div><div class="field" style="align-content:end"><button class="primary" type="submit">Simpan Transaksi</button></div></div></form><div style="padding:0 20px 20px"><button class="danger" id="btnHapusData">Hapus Semua Data</button></div></section>
 
   <section class="glass-card section" id="tabel-data"><div class="card-head"><div class="card-title">Riwayat Transaksi</div></div><div class="section-toolbar"><input id="searchTransaksi" class="control" placeholder="Cari transaksi..."><select id="filterBulan" class="control"><option value="all">Semua Bulan</option></select><select id="filterJenis" class="control"><option value="all">Semua Jenis</option><option value="masuk">Kas Masuk</option><option value="keluar">Kas Keluar</option></select><button id="resetFilter" class="glass-btn">Reset</button></div><div id="filterInfo" class="filterInfo"></div><div class="table-wrap"><table class="modern-table"><thead><tr><th>Tanggal</th><th>Keterangan</th><th>Kas Masuk</th><th>Kas Keluar</th><th>Aksi</th></tr></thead><tbody id="tabelBody"></tbody></table></div></section>
 
@@ -369,6 +369,20 @@ const daftarSiswa = [
         "VERI VARNANDO",
         "WAHYU DWI NUR ANGGRAINI"
 ];
+
+function populateKeteranganOptions() {
+  const select = document.getElementById("keterangan");
+  const group = document.getElementById("daftarAnggotaInput");
+  if (!select || !group) return;
+
+  group.innerHTML = "";
+  daftarSiswa.forEach((nama) => {
+    const option = document.createElement("option");
+    option.value = nama;
+    option.textContent = nama;
+    group.appendChild(option);
+  });
+}
 
 function formatRupiah(nominal) {
   return Number(nominal || 0).toLocaleString("id-ID");
@@ -1224,7 +1238,8 @@ setupV2();
   setTimeout(()=>{if(!localStorage.getItem('bravo30_notice'))$('b30InstallCard')?.classList.add('show')},2500);
 })();
 </script>
-<script>initAplikasi();</script>
+<script>populateKeteranganOptions();
+initAplikasi();</script>
 
 <script id="bravo-bubble-enhancer">
 (function(){
