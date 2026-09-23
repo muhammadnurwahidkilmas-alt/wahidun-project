@@ -48,7 +48,8 @@
             <a href="#form-input">Input Kas</a>
             <a href="#tabungan-siswa">Tabungan Siswa</a>
             <a href="#tabel-data">Tabel Kas</a>
-
+<span id="userRoleBadge" class="user-role-badge">Checking...</span>
+         
          <button type="button" id="logoutButton" class="logout-button">
     Logout
 </button>
@@ -413,6 +414,34 @@ async function cekLogin() {
     }
 
     updateAuthUI(data.user);
+ await cekRole(data.user);
+}
+async function cekRole(user) {
+    const userRoleBadge = document.getElementById("userRoleBadge");
+
+    if (!user) {
+        userRoleBadge.textContent = "";
+        userRoleBadge.style.display = "none";
+        return;
+    }
+
+    const { data, error } = await supabaseClient
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", user.id)
+        .single();
+
+    if (error) {
+        console.error("Gagal mengambil role:", error);
+        userRoleBadge.textContent = "User";
+        userRoleBadge.style.display = "inline-block";
+        return;
+    }
+
+    userRoleBadge.textContent =
+        data.role === "admin" ? "👑 Admin" : "👤 Siswa";
+
+    userRoleBadge.style.display = "inline-block";
 }
 
 loginButton.addEventListener("click", async () => {
@@ -447,6 +476,7 @@ loginButton.addEventListener("click", async () => {
     loginMessage.textContent = "Login berhasil.";
 
     updateAuthUI(data.user);
+    await cekRole(data.user);
 });
      
 const logoutButton = document.getElementById("logoutButton");
