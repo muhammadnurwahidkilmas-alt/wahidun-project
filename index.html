@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -490,37 +490,27 @@ cekLogin();
 
         let transaksiList = [];
 
+// ================= AMBIL DATA DARI SUPABASE =================
 
-        try {
+async function loadTransaksiDariSupabase() {
+    const { data, error } = await supabaseClient
+        .from("transaksi_kas")
+        .select("*")
+        .order("created_at", { ascending: false });
 
-            const data =
-                localStorage.getItem(databaseKey);
+    if (error) {
+        console.error("Gagal mengambil data Supabase:", error);
+        transaksiList = [];
+        updateTampilanSistem();
+        return;
+    }
 
+    transaksiList = data || [];
 
-            if (data) {
+    updateTampilanSistem();
+}
 
-                const parsed =
-                    JSON.parse(data);
-
-
-                if (Array.isArray(parsed)) {
-
-                    transaksiList = parsed;
-
-                }
-
-            }
-
-        } catch (error) {
-
-            console.error(
-                "Gagal membaca data:",
-                error
-            );
-
-            transaksiList = [];
-
-        }
+loadTransaksiDariSupabase();
 
 
         /*
